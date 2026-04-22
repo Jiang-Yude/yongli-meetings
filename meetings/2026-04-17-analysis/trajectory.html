@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>永力扶輪社｜兩次會議人員態度軌跡圖</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #faf7f2;
+    color: #2c2824;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 26px;
+    border-bottom: 3px solid #8b6f47;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: #6b5d4f;
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    color: #3d342a;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    border-left: 4px solid #8b6f47;
+    padding-left: 12px;
+  }
+  .chart-wrap {
+    background: #fff;
+    border: 1px solid #e5dcc9;
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+  .note {
+    font-size: 13px;
+    color: #6b5d4f;
+    background: #f5efe4;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #e5dcc9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+  th {
+    background: #8b6f47;
+    color: #fff;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee4d0;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) { background: #faf7f2; }
+  .person-name {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .arrow-cell {
+    color: #8b6f47;
+    font-weight: 600;
+  }
+  .bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+  }
+  .bar-label {
+    width: 80px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .bar-time {
+    font-size: 11px;
+    color: #6b5d4f;
+    width: 50px;
+  }
+  .bar {
+    height: 22px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    transition: width 0.3s;
+  }
+  .summary-box {
+    background: #fff;
+    border: 1px solid #e5dcc9;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .summary-box h3 {
+    margin-top: 0;
+    color: #3d342a;
+    font-size: 16px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+  .tag-before { background: #ede4d0; color: #6b5d4f; }
+  .tag-after { background: #8b6f47; color: #fff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>永力扶輪社｜兩次會議人員態度軌跡圖</h1>
+<div class="subtitle">
+  分析日期：2026-04-17 ｜ 比對對象：2026-03-31 第一次會議 vs 2026-04-16 第二次會議
+</div>
+
+<!-- ============ 圖表 1：態度軌跡象限圖 ============ -->
+<h2>圖一：態度軌跡象限圖</h2>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot" style="background:#4a6fa5"></span>林學賢 CP</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#6b9b6a"></span>陳明勇 Vincent</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#c27a4a"></span>黃丞隆 Rich</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#8a6fa5"></span>艾筆</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#2d5d4a"></span>江昱德 江江</div>
+</div>
+
+<div class="chart-wrap">
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+
+  <!-- 背景四象限 -->
+  <rect x="80" y="40" width="680" height="500" fill="#faf7f2" stroke="#d4c9b0" stroke-width="1"/>
+
+  <!-- 象限分隔線 -->
+  <line x1="420" y1="40" x2="420" y2="540" stroke="#d4c9b0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="290" x2="760" y2="290" stroke="#d4c9b0" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- 象限標籤 -->
+  <text x="250" y="70" text-anchor="middle" fill="#a89878" font-size="12">觀望＋執行層</text>
+  <text x="590" y="70" text-anchor="middle" fill="#a89878" font-size="12">主動＋執行層（核心推動區）</text>
+  <text x="250" y="530" text-anchor="middle" fill="#a89878" font-size="12">觀望＋概念層</text>
+  <text x="590" y="530" text-anchor="middle" fill="#a89878" font-size="12">主動＋概念層</text>
+
+  <!-- 軸標籤 -->
+  <text x="420" y="575" text-anchor="middle" fill="#3d342a" font-size="14" font-weight="600">投入主動性 →</text>
+  <text x="40" y="290" text-anchor="middle" fill="#3d342a" font-size="14" font-weight="600" transform="rotate(-90 40 290)">執行深度 →</text>
+
+  <!-- 軸端點註記 -->
+  <text x="100" y="555" fill="#6b5d4f" font-size="11">被動觀望</text>
+  <text x="700" y="555" fill="#6b5d4f" font-size="11">主動推動</text>
+  <text x="60" y="50" fill="#6b5d4f" font-size="11">執行層</text>
+  <text x="60" y="535" fill="#6b5d4f" font-size="11">概念層</text>
+
+  <!-- 箭頭定義 -->
+  <defs>
+    <marker id="arrow-cp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a6fa5"/>
+    </marker>
+    <marker id="arrow-vincent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b9b6a"/>
+    </marker>
+    <marker id="arrow-rich" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c27a4a"/>
+    </marker>
+    <marker id="arrow-aibi" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a6fa5"/>
+    </marker>
+    <marker id="arrow-jiang" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d5d4a"/>
+    </marker>
+  </defs>
+
+  <!-- CP 的軌跡：(620, 400) → (680, 160) -->
+  <line x1="620" y1="400" x2="670" y2="170" stroke="#4a6fa5" stroke-width="2.5" marker-end="url(#arrow-cp)"/>
+  <circle cx="620" cy="400" r="10" fill="#fff" stroke="#4a6fa5" stroke-width="2.5"/>
+  <circle cx="680" cy="160" r="11" fill="#4a6fa5"/>
+  <text x="638" y="395" fill="#4a6fa5" font-size="12" font-weight="600">CP（1）</text>
+  <text x="696" y="155" fill="#4a6fa5" font-size="12" font-weight="600">CP（2）</text>
+
+  <!-- Vincent 的軌跡：(180, 440) → (640, 110) -->
+  <line x1="190" y1="430" x2="630" y2="120" stroke="#6b9b6a" stroke-width="2.5" marker-end="url(#arrow-vincent)"/>
+  <circle cx="180" cy="440" r="10" fill="#fff" stroke="#6b9b6a" stroke-width="2.5"/>
+  <circle cx="640" cy="110" r="11" fill="#6b9b6a"/>
+  <text x="100" y="445" fill="#6b9b6a" font-size="12" font-weight="600">Vincent（1）</text>
+  <text x="556" y="105" fill="#6b9b6a" font-size="12" font-weight="600">Vincent（2）</text>
+
+  <!-- Rich 的軌跡：(560, 330) → (490, 230) -->
+  <line x1="554" y1="324" x2="494" y2="236" stroke="#c27a4a" stroke-width="2.5" marker-end="url(#arrow-rich)"/>
+  <circle cx="560" cy="330" r="10" fill="#fff" stroke="#c27a4a" stroke-width="2.5"/>
+  <circle cx="490" cy="230" r="11" fill="#c27a4a"/>
+  <text x="580" y="335" fill="#c27a4a" font-size="12" font-weight="600">Rich（1）</text>
+  <text x="410" y="225" fill="#c27a4a" font-size="12" font-weight="600">Rich（2）</text>
+
+  <!-- 艾筆 的軌跡：(270, 350) → (500, 180) -->
+  <line x1="278" y1="344" x2="494" y2="185" stroke="#8a6fa5" stroke-width="2.5" marker-end="url(#arrow-aibi)"/>
+  <circle cx="270" cy="350" r="10" fill="#fff" stroke="#8a6fa5" stroke-width="2.5"/>
+  <circle cx="500" cy="180" r="11" fill="#8a6fa5"/>
+  <text x="190" y="355" fill="#8a6fa5" font-size="12" font-weight="600">艾筆（1）</text>
+  <text x="518" y="175" fill="#8a6fa5" font-size="12" font-weight="600">艾筆（2）</text>
+
+  <!-- 江江 的軌跡：(600, 290) → (710, 120) -->
+  <line x1="608" y1="284" x2="702" y2="128" stroke="#2d5d4a" stroke-width="2.5" marker-end="url(#arrow-jiang)"/>
+  <circle cx="600" cy="290" r="10" fill="#fff" stroke="#2d5d4a" stroke-width="2.5"/>
+  <circle cx="710" cy="120" r="11" fill="#2d5d4a"/>
+  <text x="540" y="295" fill="#2d5d4a" font-size="12" font-weight="600">江江（1）</text>
+  <text x="725" y="115" fill="#2d5d4a" font-size="12" font-weight="600">江江（2）</text>
+
+</svg>
+</div>
+
+<div class="note">
+  <strong>圖例說明：</strong>
+  空心圓 = 第一次會議位置，實心圓 = 第二次會議位置，箭頭指向變化方向。
+  右下象限為「核心推動區」——主動程度高且進入執行層。
+</div>
+
+<!-- ============ 圖表 2：發言比例對比 ============ -->
+<h2>圖二：發言比例變化</h2>
+
+<div class="chart-wrap">
+  <div class="bar-container">
+    <div class="bar-label">林學賢 CP</div>
+    <div class="bar-time">第一次</div>
+    <div class="bar" style="width: 45%; background: #4a6fa5;">45%</div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label">&nbsp;</div>
+    <div class="bar-time">第二次</div>
+    <div class="bar" style="width: 32%; background: #4a6fa5; opacity: 0.6;">約 32%</div>
+  </div>
+
+  <div class="bar-container" style="margin-top: 14px;">
+    <div class="bar-label">Vincent</div>
+    <div class="bar-time">第一次</div>
+    <div class="bar" style="width: 8%; background: #6b9b6a;">8%</div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label">&nbsp;</div>
+    <div class="bar-time">第二次</div>
+    <div class="bar" style="width: 28%; background: #6b9b6a; opacity: 0.9;">約 28%</div>
+  </div>
+
+  <div class="bar-container" style="margin-top: 14px;">
+    <div class="bar-label">Rich</div>
+    <div class="bar-time">第一次</div>
+    <div class="bar" style="width: 10%; background: #c27a4a;">10%</div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label">&nbsp;</div>
+    <div class="bar-time">第二次</div>
+    <div class="bar" style="width: 7%; background: #c27a4a; opacity: 0.6;">約 7%</div>
+  </div>
+
+  <div class="bar-container" style="margin-top: 14px;">
+    <div class="bar-label">艾筆</div>
+    <div class="bar-time">第一次</div>
+    <div class="bar" style="width: 7%; background: #8a6fa5;">7%</div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label">&nbsp;</div>
+    <div class="bar-time">第二次</div>
+    <div class="bar" style="width: 10%; background: #8a6fa5; opacity: 0.9;">約 10%</div>
+  </div>
+
+  <div class="bar-container" style="margin-top: 14px;">
+    <div class="bar-label">江昱德</div>
+    <div class="bar-time">第一次</div>
+    <div class="bar" style="width: 30%; background: #2d5d4a;">30%</div>
+  </div>
+  <div class="bar-container">
+    <div class="bar-label">&nbsp;</div>
+    <div class="bar-time">第二次</div>
+    <div class="bar" style="width: 23%; background: #2d5d4a; opacity: 0.9;">約 23%</div>
+  </div>
+</div>
+
+<div class="note">
+  <strong>解讀：</strong>
+  第二次會議的發言比例明顯平均化。CP 從 45% 降到 32%，Vincent 從 8% 躍升到 28%——這是「一人扛」轉向「三頭推動」最直接的數據證據。
+  <br>（第二次比例為估算，根據逐字稿主導段落分布推算。）
+</div>
+
+<!-- ============ 圖表 3：角色定位對照 ============ -->
+<h2>圖三：角色定位對照</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>人員</th>
+      <th>第一次角色</th>
+      <th></th>
+      <th>第二次角色</th>
+      <th>關鍵轉變</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="person-name" style="color:#4a6fa5;">林學賢 CP</td>
+      <td><span class="tag tag-before">願景描繪者</span></td>
+      <td class="arrow-cell">→</td>
+      <td><span class="tag tag-after">願景＋落地治理者</span></td>
+      <td>從「純講未來」變成「設計執行機制」</td>
+    </tr>
+    <tr>
+      <td class="person-name" style="color:#6b9b6a;">陳明勇 Vincent</td>
+      <td><span class="tag tag-before">務實探尋者（觀望）</span></td>
+      <td class="arrow-cell">→</td>
+      <td><span class="tag tag-after">報告書主要整合者</span></td>
+      <td><strong>變化最大</strong>：從場邊提問到跳進執行</td>
+    </tr>
+    <tr>
+      <td class="person-name" style="color:#c27a4a;">黃丞隆 Rich</td>
+      <td><span class="tag tag-before">AI 嘗鮮者＋牽線者</span></td>
+      <td class="arrow-cell">→</td>
+      <td><span class="tag tag-after">框架校正者＋共學節點</span></td>
+      <td>量減，但一針見血</td>
+    </tr>
+    <tr>
+      <td class="person-name" style="color:#8a6fa5;">艾筆</td>
+      <td><span class="tag tag-before">協調者＋承諾執行者</span></td>
+      <td class="arrow-cell">→</td>
+      <td><span class="tag tag-after">影音入口＋隱性知識採訪</span></td>
+      <td>開始貢獻獨立專業觀點</td>
+    </tr>
+    <tr>
+      <td class="person-name" style="color:#2d5d4a;">江昱德 江江</td>
+      <td><span class="tag tag-before">受邀探索者＋概念提案者</span></td>
+      <td class="arrow-cell">→</td>
+      <td><span class="tag tag-after">執行操盤者＋方法論制定者</span></td>
+      <td>從外部顧問走向內部共構</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============ 整體觀察 ============ -->
+<h2>整體觀察摘要</h2>
+
+<div class="summary-box">
+  <h3>1. 推動結構：從一人扛 → 三頭推動</h3>
+  <p>第一次 CP 獨扛願景。第二次變成 CP（戰略）＋ Vincent（執行）＋ 江江（架構）共構。風險分散了，但也失去單一清晰的決策中心。</p>
+</div>
+
+<div class="summary-box">
+  <h3>2. 煞車者消失</h3>
+  <p>第一次 Vincent 扮煞車（探尋動機、問具體安排）。第二次沒人扮煞車——因為 Vincent 跳進執行了。下次會議可能需要有人繼續問「這真的做得完嗎」。</p>
+</div>
+
+<div class="summary-box">
+  <h3>3. 最值得注意：Vincent 的轉變</h3>
+  <p>從 8% 發言的觀望者，變成開會就拆三大資料塊的整合者。工作分配結果上他承擔最重。<strong>風險點</strong>：任務最重且沒有副手。</p>
+</div>
+
+<div class="summary-box">
+  <h3>4. 關係密度明顯上升</h3>
+  <p>第一次像在「彼此自我介紹立場」。第二次在「接話、補話、靠向共識」。Rich 那句「報告書只是介面，核心是資料庫」，被所有人順下去——這種共識接力第一次是沒有的。</p>
+</div>
+
+<div class="summary-box">
+  <h3>5. 焦點從「要不要做」變成「怎麼做」</h3>
+  <p>方向驗證階段過了，進入執行設計階段。討論從「動機」「價值」「願景」具體到「資料放哪裡」「誰擁有」「5/16 長什麼樣」。</p>
+</div>
+
+<div style="text-align: center; color: #a89878; font-size: 12px; margin-top: 60px; padding-top: 24px; border-top: 1px solid #e5dcc9;">
+  配套文件：2026-04-17-2120 合作·永力扶輪社：兩次會議人員態度軌跡分析
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+._*
+
+# iCloud placeholder
+.icloud
+
+# Obsidian
+.obsidian/
+.trash/
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.swp
+*~
+
+# Vercel
+.vercel/

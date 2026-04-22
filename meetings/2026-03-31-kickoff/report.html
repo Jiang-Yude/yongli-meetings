@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>永力扶輪社 AI 導入與永續報告書規劃｜會議報告頁</title>
+  <style>
+    :root {
+      --bg: #f4ede6;
+      --bg-soft: #fbf7f2;
+      --panel: rgba(255, 250, 245, 0.88);
+      --panel-strong: #fffaf5;
+      --ink: #241a16;
+      --muted: #69544a;
+      --line: rgba(74, 49, 36, 0.14);
+      --coffee-900: #2d1f19;
+      --coffee-800: #3b2a22;
+      --coffee-700: #594136;
+      --coffee-600: #7a5a47;
+      --coffee-500: #9c7359;
+      --gold: #c6a16e;
+      --gold-soft: rgba(198, 161, 110, 0.18);
+      --shadow: 0 20px 50px rgba(48, 29, 18, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(198, 161, 110, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(122, 90, 71, 0.16), transparent 24%),
+        linear-gradient(180deg, #f8f2eb 0%, var(--bg) 48%, #efe5db 100%);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(87, 62, 48, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87, 62, 48, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.42), transparent 78%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      background: rgba(43, 29, 22, 0.78);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 38px rgba(35, 22, 17, 0.16);
+      color: #fff9f2;
+    }
+
+    .topbar .brand {
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .topbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .topbar nav a {
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: rgba(255, 249, 242, 0.88);
+      transition: background-color 0.25s ease, transform 0.25s ease;
+      font-size: 0.92rem;
+    }
+
+    .topbar nav a:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 54px 48px 44px;
+      border-radius: 36px;
+      background:
+        linear-gradient(145deg, rgba(43, 28, 22, 0.98), rgba(75, 50, 39, 0.96)),
+        linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+      box-shadow: var(--shadow);
+      color: #fff8f1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -6% -22% auto;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198, 161, 110, 0.26), transparent 68%);
+      filter: blur(12px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f6ddbe;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.9fr;
+      gap: 28px;
+      align-items: end;
+      margin-top: 22px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Noto Serif TC", "PMingLiU", serif;
+      line-height: 1.2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.1rem);
+      max-width: 12ch;
+      margin-bottom: 18px;
+    }
+
+    .hero .summary {
+      max-width: 680px;
+      font-size: 1.08rem;
+      color: rgba(255, 246, 238, 0.84);
+    }
+
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .meta-chip {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 249, 242, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+
+    .summary-panel {
+      position: relative;
+      padding: 24px;
+      border-radius: 26px;
+      background: rgba(255, 249, 242, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .summary-panel h2 {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+
+    .summary-panel p {
+      margin: 0 0 18px;
+      color: rgba(255, 246, 238, 0.82);
+      font-size: 0.98rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      min-height: 104px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(18px);
+      opacity: 0;
+      animation: riseUp 0.8s ease forwards;
+    }
+
+    .stat-card:nth-child(2) { animation-delay: 0.08s; }
+    .stat-card:nth-child(3) { animation-delay: 0.16s; }
+    .stat-card:nth-child(4) { animation-delay: 0.24s; }
+
+    .stat-card .label {
+      font-size: 0.84rem;
+      color: rgba(255, 244, 234, 0.7);
+    }
+
+    .stat-card .value {
+      font-size: 2rem;
+      font-family: "Noto Serif TC", serif;
+      color: #f8d9a6;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(300px, 0.95fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .section-card,
+    .side-card,
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .section-card {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .side-card {
+      padding: 24px;
+      border-radius: 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--coffee-800);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      color: var(--coffee-900);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 34ch;
+    }
+
+    .cards-2,
+    .cards-3 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cards-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cards-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+    }
+
+    .panel h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--coffee-800);
+    }
+
+    .panel p,
+    .panel li,
+    .side-card p,
+    .side-card li,
+    details li {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .task-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .task-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+    }
+
+    .task-item .box {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      border-radius: 7px;
+      border: 2px solid rgba(122, 90, 71, 0.4);
+      position: relative;
+    }
+
+    .task-item .box::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, rgba(198, 161, 110, 0.8), rgba(122, 90, 71, 0.9));
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.24s ease;
+    }
+
+    .task-item:hover .box::after {
+      transform: scale(1);
+    }
+
+    .task-item strong {
+      color: var(--coffee-800);
+    }
+
+    .task-item span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 16px 18px 16px 56px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 20px;
+      bottom: -24px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), rgba(122, 90, 71, 0.12));
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--coffee-600));
+      box-shadow: 0 0 0 5px rgba(198, 161, 110, 0.14);
+    }
+
+    .timeline-item .time {
+      font-size: 0.88rem;
+      color: var(--coffee-600);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .timeline-item h3 {
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-chart {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 112px 1fr 48px;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.94rem;
+    }
+
+    .bar-row .name {
+      color: var(--coffee-800);
+      font-weight: 700;
+    }
+
+    .bar-track {
+      position: relative;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(122, 90, 71, 0.12);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--coffee-600), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: growBar 1.2s ease forwards;
+    }
+
+    .roadmap {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .roadmap-step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+    }
+
+    .roadmap-step .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(198, 161, 110, 0.22), rgba(122, 90, 71, 0.16));
+      color: var(--coffee-800);
+      font-weight: 700;
+      min-height: 76px;
+      text-align: center;
+    }
+
+    .risk-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .risk-item {
+      padding: 14px 16px;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 14px 14px 0;
+      background: rgba(255, 248, 240, 0.92);
+    }
+
+    .risk-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--coffee-800);
+    }
+
+    .participant-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .participant {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+    }
+
+    .participant strong {
+      color: var(--coffee-800);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 250, 245, 0.9);
+      padding: 0 18px;
+      overflow: hidden;
+    }
+
+    details + details {
+      margin-top: 14px;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--coffee-800);
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: var(--coffee-600);
+      transition: transform 0.25s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .details-body {
+      padding-bottom: 18px;
+    }
+
+    .details-body p {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 22px 24px;
+      border-radius: 22px;
+      background: rgba(43, 29, 22, 0.92);
+      color: rgba(255, 248, 241, 0.85);
+    }
+
+    .footer-note strong {
+      color: #f8d9a6;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 26px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-scroll-hint .hint-copy {
+      min-width: 0;
+    }
+
+    .hero-scroll-hint strong {
+      display: block;
+      color: #f8d9a6;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-scroll-hint span {
+      color: rgba(255, 246, 238, 0.8);
+      font-size: 0.92rem;
+    }
+
+    .hero-scroll-hint .hint-arrow {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(198, 161, 110, 0.18);
+      color: #f6ddbe;
+      font-size: 1.4rem;
+      animation: floatDown 1.8s ease-in-out infinite;
+    }
+
+    .section-preview-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .section-preview {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-preview .step {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(198, 161, 110, 0.18);
+      color: #f8d9a6;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .section-preview h3 {
+      font-size: 1rem;
+      color: #fff8f1;
+      margin-bottom: 6px;
+    }
+
+    .section-preview p {
+      margin: 0;
+      color: rgba(255, 246, 238, 0.76);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    @keyframes riseUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes growBar {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes floatDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .content-grid,
+      .cards-3,
+      .cards-2,
+      .insight-grid,
+      .section-preview-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(calc(100% - 20px), var(--max-width));
+        padding-top: 14px;
+      }
+
+      .topbar {
+        border-radius: 24px;
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .hero,
+      .section-card,
+      .side-card {
+        padding: 24px 20px;
+      }
+
+      .roadmap-step,
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        padding-left: 48px;
+      }
+
+      .hero-scroll-hint {
+        align-items: flex-start;
+      }
+    }
+
+    /* =====================================================
+       篩選 BAR 模板
+       使用說明：
+       1. 在每個可篩選的 <section> / <article> 上加 data-tags="tag1 tag2"
+       2. 在篩選 bar 的按鈕加 data-filter="tag1"
+       3. 人物標籤互斥（PERSON_TAGS），主題標籤可疊加（THEME_TAGS）
+       4. JS 已整合在頁底 filter logic 區塊
+       ===================================================== */
+    .filter-bar {
+      position: sticky; top: 76px; z-index: 30;
+      padding: 8px 0; margin-bottom: 20px;
+    }
+    .filter-inner {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 14px 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #c6a16e, #b8916a);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 6px 24px rgba(122,90,71,0.28);
+    }
+    .filter-header { display: flex; flex-direction: column; gap: 3px; }
+    .filter-label {
+      font-size: 1.12rem; font-weight: 700; color: #fff8f0;
+      font-family: "Noto Serif TC","PMingLiU",serif; line-height: 1.3;
+    }
+    .filter-hint { font-size: 0.95rem; color: rgba(255,248,240,0.82); line-height: 1.5; }
+    .filter-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .filter-divider {
+      width: 1px; height: 20px;
+      background: rgba(255,255,255,0.3);
+      margin: 0 3px; flex-shrink: 0;
+    }
+    .filter-btn {
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent; color: rgba(255,248,240,0.9);
+      font-size: 0.9rem; font-family: inherit;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-btn:hover {
+      background: rgba(255,255,255,0.18);
+      color: #fff8f0; border-color: rgba(255,255,255,0.6);
+    }
+    .filter-btn.active {
+      background: #fff8f0; color: #b8916a;
+      border-color: #fff8f0; font-weight: 700;
+    }
+    .filter-no-result {
+      display: none;
+      padding: 22px; text-align: center;
+      color: var(--muted); font-size: 0.93rem;
+      border: 1px dashed rgba(198,161,110,0.3);
+      border-radius: 14px; margin-top: 12px;
+    }
+    @media (max-width: 720px) {
+      .filter-inner { border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <div class="brand">YONGLI ROTARY CLUB REPORT</div>
+      <nav>
+        <a href="#conclusion">會議結論與代辦</a>
+        <a href="#insights">會議洞察與策略</a>
+        <a href="#record">會議流程詳細記錄</a>
+      </nav>
+    </div>
+
+    <header class="hero">
+      <div class="eyebrow">AI 導入 × 永續報告書 × 知識庫規劃</div>
+      <div class="hero-grid">
+        <div>
+          <h1>永力扶輪社 AI 導入與永續報告書規劃</h1>
+          <p class="summary">
+            這是一頁給與會者快速複查的會議報告頁。前段先確認共識、待辦與時程，中段呈現策略判讀與風險觀察，後段保留完整流程內容，方便之後查詢、追溯與延伸分析。
+          </p>
+          <div class="meta-list">
+            <div class="meta-chip">日期｜2026-03-31</div>
+            <div class="meta-chip">會議長度｜約 1 小時 44 分</div>
+            <div class="meta-chip">形式｜線上會議</div>
+            <div class="meta-chip">記錄用途｜確認版 + 存查版</div>
+          </div>
+        </div>
+        <aside class="summary-panel">
+          <h2>本頁重點</h2>
+          <p>本次會議已形成合作初步共識，核心方向是以低門檻 AI 工具啟動社內共學，再逐步把工作坊成果轉成可累積的知識資產與永續報告書素材。</p>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="label">與會人數</span>
+              <span class="value">5</span>
+            </div>
+            <div class="stat-card">
+              <span class="label">核心待辦</span>
+              <span class="value">8</span>
+            </div>
+            <div class="stat-card">
+              <span class="label">論壇節點</span>
+              <span class="value">5/16</span>
+            </div>
+            <div class="stat-card">
+              <span class="label">合作階段</span>
+              <span class="value">3</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <a class="hero-scroll-hint" href="#conclusion">
+        <div class="hint-copy">
+          <strong>這頁不只是一段結論摘要</strong>
+          <span>往下還有三層內容：先看結論與代辦，再看策略洞察，最後有完整流程記錄可查。</span>
+        </div>
+        <div class="hint-arrow">↓</div>
+      </a>
+
+      <div class="section-preview-row">
+        <div class="section-preview">
+          <div class="step">第一層</div>
+          <h3>會議結論與代辦</h3>
+          <p>快速確認共識、角色分工、待辦與重要節點。</p>
+        </div>
+        <div class="section-preview">
+          <div class="step">第二層</div>
+          <h3>會議洞察與策略</h3>
+          <p>整理這場會議真正代表的方向、風險與收斂建議。</p>
+        </div>
+        <div class="section-preview">
+          <div class="step">第三層</div>
+          <h3>會議流程詳細記錄</h3>
+          <p>保留完整脈絡，供之後查詢、追溯與延伸分析。</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== 篩選 BAR（主題篩選模板）=====
+         使用時：在下方按鈕加 data-filter="tag"，在段落加 data-tags="tag"
+         人物標籤互斥（同時只能選一人），主題標籤可疊加 -->
+    <div class="filter-bar">
+      <div class="filter-inner">
+        <div class="filter-header">
+          <span class="filter-label">選擇想看的視角</span>
+          <span class="filter-hint">點人物只看相關段落・點主題追加篩選・「全部」還原</span>
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">全部</button>
+          <span class="filter-divider"></span>
+          <!-- 人物標籤（互斥）：依與會者填入 -->
+          <button class="filter-btn" data-filter="cp">CP林學賢</button>
+          <button class="filter-btn" data-filter="jiang">江昱德</button>
+          <button class="filter-btn" data-filter="rich">Rich黃丞隆</button>
+          <button class="filter-btn" data-filter="vincent">Vincent陳明勇</button>
+          <button class="filter-btn" data-filter="aibi">艾筆</button>
+          <span class="filter-divider"></span>
+          <!-- 主題標籤（可疊加）：依會議主題填入 -->
+          <button class="filter-btn" data-filter="ai">AI導入</button>
+          <button class="filter-btn" data-filter="report">永續報告書</button>
+          <button class="filter-btn" data-filter="workshop">工作坊</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <main>
+        <section id="conclusion" class="section-card reveal" data-tags="cp jiang rich vincent aibi ai report workshop">
+          <span class="section-tag">第一層</span>
+          <div class="section-head">
+            <div>
+              <h2>會議結論與代辦</h2>
+            </div>
+            <p>先讓與會者快速核對方向、角色與下一步，這一段是最適合會後確認的摘要區。</p>
+          </div>
+
+          <div class="cards-2">
+            <article class="panel">
+              <h3>核心結論</h3>
+              <ol class="clean">
+                <li>永力扶輪社將從低成本 AI 工具開始導入，逐步建立社內知識資料庫。</li>
+                <li>江昱德將協助規劃 AI 工作坊，目標在 2026 年 5 月 16 日論壇前先辦一場。</li>
+                <li>永續報告書不走傳統厚重紙本，而是結合 AI 工具、影音與可延伸內容。</li>
+                <li>8 場工作坊將盡量標準化蒐集成果，作為後續永續報告書與知識庫的素材基礎。</li>
+                <li>核心團隊先做示範，再逐步擴大社友參與，降低一次全面推動的阻力。</li>
+              </ol>
+            </article>
+
+            <article class="panel">
+              <h3>重要時程與事實</h3>
+              <ul class="clean">
+                <li>2026 年 5 月 16 日為重要論壇節點，文宣預計在 2026 年 4 月 1 日至 4 月 2 日發布。</li>
+                <li>論壇規劃包含上午 3 場 keynote 與下午 2 個分論壇，共 6 位講師。</li>
+                <li>論壇前後共規劃 8 場工作坊，後續可與知識庫與報告書架構串接。</li>
+                <li>目前被看好的起步工具是 Gemini、NotebookLM 與 GEM，進入門檻較低。</li>
+                <li>永續報告書暫以「兩年一本」為規劃頻率。</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="panel" style="margin-top: 16px;">
+            <h3>會後待辦清單</h3>
+            <div class="task-list">
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>林學賢（CP，永力扶輪社創社社長）</strong>
+                  <span>提出 8 場工作坊的時程架構，並分配在 5/16 論壇前後。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>林學賢（CP）＋江昱德（江江，AI 知識管理教練）</strong>
+                  <span>確認 AI 工作坊時間安排，討論是否以全天形式進行。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>江昱德（江江）</strong>
+                  <span>整理本次會議紀錄，提供與會者會後確認版本。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>林學賢（CP）</strong>
+                  <span>於 2026 年 4 月 1 日至 4 月 2 日完成論壇文宣發布，啟動對外報名。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>艾筆（影像工作者）</strong>
+                  <span>開始熟悉 AI 工具，規劃如何把影音製作與 AI 整理流程串接。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>林學賢（CP）＋黃丞隆（Rich，第 2627 屆社長、健康管理師）</strong>
+                  <span>會後續談番薯藤場地資訊與相關安排。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>陳明勇（Vincent，永續報告書負責人）</strong>
+                  <span>持續研究永續報告書形式，聚焦 AI 工具與影音整合的可能性。</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="box"></div>
+                <div>
+                  <strong>江昱德（江江）</strong>
+                  <span>評估黃丞隆（Rich）提出的入社邀請與後續合作角色。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">共識主軸 A</div>
+              <h3>先做可感知的 AI 導入</h3>
+              <p>先用 Gemini、NotebookLM、GEM 等門檻較低的工具，讓社友快速有感，避免一開始就被高技術門檻勸退。</p>
+            </div>
+            <div class="timeline-item">
+              <div class="time">共識主軸 B</div>
+              <h3>工作坊成果要即時累積，不再只停留在活動結束</h3>
+              <p>每場工作坊的影音、互動、回饋與成果都應成為知識庫與報告書的可用材料，而不是事後才補救整理。</p>
+            </div>
+            <div class="timeline-item">
+              <div class="time">共識主軸 C</div>
+              <h3>永續報告書要有可閱讀性與延展性</h3>
+              <p>不只是一本厚重文件，而是能與影音、知識庫、個人化需求串接的內容載體。</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="insights" class="section-card reveal" style="margin-top: 24px;" data-tags="cp jiang rich vincent aibi ai report">
+          <span class="section-tag">第二層</span>
+          <div class="section-head">
+            <div>
+              <h2>會議洞察與策略</h2>
+            </div>
+            <p>這一段把本次討論從「講了什麼」提升成「代表什麼、卡點在哪裡、接下來該怎麼收斂」。</p>
+          </div>
+
+          <div class="insight-grid">
+            <article class="panel">
+              <h3>三階段合作路線</h3>
+              <div class="roadmap">
+                <div class="roadmap-step">
+                  <div class="stage">階段一<br>工作坊</div>
+                  <div>
+                    <strong>先讓社友體驗 AI 的實際便利性</strong>
+                    <p>從工作坊成果萃取與知識累積切入，讓 AI 導入不是抽象概念，而是立刻能看到價值。</p>
+                  </div>
+                </div>
+                <div class="roadmap-step">
+                  <div class="stage">階段二<br>Agent</div>
+                  <div>
+                    <strong>讓 AI 開始讀懂組織文件與歷史資料</strong>
+                    <p>當資料結構清楚後，AI Agent 可協助整理規格、統整資料、做分析與報告書內容生成。</p>
+                  </div>
+                </div>
+                <div class="roadmap-step">
+                  <div class="stage">階段三<br>數位分身</div>
+                  <div>
+                    <strong>從個人助理走向跨人協作與長期資產化</strong>
+                    <p>當每位核心成員都有可被 AI 理解的資料後，才有機會延伸到數位分身與更深層的知識交換。</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <h3>發言比例觀察</h3>
+              <p>會議由願景型與結構型兩種發言風格主導，這有助於打開想像，但也意味著下一步更需要有人收斂成執行節點。</p>
+              <div class="mini-chart">
+                <div class="bar-row">
+                  <span class="name">林學賢</span>
+                  <div class="bar-track"><div class="bar-fill" style="width: 45%;"></div></div>
+                  <span>45%</span>
+                </div>
+                <div class="bar-row">
+                  <span class="name">江昱德</span>
+                  <div class="bar-track"><div class="bar-fill" style="width: 30%; animation-delay: 0.1s;"></div></div>
+                  <span>30%</span>
+                </div>
+                <div class="bar-row">
+                  <span class="name">黃丞隆</span>
+                  <div class="bar-track"><div class="bar-fill" style="width: 10%; animation-delay: 0.18s;"></div></div>
+                  <span>10%</span>
+                </div>
+                <div class="bar-row">
+                  <span class="name">陳明勇</span>
+                  <div class="bar-track"><div class="bar-fill" style="width: 8%; animation-delay: 0.24s;"></div></div>
+                  <span>8%</span>
+                </div>
+                <div class="bar-row">
+                  <span class="name">艾筆</span>
+                  <div class="bar-track"><div class="bar-fill" style="width: 7%; animation-delay: 0.3s;"></div></div>
+                  <span>7%</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="cards-3" style="margin-top: 16px;">
+            <article class="panel">
+              <h3>這場會議最有價值的地方</h3>
+              <ul class="clean">
+                <li>願景不是只有出一本報告書，而是把工作坊、知識庫、AI 導入串成一套長期資產。</li>
+                <li>低成本工具先行，代表專案有機會以較低阻力啟動。</li>
+                <li>已有真實案例可用，例如黃丞隆的「抗碳長」與既有 NotebookLM 使用經驗。</li>
+              </ul>
+            </article>
+
+            <article class="panel">
+              <h3>目前最需要補強的地方</h3>
+              <ul class="clean">
+                <li>「永續報告書」與「社內知識庫平台」還沒有明確切成兩條管理線。</li>
+                <li>日常維運分工尚未明確，誰來整理、誰來更新、誰來支援教學仍待確認。</li>
+                <li>一般社友的需求、接受度與學習意願，還沒有被正式調查。</li>
+              </ul>
+            </article>
+
+            <article class="panel">
+              <h3>下一次會議建議聚焦</h3>
+              <ol class="clean">
+                <li>先定 5/16 前 AI 工作坊的日期、形式與成果目標。</li>
+                <li>由陳明勇更具體提出永續報告書形式想像，縮小討論範圍。</li>
+                <li>確認誰負責把工作坊內容轉進知識庫，建立最小可行流程。</li>
+              </ol>
+            </article>
+          </div>
+
+          <div class="panel" style="margin-top: 16px;">
+            <h3>潛在風險與提醒</h3>
+            <div class="risk-list">
+              <div class="risk-item">
+                <strong>期待值管理風險</strong>
+                願景很大，但目前最近的一步其實只是第一場 AI 工作坊。如果前期體驗不夠具體，容易造成落差。
+              </div>
+              <div class="risk-item">
+                <strong>依賴單一專業者風險</strong>
+                現階段 AI 導入幾乎以江昱德的專業為中心，若沒有社內種子成員承接，計畫持續性會受影響。
+              </div>
+              <div class="risk-item">
+                <strong>執行碎片化風險</strong>
+                論壇、8 場工作坊、影音、報告書、社群與 AI 工具教學同時展開，若沒有優先順序，容易每件都推一點但沒有一件做深。
+              </div>
+              <div class="risk-item">
+                <strong>資安與信任風險</strong>
+                陳明勇已明確提到安全性疑慮，若前期沒有回應，可能成為組織採用的隱性阻力。
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="record" class="section-card reveal" style="margin-top: 24px;" data-tags="cp jiang rich vincent aibi ai report workshop">
+          <span class="section-tag">第三層</span>
+          <div class="section-head">
+            <div>
+              <h2>會議流程詳細記錄</h2>
+            </div>
+            <p>完整內容放在最後，讓前面維持清楚，但需要追溯原脈絡時仍有足夠材料可查。</p>
+          </div>
+
+          <details open>
+            <summary>
+              <span>00:00–15:24｜開場、與會定位與三階段提案</span>
+            </summary>
+            <div class="details-body">
+              <p>會議先從寒暄與人員上線開始，之後由江昱德提出三個遞進階段：第一階段是讓工作坊成果不再散落，第二階段是用 Agent 進一步協助永續報告書撰寫與資料分析，第三階段才是建立更深層的數位分身與個人知識系統。</p>
+              <ul class="clean">
+                <li>第一階段的重點是「工作坊結束後的內容要留下來」。</li>
+                <li>第二階段的重點是「過去是人去學 AI，未來是 AI 來學組織」。</li>
+                <li>第三階段的重點是「當資料整理好，各種 AI 都能快速理解同一套制度與脈絡」。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>15:24–18:30｜關鍵提問：為什麼要談這件事</span>
+            </summary>
+            <div class="details-body">
+              <p>陳明勇提出非常關鍵的一問：江昱德今天為什麼會想跟大家談這件事。這個提問把會議從技術介紹，拉回合作動機與目標對齊。</p>
+              <ul class="clean">
+                <li>江昱德回應的第一個動機是客群契合，特別是已有經驗但尚未善用 AI 的中高齡知識工作者。</li>
+                <li>第二個動機是希望對公益與教育組織創造更高效益的整理方式，不只停留在紀錄片或宣傳。</li>
+                <li>第三個動機是想推進更深層的交流模式，嘗試把數位分身與知識整理方法落地到真實群體。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>18:43–47:20｜林學賢展開願景：知識庫、工作坊、永續報告書要串在一起</span>
+            </summary>
+            <div class="details-body">
+              <p>這一段是整場會議最具戰略性的發言。林學賢把議題從單一活動，拉高到社的核心資產。他關心的不只是產出一本報告書，而是把資料庫做成讓社友彼此取用、累積與複製的基礎設施。</p>
+              <ul class="clean">
+                <li>工作坊成果要有標準化蒐集流程，不再等報告書要寫時才補資料。</li>
+                <li>永續報告書希望具有個人化延伸可能，不是每個人只看同一本版本。</li>
+                <li>若模式成熟，有機會複製到其他扶輪社或中小企業，形成外部服務模式。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>47:20–59:01｜黃丞隆給出實務案例，陳明勇提出現實疑問</span>
+            </summary>
+            <div class="details-body">
+              <p>黃丞隆分享自己用 Gemini、NotebookLM、GEM 建立「抗碳長」的教學經驗，證明低門檻工具確實有可操作的實務效益。接著陳明勇把問題拉回現實面，詢問大家到底要做出什麼樣的永續報告書，並提醒資安疑慮與推動難度。</p>
+              <ul class="clean">
+                <li>黃丞隆提供了成本數據與使用場景，增加這套方案的可信度。</li>
+                <li>陳明勇指出很多永續報告書一般人根本不會看，提醒這次不能只是再做一本沒人看的文件。</li>
+                <li>也明確帶出「不是每個人都會馬上投入 AI 學習」的現實限制。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>59:01–01:04:06｜江昱德補充：深度知識整理，不只是快速摘要</span>
+            </summary>
+            <div class="details-body">
+              <p>這一段把整場會議的價值主張講清楚了。江昱德強調自己做的不是單純「讓 AI 幫忙節省時間」，而是讓資料可以被深度理解、跨次比較、持續累積，變成未來還能再利用的知識資產。</p>
+              <ul class="clean">
+                <li>同一份資料如果只是做摘要，會浪費大量上下文價值。</li>
+                <li>若能比對不同會議、不同版本逐字稿，甚至能分析團隊凝聚力與提問深度的變化。</li>
+                <li>這種做法特別適合希望長期保存與持續應用資料的組織。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span>01:04:06–01:43:55｜收尾安排、配備建議與後續合作關係</span>
+            </summary>
+            <div class="details-body">
+              <p>收尾階段把抽象願景重新拉回具體安排。AI 工作坊預定放在論壇前，社友與衛星社友優先；艾筆承諾會把影音與社群嘗試加入；黃丞隆則正式發出入社邀請。</p>
+              <ul class="clean">
+                <li>技術起步建議先裝 OpenAI Codex 等較低需求工具，再逐步擴充。</li>
+                <li>AI 工具工作坊、影音工作坊與永續報告書工作坊，都被納入整體藍圖中。</li>
+                <li>合作關係仍在形成期，目前適合先以「先合作、邊做邊收斂」的方式推進。</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="footer-note">
+            <strong>備註：</strong>
+            本頁已刻意把完整逐段內容放在最後，目的不是弱化細節，而是讓與會者先確認共識與方向。若未來要做更完整分析，這一頁也可以直接作為後續簡報、提案或正式報告書的前置材料。
+          </div>
+        </section>
+      </main>
+
+      <aside class="side-stack">
+        <section class="side-card reveal">
+          <span class="section-tag">與會者</span>
+          <h3>人名完整標示</h3>
+          <div class="participant-list">
+            <div class="participant">
+              <strong>林學賢（CP）</strong>
+              永力扶輪社創社社長，主導整體方向與策略規劃。
+            </div>
+            <div class="participant">
+              <strong>黃丞隆（Rich）</strong>
+              第 2627 屆社長、健康管理師，已有 Gemini 與 NotebookLM 實際使用經驗。
+            </div>
+            <div class="participant">
+              <strong>江昱德（江江）</strong>
+              AI 知識管理教練，受邀探索合作可能性與 AI 工作坊規劃。
+            </div>
+            <div class="participant">
+              <strong>陳明勇（Vincent）</strong>
+              永續報告書負責人，關注呈現形式、可讀性與資安疑慮。
+            </div>
+            <div class="participant">
+              <strong>艾筆</strong>
+              影像工作者，負責影音內容與社群行銷整合。
+            </div>
+          </div>
+        </section>
+
+        <section class="side-card reveal">
+          <span class="section-tag">策略提醒</span>
+          <h3>最小可行版本</h3>
+          <p>如果要讓整體專案穩定啟動，現在最值得聚焦的不是一次把全部系統都建立完，而是先把第一場 AI 工作坊做成一個有感、可複製、可留痕的示範案例。</p>
+          <ul class="clean">
+            <li>有清楚主題</li>
+            <li>有會後可留存成果</li>
+            <li>有一套最基本的整理流程</li>
+          </ul>
+        </section>
+
+        <section class="side-card reveal">
+          <span class="section-tag">可視化焦點</span>
+          <h3>這頁為什麼適合做成網頁</h3>
+          <ul class="clean">
+            <li>前中後三層結構比純 Markdown 更容易快速複查。</li>
+            <li>動態數字、圖表與折疊段落，適合會後與會者確認。</li>
+            <li>後續也能直接延伸成正式簡報、對外說明頁或提案附件。</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    /* Reveal animation */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+
+    /* =====================================================
+       篩選 Bar 邏輯
+       - PERSON_TAGS：人物標籤，互斥（一次只能選一人）
+       - THEME_TAGS：主題標籤，可疊加（可同時選多個）
+       - 使用時依實際與會者 / 主題調整兩個 Set 的內容
+       ===================================================== */
+    const PERSON_TAGS = new Set(["cp","jiang","rich","vincent","aibi"]);
+    const THEME_TAGS  = new Set(["ai","report","workshop"]);
+
+    let activePerson = null;
+    let activeThemes = new Set();
+
+    const filterBtns     = document.querySelectorAll(".filter-btn");
+    const filterableItems = document.querySelectorAll("[data-tags]");
+
+    function matches(tagsStr) {
+      const tags = tagsStr.split(" ");
+      if (activePerson && !tags.includes(activePerson)) return false;
+      for (const t of activeThemes) { if (!tags.includes(t)) return false; }
+      return true;
+    }
+
+    function applyFilter() {
+      const isAll = !activePerson && activeThemes.size === 0;
+
+      filterableItems.forEach(el => {
+        el.style.display = (isAll || matches(el.dataset.tags || "")) ? "" : "none";
+      });
+
+      filterBtns.forEach(btn => {
+        const f = btn.dataset.filter;
+        if (f === "all")           btn.classList.toggle("active", isAll);
+        else if (PERSON_TAGS.has(f)) btn.classList.toggle("active", activePerson === f);
+        else if (THEME_TAGS.has(f))  btn.classList.toggle("active", activeThemes.has(f));
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const f = btn.dataset.filter;
+        if (f === "all") {
+          activePerson = null; activeThemes.clear();
+        } else if (PERSON_TAGS.has(f)) {
+          activePerson = (activePerson === f) ? null : f;
+        } else if (THEME_TAGS.has(f)) {
+          activeThemes.has(f) ? activeThemes.delete(f) : activeThemes.add(f);
+        }
+        applyFilter();
+      });
+    });
+
+    applyFilter();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>永力扶輪社｜永續報告書共識與工作分配</title>
+  <style>
+    :root {
+      --bg: #f4ede6;
+      --bg-soft: #fbf7f2;
+      --ink: #4a3524;
+      --muted: #7a5a47;
+      --gold: #c6a16e;
+      --gold-active: #b8916a;
+      --gold-soft: rgba(198,161,110,0.18);
+      --line: rgba(198,161,110,0.25);
+      --shadow: 0 12px 36px rgba(74,53,36,0.09);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1080px;
+      --panel: rgba(255,250,245,0.94);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(198,161,110,0.14), transparent 30%),
+        radial-gradient(circle at top right, rgba(122,90,71,0.11), transparent 25%),
+        linear-gradient(180deg, #f8f2eb 0%, var(--bg) 50%, #ede3da 100%);
+      font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+    body::before {
+      content:"";
+      position:fixed; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(87,62,48,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87,62,48,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.3), transparent 65%);
+    }
+    h1,h2,h3 { margin:0; font-family:"Noto Serif TC","PMingLiU",serif; line-height:1.25; }
+    a { color:inherit; text-decoration:none; }
+
+    .page-shell {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+      position: relative; z-index:1;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      position: sticky; top: 14px; z-index: 40;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.38);
+      border-radius: 999px;
+      background: rgba(43,29,22,0.84);
+      backdrop-filter: blur(16px);
+      color: #fff9f2;
+    }
+    .topbar .brand { font-size: 0.93rem; font-weight: 700; letter-spacing: 0.06em; }
+    .topbar nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .topbar nav a {
+      padding: 7px 13px; border-radius: 999px;
+      color: rgba(255,249,242,0.82); font-size: 0.86rem;
+      transition: background 0.2s;
+    }
+    .topbar nav a:hover { background: rgba(255,255,255,0.11); }
+
+    /* HERO */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 48px 44px 40px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, rgba(43,28,22,0.97), rgba(78,53,40,0.96));
+      color: #fff8f1;
+      margin-bottom: 16px;
+    }
+    .hero::after {
+      content:""; position:absolute; inset: auto -4% -18% auto;
+      width:260px; height:260px; border-radius:50%;
+      background: radial-gradient(circle, rgba(198,161,110,0.2), transparent 68%);
+      filter: blur(14px);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap:8px;
+      padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: #f6ddbe; font-size: 0.82rem; letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      margin-bottom: 12px; max-width: 16ch;
+    }
+    .hero .tagline {
+      font-size: 1.06rem;
+      color: rgba(255,246,238,0.8);
+      margin-bottom: 18px; max-width: 580px;
+    }
+    .meta-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+    .meta-chip {
+      padding: 7px 13px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,249,242,0.84); font-size: 0.86rem;
+    }
+    .hero-roadmap { display:flex; flex-wrap:wrap; gap:0; }
+    .roadmap-pill {
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,246,238,0.82); font-size: 0.88rem;
+      display:flex; align-items:center; gap:7px;
+    }
+    .roadmap-pill:first-child { border-radius: 14px 0 0 14px; }
+    .roadmap-pill:last-child { border-radius: 0 14px 14px 0; }
+    .roadmap-pill strong { color: #f8d9a6; }
+    .roadmap-pill .arr { opacity:0.45; }
+
+    /* FILTER BAR */
+    .filter-bar {
+      padding: 8px 0; margin-bottom: 16px;
+    }
+    .filter-inner {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 14px 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #c6a16e, #b8916a);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 6px 24px rgba(122,90,71,0.28);
+    }
+    .filter-header { display: flex; flex-direction: column; gap: 3px; }
+    .filter-label {
+      font-size: 1.12rem; font-weight: 700; color: #fff8f0;
+      font-family: "Noto Serif TC","PMingLiU",serif; line-height: 1.3;
+    }
+    .filter-hint { font-size: 0.95rem; color: rgba(255,248,240,0.82); line-height: 1.5; }
+    .filter-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .filter-divider { width:1px; height:20px; background:rgba(255,255,255,0.3); margin:0 3px; flex-shrink:0; }
+    .filter-btn {
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent; color: rgba(255,248,240,0.9);
+      font-size: 0.9rem; font-family: inherit;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-btn:hover { background: rgba(255,255,255,0.18); color: #fff8f0; border-color: rgba(255,255,255,0.6); }
+    .filter-btn.active {
+      background: #fff8f0; color: #b8916a;
+      border-color: #fff8f0; font-weight: 700;
+    }
+
+    /* SECTION CARD */
+    .section-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      padding: 34px; border-radius: var(--radius-xl);
+      margin-top: 18px;
+    }
+    .section-tag {
+      display: inline-block; margin-bottom: 10px;
+      padding: 6px 12px; border-radius: 999px;
+      background: var(--gold-soft); color: #594136;
+      font-size: 0.79rem; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .section-head { margin-bottom: 22px; }
+    .section-head h2 { font-size: clamp(1.7rem,3vw,2.4rem); color: var(--ink); margin-bottom: 5px; }
+    .section-head p { margin:0; color:var(--muted); font-size:0.97rem; }
+
+    /* CONSENSUS GRID */
+    .consensus-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 13px;
+    }
+    .consensus-card {
+      padding: 18px; border-radius: var(--radius-lg);
+      background: var(--bg-soft); border: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 11px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .consensus-card:hover { box-shadow:0 8px 22px rgba(74,53,36,0.1); transform:translateY(-2px); }
+    .c-head { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+    .c-num {
+      font-size: 1.55rem; font-family:"Noto Serif TC",serif;
+      color: var(--gold); font-weight:700; line-height:1; flex-shrink:0;
+    }
+    .c-badge {
+      padding: 4px 9px; border-radius: 999px;
+      font-size: 0.73rem; font-weight:600; letter-spacing:0.03em; white-space:nowrap;
+    }
+    .badge-report { background:rgba(198,161,110,0.18); color:#594136; }
+    .badge-ai { background:rgba(80,110,80,0.12); color:#3a5a3a; }
+    .badge-both { background:rgba(198,161,110,0.18); color:#594136; }
+    .c-text { margin:0; font-size:0.93rem; color:var(--ink); flex:1; line-height:1.65; }
+    .c-persons { display:flex; flex-wrap:wrap; gap:4px; margin-top:auto; }
+    .person-chip {
+      padding: 3px 8px; border-radius:999px;
+      font-size: 0.73rem; background:rgba(74,53,36,0.08); color:var(--muted);
+    }
+    .consensus-stack { display:grid; gap:14px; }
+    .consensus-group {
+      padding: 22px; border-radius: var(--radius-lg);
+      background: var(--bg-soft); border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(74,53,36,0.06);
+    }
+    .cg-head {
+      display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+      margin-bottom: 12px;
+    }
+    .cg-kicker {
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 5px 10px; border-radius:999px;
+      background: var(--gold-soft); color:#594136;
+      font-size:0.74rem; font-weight:700; letter-spacing:0.05em;
+      margin-bottom: 8px;
+    }
+    .cg-title {
+      font-size: 1.12rem; font-weight: 700; color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .cg-summary {
+      margin:0; color:var(--muted); font-size:0.9rem; line-height:1.65;
+    }
+    .cg-list {
+      margin: 0; padding-left: 1.15rem;
+      display:grid; gap:8px;
+    }
+    .cg-list li {
+      color: var(--ink); font-size:0.93rem; line-height:1.7;
+    }
+    .cg-note {
+      margin-top: 12px; padding: 12px 14px;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      background: rgba(198,161,110,0.08);
+      color: var(--muted); font-size:0.88rem; line-height:1.65;
+    }
+
+    /* TASK LIST */
+    .task-list { display:grid; gap:9px; margin-top:4px; }
+    .task-item {
+      display: grid; grid-template-columns: 34px 1fr;
+      gap: 12px; align-items: start;
+      padding: 13px 15px; border-radius: var(--radius-md);
+      background: var(--bg-soft); border: 1px solid var(--line);
+    }
+    .task-num {
+      width:27px; height:27px; border-radius:8px;
+      background:var(--gold-soft);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.78rem; font-weight:700; color:#594136; flex-shrink:0; margin-top:2px;
+    }
+    .task-content strong { color:var(--ink); display:block; margin-bottom:4px; font-size:0.94rem; }
+    .task-meta { display:flex; flex-wrap:wrap; gap:5px; }
+    .task-who {
+      padding:3px 9px; border-radius:999px;
+      background:rgba(198,161,110,0.16); color:#594136;
+      font-size:0.77rem; font-weight:600;
+    }
+    .task-when {
+      padding:3px 9px; border-radius:999px;
+      background:rgba(74,53,36,0.07); color:var(--muted); font-size:0.77rem;
+    }
+    .task-t-report { padding:3px 9px; border-radius:999px; background:rgba(198,161,110,0.13); color:#594136; font-size:0.75rem; }
+    .task-t-ai { padding:3px 9px; border-radius:999px; background:rgba(80,110,80,0.1); color:#3a5a3a; font-size:0.75rem; }
+
+    /* NO-RESULT */
+    .no-result-msg {
+      padding:22px; text-align:center; color:var(--muted);
+      border:1px dashed var(--line); border-radius:var(--radius-md);
+      margin-top:10px; font-size:0.93rem;
+    }
+
+    /* SUBSECTION */
+    .subsection { margin-top:26px; padding-top:22px; border-top:1px solid var(--line); }
+    .sub-title {
+      font-size:1.15rem; color:var(--ink); margin-bottom:14px;
+      display:flex; align-items:center; gap:9px;
+    }
+    .sub-title::before {
+      content:""; display:inline-block;
+      width:4px; height:18px; border-radius:2px; background:var(--gold);
+    }
+
+    /* PARTICIPANT BLOCKS */
+    .participant-grid {
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px;
+    }
+    .participant-block {
+      padding:18px; border-radius:var(--radius-lg);
+      background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .participant-block.full-width { grid-column:1/-1; }
+    .p-name { font-size:1.03rem; font-weight:700; color:var(--ink); margin-bottom:2px; }
+    .p-role { font-size:0.8rem; color:var(--gold-active); font-weight:600; margin-bottom:10px; }
+    .p-points { margin:0; padding-left:1.2rem; }
+    .p-points li { font-size:0.91rem; color:var(--muted); margin-bottom:4px; }
+
+    /* DISCUSSION THREADS */
+    .discussion-list { display:grid; gap:9px; }
+    .discussion-item {
+      border:1px solid var(--line); border-radius:var(--radius-md);
+      background:rgba(255,250,245,0.92); overflow:hidden;
+    }
+    .discussion-item summary {
+      list-style:none; cursor:pointer;
+      padding:13px 16px;
+      display:flex; align-items:center; gap:11px;
+      color:var(--ink);
+    }
+    .discussion-item summary::-webkit-details-marker { display:none; }
+    .d-num {
+      width:24px; height:24px; border-radius:7px;
+      background:var(--gold-soft);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.77rem; font-weight:700; color:#594136; flex-shrink:0;
+    }
+    .d-text { flex:1; font-size:0.92rem; font-weight:600; }
+    .d-chev { flex-shrink:0; font-size:1.15rem; color:var(--gold); transition:transform 0.2s; }
+    .discussion-item[open] .d-chev { transform:rotate(45deg); }
+    .d-body { padding:0 16px 14px; font-size:0.91rem; color:var(--muted); line-height:1.65; }
+
+    /* UNDECIDED & INSIGHTS */
+    .undecided-list { display:grid; gap:9px; margin-top:4px; }
+    .undecided-item {
+      padding:12px 15px;
+      border-left:3px solid var(--gold);
+      border-radius:0 11px 11px 0;
+      background:var(--bg-soft); font-size:0.93rem; color:var(--muted);
+    }
+    .insight-grid {
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; margin-top:4px;
+    }
+    .insight-card {
+      padding:18px; border-radius:var(--radius-md);
+      background:linear-gradient(135deg,rgba(198,161,110,0.11),rgba(122,90,71,0.07));
+      border:1px solid var(--line);
+    }
+    .insight-label { font-size:0.77rem; font-weight:700; color:var(--gold-active); letter-spacing:0.06em; margin-bottom:7px; }
+    .insight-card p { margin:0; font-size:0.94rem; color:var(--ink); font-weight:500; line-height:1.6; }
+
+    .footer-note {
+      margin-top:18px; padding:16px 20px;
+      border-radius:16px;
+      background:rgba(74,53,36,0.07); border:1px solid var(--line);
+      font-size:0.88rem; color:var(--muted);
+    }
+    .footer-note strong { color:var(--ink); }
+
+    /* QUADRANT ANALYSIS */
+    .analysis-note {
+      padding:13px 16px; margin-bottom:18px;
+      border-radius:var(--radius-md);
+      background:rgba(198,161,110,0.11);
+      border-left:3px solid var(--gold);
+      font-size:0.85rem; color:var(--muted); line-height:1.65;
+    }
+    .analysis-note strong { color:var(--ink); }
+    .quadrant-card {
+      padding:22px 18px; border-radius:var(--radius-lg);
+      background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .q-axis { stroke:#7a5a47; stroke-width:1.4; }
+    .q-grid { stroke:rgba(122,90,71,0.22); stroke-width:1; stroke-dasharray:3,4; }
+    .q-tick-label { fill:var(--muted); font-size:12px; font-weight:600; }
+    .q-axis-label { fill:var(--ink); font-size:13px; font-weight:700; letter-spacing:0.05em; }
+    .q-quad-label { fill:rgba(122,90,71,0.45); font-size:11.5px; font-weight:700; letter-spacing:0.14em; }
+    .q-arrow { fill:none; stroke-width:2; stroke-dasharray:5,4; opacity:0.55; }
+    .q-w1 { fill:#fbf7f2; stroke-width:3; }
+    .q-w2 { stroke:#fbf7f2; stroke-width:1.8; }
+    .q-pname { font-size:11.5px; font-weight:700; }
+    .legend-row {
+      display:flex; flex-wrap:wrap; gap:13px; justify-content:center;
+      margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+      font-size:0.83rem; color:var(--muted);
+    }
+    .legend-item { display:flex; align-items:center; gap:6px; }
+    .legend-dot { width:12px; height:12px; border-radius:50%; }
+    .legend-key {
+      display:flex; gap:18px; justify-content:center;
+      margin-top:10px; font-size:0.76rem; color:var(--muted);
+    }
+    .legend-sample { display:inline-flex; align-items:center; gap:5px; }
+    .legend-o { width:11px; height:11px; border-radius:50%; background:#fbf7f2; border:2.5px solid #7a5a47; }
+    .legend-s { width:11px; height:11px; border-radius:50%; background:#7a5a47; border:1.8px solid #fbf7f2; }
+
+    /* BAR CHART */
+    .bar-wrap { display:grid; gap:10px; }
+    .bar-row {
+      display:grid; grid-template-columns:92px 1fr;
+      gap:12px; align-items:center;
+      padding:11px 13px; border-radius:var(--radius-md);
+      background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .bar-name { font-size:0.87rem; font-weight:700; color:var(--ink); }
+    .bar-pairs { display:grid; gap:6px; }
+    .bar-pair { display:grid; grid-template-columns:52px 1fr 44px; gap:8px; align-items:center; }
+    .bar-when { font-size:0.74rem; color:var(--muted); }
+    .bar-track { height:13px; border-radius:7px; background:rgba(74,53,36,0.08); overflow:hidden; }
+    .bar-fill { height:100%; border-radius:7px; transition:width 0.6s ease; }
+    .bar-val { font-size:0.76rem; color:var(--muted); text-align:right; font-weight:600; }
+    .bar-note { margin-top:11px; font-size:0.77rem; color:var(--muted); font-style:italic; }
+
+    /* ROLE TABLE */
+    .role-wrap { overflow-x:auto; }
+    .role-table {
+      width:100%; border-collapse:separate; border-spacing:0;
+      font-size:0.88rem;
+      background:var(--bg-soft);
+      border-radius:var(--radius-md); overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .role-table th, .role-table td {
+      padding:11px 13px; text-align:left;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    .role-table thead th {
+      background:rgba(198,161,110,0.18); color:#594136;
+      font-size:0.8rem; letter-spacing:0.04em; font-weight:700;
+    }
+    .role-table tbody tr:last-child td { border-bottom:none; }
+    .role-table .r-name { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .role-table .r-arrow { color:var(--gold); text-align:center; width:30px; font-weight:700; }
+    .role-table .r-change { color:var(--ink); font-weight:500; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width:960px) {
+      .consensus-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .participant-grid { grid-template-columns:1fr; }
+      .participant-block.full-width { grid-column:1; }
+      .insight-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:660px) {
+      .page-shell { width:min(calc(100% - 20px),var(--max-width)); padding-top:14px; }
+      .topbar { border-radius:22px; flex-direction:column; align-items:flex-start; }
+      .hero { padding:26px 20px; border-radius:24px; }
+      .hero h1 { font-size:1.85rem; }
+      .filter-inner { border-radius:20px; }
+      .section-card { padding:20px 16px; }
+      .consensus-grid { grid-template-columns:1fr; }
+      .hero-roadmap { gap:0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">永力扶輪社 • 永續報告書</div>
+    <nav>
+      <a href="#s1">1 共識決策</a>
+      <a href="#s2">2 重點代辦</a>
+      <a href="#s3">共識分析</a>
+      <a href="#s4">完整脈絡</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">永力扶輪社 × 永續報告書 × 工作分配 · 2026-04-16</div>
+    <h1>永力扶輪社｜永續報告書共識與工作分配</h1>
+    <p class="tagline">這次不是做一本報告書，而是做第一個讓永力社影響力被看見的入口。</p>
+    <div class="meta-list">
+      <div class="meta-chip">日期｜2026 年 4 月 16 日</div>
+      <div class="meta-chip">與會｜CP / Vincent / Rich / 艾筆 / 江昱德</div>
+      <div class="meta-chip">共識區塊｜3 類</div>
+      <div class="meta-chip">重點代辦｜14 項</div>
+    </div>
+    <div class="hero-roadmap">
+      <div class="roadmap-pill"><strong>5/16</strong> 第一版上線</div>
+      <div class="roadmap-pill"><span class="arr">→</span> <strong>6 月</strong> 完整版</div>
+      <div class="roadmap-pill"><span class="arr">→</span> <strong>下半年</strong> AI 平台</div>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <div class="filter-header">
+        <span class="filter-label">選擇想看的視角</span>
+        <span class="filter-hint">點人物只看相關段落・點主題追加篩選・「全部」還原</span>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <span class="filter-divider"></span>
+        <button class="filter-btn" data-filter="cp">CP林學賢</button>
+        <button class="filter-btn" data-filter="vincent">Vincent陳明勇</button>
+        <button class="filter-btn" data-filter="rich">Rich黃丞隆</button>
+        <button class="filter-btn" data-filter="aibi">艾筆</button>
+        <button class="filter-btn" data-filter="jiang">江昱德</button>
+        <span class="filter-divider"></span>
+        <button class="filter-btn" data-filter="report">永續報告書</button>
+        <button class="filter-btn" data-filter="ai">AI應用</button>
+        <button class="filter-btn" data-filter="planning">長遠規劃</button>
+        <span class="filter-divider"></span>
+        <button class="filter-btn" data-filter="analysis">共識分析</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 共識決策 -->
+  <section id="s1" class="section-card reveal">
+    <span class="section-tag">1 共識決策</span>
+    <div class="section-head">
+      <h2>共識決策</h2>
+      <p>把原本散掉的決策收成三個真正的大區塊：報告書、AI 應用、長遠規劃。操作型內容合併後，整體結構會更接近這場會議真正的主軸。</p>
+    </div>
+    <div class="consensus-stack" id="consensus-grid">
+
+      <article class="consensus-group" data-tags="cp vincent jiang aibi rich report">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊一｜永續報告書</div>
+            <div class="cg-title">報告書部分</div>
+            <p class="cg-summary">先把 5/16 第一版做成一個人人看得懂、掃得到、願意看的入口，再往 6 月較完整版本補齊。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">Vincent</span><span class="person-chip">江昱德</span><span class="person-chip">艾筆</span><span class="person-chip">Rich</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>2026/5/16 前一定要有第一版可展示入口，走 QR Code 動態頁，不做傳統厚重紙本。</li>
+          <li>2026/6 再推出較完整中文版，視需求延伸英文版對接世界年會。</li>
+          <li>實體儀式可保留一本封面書，但真正重點是掃碼後的動態內容。</li>
+          <li>第一版資料先收三類：社友人物、服務計畫、社務與例會活動。</li>
+          <li>影音必須納入入口，不是附件；5/16 先上濃縮版，細版留到 6 月。</li>
+          <li>永力社做永續報告書不是為了合規或交差，而是讓社友的專業服務被看見。</li>
+          <li>同時也有意識到：把 AI 放進永續工作，本身就伴隨耗能與永續疑慮，所以後續不能只看效率，也要看總體成本與整體浪費。</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="cp vincent jiang rich aibi ai report">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊二｜AI 應用</div>
+            <div class="cg-title">AI 應用部分</div>
+            <p class="cg-summary">報告書背後真正要搭的是資料層與 AI 使用邏輯，不只是做一個頁面，而是開始建立可持續調用的基礎設施。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">Vincent</span><span class="person-chip">江昱德</span><span class="person-chip">Rich</span><span class="person-chip">艾筆</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>共享資料底層先以 Google 雲端為主，先求穩定、可協作、可持續累積。</li>
+          <li>資料主體權走混合模式：社友可自管，但永力社也要有可用資料層，否則做不出報告書。</li>
+          <li>報告書只是對外介面，真正的核心資產是資料庫。</li>
+          <li>AI 核心不是教人追工具，而是建立「讓 AI 能夠懂你」的基礎設施。</li>
+          <li>未來一定要有 AI 委員會或維運機制，避免平台建起來後無人更新。</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="cp jiang vincent rich planning ai analysis">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊三｜長遠規劃</div>
+            <div class="cg-title">長遠規劃部分</div>
+            <p class="cg-summary">這場會議談的不只是眼前交付，而是在測試永力社未來要不要走向影響力平台、制度化治理與可持續運作的新模式。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">江昱德</span><span class="person-chip">Vincent</span><span class="person-chip">Rich</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>下半年開始往四階段推進：社友個人資料庫 → 永力社 ESG 平台 → 社務 AI 化 → 行銷與變現延伸。</li>
+          <li>長遠來看，永力社想做的不只是一份報告，而是讓影響力可見、可累積、可被調用的平台。</li>
+          <li>S 的量化、貨幣化、SROI 與第三方認證，是未來最值得走出的差異化方向。</li>
+          <li>CP 的一個明顯特質是：理解抽象概念後，會很快把想法往制度、額度、轉讓與認證等可操作層推進。</li>
+        </ul>
+        <div class="cg-note">這一區塊先保留為方向性共識，不代表這些制度已成熟定案，而是說大家已經開始朝這個方向共同理解與試作。</div>
+      </article>
+
+    </div>
+    <div class="no-result-msg" id="nr-s1" style="display:none">此視角沒有相關共識決策內容</div>
+  </section>
+
+  <!-- 2 重點代辦 -->
+  <section id="s2" class="section-card reveal">
+    <span class="section-tag">2 重點代辦</span>
+    <div class="section-head">
+      <h2>重點代辦（14 項）</h2>
+      <p>點人物標籤可快速聚焦自己的行動項目。</p>
+    </div>
+    <div class="task-list" id="task-list">
+
+      <div class="task-item" data-tags="cp report ai">
+        <div class="task-num">01</div>
+        <div class="task-content">
+          <strong>確認永力社共享雲端權限與資料夾主分類（至少分出「服務計畫」「社務資料」）</strong>
+          <div class="task-meta">
+            <span class="task-who">CP</span>
+            <span class="task-t-report">報告書</span><span class="task-t-ai">AI</span>
+            <span class="task-when">近期</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp report">
+        <div class="task-num">02</div>
+        <div class="task-content">
+          <strong>動員秘書與社友先上傳既有基本資料</strong>
+          <div class="task-meta">
+            <span class="task-who">CP</span><span class="task-t-report">報告書</span>
+            <span class="task-when">4 月底前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="vincent report">
+        <div class="task-num">03</div>
+        <div class="task-content">
+          <strong>盤點 5/16 第一版必備內容，向 Nick 取回現有文字素材</strong>
+          <div class="task-meta">
+            <span class="task-who">Vincent</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="vincent report">
+        <div class="task-num">04</div>
+        <div class="task-content">
+          <strong>整理近一年社務、例會、活動與照片資料</strong>
+          <div class="task-meta">
+            <span class="task-who">Vincent</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="aibi report">
+        <div class="task-num">05</div>
+        <div class="task-content">
+          <strong>確認 5/16 版本可先上哪些影音內容（先上濃縮長版）</strong>
+          <div class="task-meta">
+            <span class="task-who">艾筆</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="jiang report ai">
+        <div class="task-num">06</div>
+        <div class="task-content">
+          <strong>看過現有資料後，提出入口頁與資訊架構雛形</strong>
+          <div class="task-meta">
+            <span class="task-who">江昱德</span><span class="task-t-report">報告書</span><span class="task-t-ai">AI</span>
+            <span class="task-when">5 月初前後</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="jiang report ai">
+        <div class="task-num">07</div>
+        <div class="task-content">
+          <strong>2026/5 月初提供可視化方向或初步樣貌給大家看</strong>
+          <div class="task-meta">
+            <span class="task-who">江昱德</span><span class="task-t-report">報告書</span><span class="task-t-ai">AI</span>
+            <span class="task-when">5 月初</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp vincent jiang report">
+        <div class="task-num">08</div>
+        <div class="task-content">
+          <strong>決定 5/16 當天實體呈現方式（封面書＋QR Code 模式）</strong>
+          <div class="task-meta">
+            <span class="task-who">CP + Vincent + 江昱德</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp vincent report">
+        <div class="task-num">09</div>
+        <div class="task-content">
+          <strong>清楚區分 5/16 版與 6 月完整版範圍，避免交付混亂</strong>
+          <div class="task-meta">
+            <span class="task-who">CP + Vincent</span><span class="task-t-report">報告書</span>
+            <span class="task-when">持續</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="rich ai">
+        <div class="task-num">10</div>
+        <div class="task-content">
+          <strong>協助對齊社內成員對 AI、知識庫與導入節奏的理解</strong>
+          <div class="task-meta">
+            <span class="task-who">Rich</span><span class="task-t-ai">AI</span>
+            <span class="task-when">持續</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="rich ai planning">
+        <div class="task-num">11</div>
+        <div class="task-content">
+          <strong>擔任社內對 AI 工具有感的共學節點與推動者</strong>
+          <div class="task-meta">
+            <span class="task-who">Rich</span><span class="task-t-ai">AI</span>
+            <span class="task-when">長期</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp vincent report">
+        <div class="task-num">12</div>
+        <div class="task-content">
+          <strong>社友／秘書／計畫負責人：把手上文字、照片、背板、簡介、計畫素材先上雲</strong>
+          <div class="task-meta">
+            <span class="task-who">全員</span><span class="task-t-report">報告書</span>
+            <span class="task-when">4 月底前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="jiang ai planning">
+        <div class="task-num">13</div>
+        <div class="task-content">
+          <strong>中長期協助思考 AI 知識庫、社友分身與工作坊導入方向</strong>
+          <div class="task-meta">
+            <span class="task-who">江昱德</span><span class="task-t-ai">AI</span>
+            <span class="task-when">下半年</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="aibi ai">
+        <div class="task-num">14</div>
+        <div class="task-content">
+          <strong>後續延伸社友採訪、隱性知識挖掘與社群擴散 SOP</strong>
+          <div class="task-meta">
+            <span class="task-who">艾筆</span><span class="task-t-ai">AI</span>
+            <span class="task-when">長期</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-result-msg" id="nr-s2" style="display:none">此視角沒有相關代辦項目</div>
+  </section>
+
+  <!-- 3 共識分析 -->
+  <section id="s3" class="section-card reveal">
+    <span class="section-tag">共識分析</span>
+    <div class="section-head">
+      <h2>共識分析｜兩次會議人員態度軌跡</h2>
+      <p>從 3/31 第一次會議到 4/16 第二次會議，五人立場與角色的移動。</p>
+    </div>
+
+    <div class="analysis-note">
+      <strong>分析口徑：</strong>全程只描述可觀察的行為、話語、發言量與立場主張，不代替他人發言、不斷言他人內心狀態。發言比例為逐字稿估算，非精確數據。
+    </div>
+
+    <!-- 3.1 四象限軌跡圖 -->
+    <div class="subsection" style="border-top:none; padding-top:0; margin-top:0;">
+      <h3 class="sub-title">四象限態度軌跡圖</h3>
+      <div class="quadrant-card">
+        <svg viewBox="0 0 780 600" width="100%" style="display:block; max-width:800px; margin:0 auto;" role="img" aria-label="四象限態度軌跡圖">
+          <!-- 四象限背景 -->
+          <rect x="80" y="40" width="670" height="480" fill="rgba(255,250,245,0.55)" stroke="none"/>
+          <!-- 中線 -->
+          <line class="q-grid" x1="415" y1="40" x2="415" y2="520"/>
+          <line class="q-grid" x1="80" y1="280" x2="750" y2="280"/>
+          <!-- 外框 -->
+          <line class="q-axis" x1="80" y1="40" x2="80" y2="520"/>
+          <line class="q-axis" x1="80" y1="520" x2="750" y2="520"/>
+          <line class="q-axis" x1="750" y1="40" x2="750" y2="520"/>
+          <line class="q-axis" x1="80" y1="40" x2="750" y2="40"/>
+
+          <!-- 象限標籤 -->
+          <text class="q-quad-label" x="582" y="160" text-anchor="middle">主動 × 行動　核心推動</text>
+          <text class="q-quad-label" x="247" y="160" text-anchor="middle">被動 × 行動　默默做事</text>
+          <text class="q-quad-label" x="582" y="400" text-anchor="middle">主動 × 想法　願景主導</text>
+          <text class="q-quad-label" x="247" y="400" text-anchor="middle">被動 × 想法　旁觀意見</text>
+
+          <!-- X 軸標籤 -->
+          <text class="q-axis-label" x="80" y="548" text-anchor="start">← 被動</text>
+          <text class="q-axis-label" x="750" y="548" text-anchor="end">主動 →</text>
+          <text class="q-axis-label" x="415" y="570" text-anchor="middle" style="fill:var(--gold-active);">投入主動性</text>
+
+          <!-- Y 軸標籤 -->
+          <text class="q-axis-label" x="65" y="48" text-anchor="end">↑ 行動</text>
+          <text class="q-axis-label" x="65" y="520" text-anchor="end">想法 ↓</text>
+          <text class="q-axis-label" x="34" y="280" text-anchor="middle" transform="rotate(-90 34 280)" style="fill:var(--gold-active);">執行深度</text>
+
+          <!-- 軌跡箭頭與節點 -->
+          <!-- CP 深褐 #7a4a2a：願景描繪 → 願景＋治理 -->
+          <defs>
+            <marker id="arr-cp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#7a4a2a"/>
+            </marker>
+            <marker id="arr-vin" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#6b8b5a"/>
+            </marker>
+            <marker id="arr-rich" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#b8625a"/>
+            </marker>
+            <marker id="arr-aibi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#8a6a9a"/>
+            </marker>
+            <marker id="arr-jiang" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#2d5d4a"/>
+            </marker>
+          </defs>
+
+          <!-- CP 林學賢 (0.75,0.30) → (0.72,0.65)  深褐 -->
+          <line class="q-arrow" x1="582" y1="376" x2="564" y2="228" stroke="#7a4a2a" marker-end="url(#arr-cp)"/>
+          <circle class="q-w1" cx="582" cy="376" r="11" stroke="#7a4a2a"/>
+          <circle class="q-w2" cx="562" cy="208" r="12" fill="#7a4a2a"/>
+          <text class="q-pname" x="597" y="380" fill="#7a4a2a">CP ①</text>
+          <text class="q-pname" x="545" y="196" fill="#7a4a2a" text-anchor="end">CP ②</text>
+
+          <!-- Vincent 橄欖 (0.25,0.35) → (0.80,0.78)  最大跨度 -->
+          <line class="q-arrow" x1="247" y1="352" x2="599" y2="156" stroke="#6b8b5a" marker-end="url(#arr-vin)"/>
+          <circle class="q-w1" cx="247" cy="352" r="11" stroke="#6b8b5a"/>
+          <circle class="q-w2" cx="616" cy="146" r="12" fill="#6b8b5a"/>
+          <text class="q-pname" x="232" y="356" fill="#6b8b5a" text-anchor="end">Vincent ①</text>
+          <text class="q-pname" x="631" y="134" fill="#6b8b5a">Vincent ②</text>
+
+          <!-- Rich 紅銅 (0.60,0.35) → (0.62,0.50) -->
+          <line class="q-arrow" x1="482" y1="352" x2="491" y2="300" stroke="#b8625a" marker-end="url(#arr-rich)"/>
+          <circle class="q-w1" cx="482" cy="352" r="11" stroke="#b8625a"/>
+          <circle class="q-w2" cx="495" cy="280" r="12" fill="#b8625a"/>
+          <text class="q-pname" x="467" y="356" fill="#b8625a" text-anchor="end">Rich ①</text>
+          <text class="q-pname" x="510" y="272" fill="#b8625a">Rich ②</text>
+
+          <!-- 艾筆 紫褐 (0.35,0.35) → (0.50,0.45) -->
+          <line class="q-arrow" x1="314" y1="352" x2="397" y2="313" stroke="#8a6a9a" marker-end="url(#arr-aibi)"/>
+          <circle class="q-w1" cx="314" cy="352" r="11" stroke="#8a6a9a"/>
+          <circle class="q-w2" cx="415" cy="304" r="12" fill="#8a6a9a"/>
+          <text class="q-pname" x="299" y="370" fill="#8a6a9a" text-anchor="end">艾筆 ①</text>
+          <text class="q-pname" x="430" y="308" fill="#8a6a9a">艾筆 ②</text>
+
+          <!-- 江江 墨綠 (0.70,0.55) → (0.78,0.72) -->
+          <line class="q-arrow" x1="549" y1="256" x2="591" y2="191" stroke="#2d5d4a" marker-end="url(#arr-jiang)"/>
+          <circle class="q-w1" cx="549" cy="256" r="11" stroke="#2d5d4a"/>
+          <circle class="q-w2" cx="602" cy="174" r="12" fill="#2d5d4a"/>
+          <text class="q-pname" x="534" y="260" fill="#2d5d4a" text-anchor="end">江江 ①</text>
+          <text class="q-pname" x="617" y="162" fill="#2d5d4a">江江 ②</text>
+        </svg>
+
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-dot" style="background:#7a4a2a;"></span>CP 林學賢</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#6b8b5a;"></span>Vincent 陳明勇</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#b8625a;"></span>Rich 黃丞隆</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#8a6a9a;"></span>艾筆</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#2d5d4a;"></span>江昱德</div>
+        </div>
+        <div class="legend-key">
+          <span class="legend-sample"><span class="legend-o"></span>① 第一次會議（3/31）</span>
+          <span class="legend-sample"><span class="legend-s"></span>② 第二次會議（4/16）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3.2 發言比例 -->
+    <div class="subsection">
+      <h3 class="sub-title">發言比例變化（估算）</h3>
+      <div class="bar-wrap">
+        <div class="bar-row">
+          <div class="bar-name">CP 林學賢</div>
+          <div class="bar-pairs">
+            <div class="bar-pair"><span class="bar-when">第一次</span><div class="bar-track"><div class="bar-fill" style="width:45%; background:#7a4a2a;"></div></div><span class="bar-val">45%</span></div>
+            <div class="bar-pair"><span class="bar-when">第二次</span><div class="bar-track"><div class="bar-fill" style="width:32%; background:#9a6a4a;"></div></div><span class="bar-val">32%</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Vincent 陳明勇</div>
+          <div class="bar-pairs">
+            <div class="bar-pair"><span class="bar-when">第一次</span><div class="bar-track"><div class="bar-fill" style="width:8%; background:#6b8b5a;"></div></div><span class="bar-val">8%</span></div>
+            <div class="bar-pair"><span class="bar-when">第二次</span><div class="bar-track"><div class="bar-fill" style="width:28%; background:#8bab7a;"></div></div><span class="bar-val">28%</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Rich 黃丞隆</div>
+          <div class="bar-pairs">
+            <div class="bar-pair"><span class="bar-when">第一次</span><div class="bar-track"><div class="bar-fill" style="width:10%; background:#b8625a;"></div></div><span class="bar-val">10%</span></div>
+            <div class="bar-pair"><span class="bar-when">第二次</span><div class="bar-track"><div class="bar-fill" style="width:8%; background:#d0827a;"></div></div><span class="bar-val">8%</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">艾筆</div>
+          <div class="bar-pairs">
+            <div class="bar-pair"><span class="bar-when">第一次</span><div class="bar-track"><div class="bar-fill" style="width:7%; background:#8a6a9a;"></div></div><span class="bar-val">7%</span></div>
+            <div class="bar-pair"><span class="bar-when">第二次</span><div class="bar-track"><div class="bar-fill" style="width:12%; background:#a88ab8;"></div></div><span class="bar-val">12%</span></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">江昱德</div>
+          <div class="bar-pairs">
+            <div class="bar-pair"><span class="bar-when">第一次</span><div class="bar-track"><div class="bar-fill" style="width:30%; background:#2d5d4a;"></div></div><span class="bar-val">30%</span></div>
+            <div class="bar-pair"><span class="bar-when">第二次</span><div class="bar-track"><div class="bar-fill" style="width:20%; background:#4d7d6a;"></div></div><span class="bar-val">20%</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="bar-note">※ 第二次發言比例為逐字稿估算值，非精確數據。</p>
+    </div>
+
+    <!-- 3.3 四維度角色對照 -->
+    <div class="subsection">
+      <h3 class="sub-title">四維度角色對照表</h3>
+      <div class="role-wrap">
+        <table class="role-table">
+          <thead>
+            <tr>
+              <th>人員</th>
+              <th>第一次角色（3/31）</th>
+              <th class="r-arrow">→</th>
+              <th>第二次角色（4/16）</th>
+              <th>關鍵轉變（可觀察）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="r-name">CP 林學賢</td>
+              <td>願景描繪者</td>
+              <td class="r-arrow">→</td>
+              <td>願景＋治理者</td>
+              <td class="r-change">從工作坊、20 年變現路徑，收攏為四階段藍圖，開始談維運治理。</td>
+            </tr>
+            <tr>
+              <td class="r-name">Vincent 陳明勇</td>
+              <td>場邊探尋者</td>
+              <td class="r-arrow">→</td>
+              <td>執行整合者</td>
+              <td class="r-change">發言從 8% 提到 28%，工作分配上承擔盤點、整合、取素材最重的一塊。</td>
+            </tr>
+            <tr>
+              <td class="r-name">Rich 黃丞隆</td>
+              <td>價值推銷者</td>
+              <td class="r-arrow">→</td>
+              <td>框架校正者</td>
+              <td class="r-change">發言量下降，但提出「報告書只是介面，核心是資料庫」的定位。</td>
+            </tr>
+            <tr>
+              <td class="r-name">艾筆</td>
+              <td>協調支持者</td>
+              <td class="r-arrow">→</td>
+              <td>專業獨立觀點</td>
+              <td class="r-change">從協調支持角色，開始貢獻隱性知識、訪談路徑的獨立觀點。</td>
+            </tr>
+            <tr>
+              <td class="r-name">江昱德</td>
+              <td>外部顧問</td>
+              <td class="r-arrow">→</td>
+              <td>內部共構者</td>
+              <td class="r-change">承擔資訊架構、網站雛形、方法論制定；從提案進入共構。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3.4 整體觀察 -->
+    <div class="subsection">
+      <h3 class="sub-title">整體觀察</h3>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-label">推動結構變化</div>
+          <p>從「CP 獨扛願景」變成「CP（戰略）＋ Vincent（執行）＋ 江江（架構）」三頭推動，結構上從集中單人轉為分散共推。</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">煞車者是否還在</div>
+          <p>Vincent 第一次是提問探尋的角色，第二次跳進執行後，會議中沒有人再扮演煞車者。這個空缺值得留意。</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">最值得注意的轉變</div>
+          <p>Vincent 從 8% 發言量上升到 28%，並在工作分配中承擔最重的一塊。任務集中單人、沒有副手是結構上的風險。</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">關係密度演進</div>
+          <p>第一次像彼此自我介紹立場；第二次出現接話、補話、順下對方定位的痕跡（例：Rich 的「介面/核心」定位被其他人順下去）。</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">焦點演進</div>
+          <p>整體主題從「要不要做」走到「怎麼做」，具體到資料存放、版本切割、儀式設計、時間節點。</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">分析口徑提醒</div>
+          <p>以上僅基於逐字稿中可觀察的行為、話語、發言量、立場主張；沒有對任何人的內心狀態、決心、真實意圖做斷言。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-result-msg" id="nr-s3" style="display:none">此視角沒有相關共識分析內容</div>
+  </section>
+
+  <!-- 4 完整脈絡 -->
+  <section id="s4" class="section-card reveal">
+    <span class="section-tag">完整脈絡</span>
+    <div class="section-head">
+      <h2>完整脈絡</h2>
+      <p>各人發言要點、16 條討論脈絡、待議事項與關鍵洞察。</p>
+    </div>
+
+    <!-- 4.1 各人發言要點 -->
+    <div class="subsection">
+      <h3 class="sub-title">4.1 各人發言要點</h3>
+      <div class="participant-grid" id="participant-grid">
+
+        <div class="participant-block full-width" data-tags="cp planning ai analysis">
+          <div class="p-name">CP 林學賢</div>
+          <div class="p-role">會長・願景規劃者</div>
+          <ul class="p-points">
+            <li>把 5 月版與 6 月版明確切開：5 月可展示、6 月較完整且可能雙語</li>
+            <li>提出永力社四階段 AI 藍圖：個人資料庫 → ESG 平台 → 社務 AI 化 → 變現延伸</li>
+            <li>強調永力社做報告書的根本理由是「讓社友影響力被看見」，不是合規或交差</li>
+            <li>指出 S 的量化與貨幣化是未來最重要的創新方向，SROI、第三方認證都是可走路線</li>
+            <li>對抽象概念理解很快，會迅速把想法推到制度、額度、轉讓與認證等可操作設計層</li>
+            <li>看待 AI 不只談效率，也會把耗能與整體永續成本一起放進來衡量</li>
+            <li>提醒必須有 AI 委員會或維運角色，否則平台建了也會荒廢</li>
+          </ul>
+        </div>
+
+        <div class="participant-block" data-tags="vincent">
+          <div class="p-name">Vincent 陳明勇</div>
+          <div class="p-role">報告書內容整合者</div>
+          <ul class="p-points">
+            <li>一開場就把資料來源拆成三大塊（社友／服務計畫／社務），讓討論不飄</li>
+            <li>直接點出時間壓力：4 月中了，4 月底前基礎資料要整起來</li>
+            <li>提出實務疑慮：個人擁有資料的方向在執行面會不會反而做不出報告書？</li>
+            <li>負責對 Nick 取素材、整合近一年活動資料、與艾筆協調影音呈現</li>
+          </ul>
+        </div>
+
+        <div class="participant-block" data-tags="jiang ai planning">
+          <div class="p-name">江昱德</div>
+          <div class="p-role">資訊架構與 AI 導入</div>
+          <ul class="p-points">
+            <li>把討論從「整理資料」拉到「抽出判斷邏輯」的思考引擎層次</li>
+            <li>提出社會影響力評估框架的缺口（陪伴、女性賦能、社區支持類服務沒有成熟標準）</li>
+            <li>主張 AI 的核心不是工具操作，而是「讓 AI 懂你」</li>
+            <li>建議 5/16 版走「一頁式動態入口＋標籤篩選」路線，讓閱讀者依需求跳轉</li>
+            <li>中長期要協助思考社友分身、訪談 SOP、工作坊導入</li>
+          </ul>
+        </div>
+
+        <div class="participant-block" data-tags="aibi">
+          <div class="p-name">艾筆</div>
+          <div class="p-role">影音整合</div>
+          <ul class="p-points">
+            <li>既有影音團隊成果要成為入口的一部分，不是附件</li>
+            <li>強調隱性知識可以透過採訪、對話、觀察慢慢被抽出來</li>
+            <li>社友影響力不是沒有，是沒被問出來</li>
+            <li>後續可延伸成社友採訪 SOP、隱性知識挖掘與社群擴散</li>
+          </ul>
+        </div>
+
+        <div class="participant-block" data-tags="rich ai planning">
+          <div class="p-name">Rich 黃丞隆</div>
+          <div class="p-role">社內對齊與推動</div>
+          <ul class="p-points">
+            <li>幫大家定錨：報告書只是對外介面，真正核心資產是資料庫</li>
+            <li>走過必留下痕跡——未來任何合作、專案、商業應用都會回頭依賴資料層</li>
+            <li>自身是社內對 AI 工具有感的人，可擔任共學節點</li>
+            <li>協助對齊社內對 AI、知識庫與導入節奏的認知</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="no-result-msg" id="nr-participants" style="display:none">此視角沒有相關發言內容</div>
+    </div>
+
+    <!-- 4.2 討論脈絡 -->
+    <div class="subsection">
+      <h3 class="sub-title">4.2 16 條主要討論脈絡</h3>
+      <div class="discussion-list" id="discussion-list">
+
+        <details class="discussion-item" data-tags="vincent report">
+          <summary><div class="d-num">01</div><span class="d-text">Vincent 把眼前交付拆成三大資料塊</span><span class="d-chev">+</span></summary>
+          <div class="d-body">Vincent 一開場就把工作拆成：社友人物資料、服務計畫資料、社務與例會活動資料，給後續討論奠定清楚的工作分類框架，避免討論飄散。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp report">
+          <summary><div class="d-num">02</div><span class="d-text">CP 很早把 5 月版和 6 月版切開</span><span class="d-chev">+</span></summary>
+          <div class="d-body">CP 明確指出不要把兩個版本的範圍混在一起討論。5/16 版是「能展示」的第一版，6 月版才是較完整且可能雙語的版本，這個切法避免了交付混亂。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="jiang ai">
+          <summary><div class="d-num">03</div><span class="d-text">江昱德把討論拉深到「思考引擎」層次</span><span class="d-chev">+</span></summary>
+          <div class="d-body">討論不只是「整理資料」，而是要設計一個能夠「抽出判斷邏輯、跨次比較、持續累積」的思考引擎。這把報告書的定位從文件提升到了知識基礎設施。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="rich ai report">
+          <summary><div class="d-num">04</div><span class="d-text">Rich 對齊「報告書 vs 資料庫」的關係</span><span class="d-chev">+</span></summary>
+          <div class="d-body">Rich 幫大家定錨：報告書是對外介面，真正核心資產是資料庫。走過必留下痕跡——未來任何合作、商業應用都會回頭依賴資料層，這個定錨讓大家理解為什麼值得投資資料整理。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp report">
+          <summary><div class="d-num">05</div><span class="d-text">CP 補上永力社做報告書的根本理由</span><span class="d-chev">+</span></summary>
+          <div class="d-body">永力社做永續報告書不是為了合規，也不是為了交差，是要讓社友的專業服務被看見。這個理由讓後續所有執行決策有了清晰的判斷基準。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp ai planning">
+          <summary><div class="d-num">06</div><span class="d-text">CP 說出永力社未來的四階段 AI 藍圖</span><span class="d-chev">+</span></summary>
+          <div class="d-body">四階段：個人資料庫 → ESG 平台 → 社務 AI 化 → 行銷變現。CP 把下半年的推進方向說得很清楚，讓這次會議的成果不只是報告書計畫，而是更大框架的第一步。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="jiang cp vincent ai">
+          <summary><div class="d-num">07</div><span class="d-text">資料到底放哪、誰擁有、怎麼共用（混合模式共識）</span><span class="d-chev">+</span></summary>
+          <div class="d-body">社友可以自管個人資料，但永力社也要保有一層可用的共享資料。底層先用 Google 雲端求穩定，個人擁有權和組織可用性同時並立，不是非此即彼。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="jiang ai">
+          <summary><div class="d-num">08</div><span class="d-text">AI 核心是讓 AI 懂你，不是追工具</span><span class="d-chev">+</span></summary>
+          <div class="d-body">江昱德強調 AI 的價值不在於學會哪個工具，而是「建立讓 AI 能夠懂你的基礎設施」。這把導入方向從工具教學，轉向了資料整理與結構化思維。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="jiang cp ai">
+          <summary><div class="d-num">09</div><span class="d-text">知識保護：公開的資料防不了，重點是設計分層</span><span class="d-chev">+</span></summary>
+          <div class="d-body">討論到資料安全時，江昱德與 CP 的共識是：已公開的資料無法阻止爬取，重點是把資料分層設計好——哪些完全公開、哪些需登入、哪些只給成員。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="aibi jiang ai">
+          <summary><div class="d-num">10</div><span class="d-text">艾筆與江昱德把隱性知識的重要性點出來</span><span class="d-chev">+</span></summary>
+          <div class="d-body">社友的影響力不是沒有，是沒被問出來。隱性知識可以透過採訪、對話、觀察被抽出來，影音剛好是最好的挖掘工具。這條路延伸出後續的社友採訪 SOP 方向。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="vincent jiang cp report">
+          <summary><div class="d-num">11</div><span class="d-text">會議中後段重新聚焦 5/16 到底要長什麼樣</span><span class="d-chev">+</span></summary>
+          <div class="d-body">Vincent、江昱德和 CP 在中後段把討論拉回到最近的一步：5/16 第一版入口要有什麼內容、走什麼形式？江昱德提出一頁式動態入口＋標籤篩選的方向，獲得初步認可。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="aibi report">
+          <summary><div class="d-num">12</div><span class="d-text">影音如何納入的初步方向</span><span class="d-chev">+</span></summary>
+          <div class="d-body">影音不是附件，要成為入口本身的一部分。5/16 先上濃縮版，6 月版再補細版。艾筆負責確認哪些內容可以先上線。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp ai planning">
+          <summary><div class="d-num">13</div><span class="d-text">一定需要維運組織（CP 的長期提醒）</span><span class="d-chev">+</span></summary>
+          <div class="d-body">CP 提醒：平台建起來後最大的風險是沒人更新。未來需要 AI 委員會或維運角色，否則再好的架構也會荒廢。這讓大家意識到做平台不只是技術問題，更是組織設計問題。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp ai planning">
+          <summary><div class="d-num">14</div><span class="d-text">最後延伸到 S 的量化、貨幣化與影響力模式</span><span class="d-chev">+</span></summary>
+          <div class="d-body">CP 在最後提出 ESG 中 S（社會）的量化與貨幣化是未來最值得創新的方向。SROI（社會投資報酬率）、第三方認證都是可走路線，也是永力社有機會走出差異化的地方。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp ai analysis planning">
+          <summary><div class="d-num">15</div><span class="d-text">CP 的特質：理解抽象概念後，會立刻往制度設計推</span><span class="d-chev">+</span></summary>
+          <div class="d-body">從「影響力應該被看見」一路推到影響力貨幣、年度額度、捐贈、轉讓與第三方認證，顯示 CP 的強項不只是講理念，而是會自然把概念往規則、治理與標準層推進。這是推動永力社後續制度化的重要能力。</div>
+        </details>
+
+        <details class="discussion-item" data-tags="cp vincent jiang ai analysis planning">
+          <summary><div class="d-num">16</div><span class="d-text">AI 的永續性被放到總體成本，而不只是單次耗能</span><span class="d-chev">+</span></summary>
+          <div class="d-body">大家不是盲目擁抱 AI，而是主動討論它的耗能。較成熟的共識是：若 AI 能把原本十年的研究週期壓縮到半年或一年，並大幅減少試錯、實驗與整體浪費，那就不能只用「很耗電」去判斷它是否更不永續。</div>
+        </details>
+
+      </div>
+      <div class="no-result-msg" id="nr-discussion" style="display:none">此視角沒有相關討論脈絡</div>
+    </div>
+
+    <!-- 4.3 未定案 -->
+    <div class="subsection">
+      <h3 class="sub-title">4.3 目前仍未定案的事（6 項）</h3>
+      <div class="undecided-list">
+        <div class="undecided-item">第一版網站實際用哪種技術形式承載</div>
+        <div class="undecided-item">英文版範圍、深度與翻譯流程</div>
+        <div class="undecided-item">社友個人資料夾與永力社共享資料夾的邊界</div>
+        <div class="undecided-item">影音素材二次剪輯、再利用的完整規劃</div>
+        <div class="undecided-item">AI 委員會／維運機制的人選與制度</div>
+        <div class="undecided-item">長期影響力量化與貨幣化模式</div>
+      </div>
+    </div>
+
+    <!-- 4.4 關鍵洞察 -->
+    <div class="subsection">
+      <h3 class="sub-title">4.4 六個關鍵洞察</h3>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-label">洞察一</div>
+          <p>真正的第一個產品不是報告書，是入口</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">洞察二</div>
+          <p>資料庫價值已壓過單次報告書價值</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">洞察三</div>
+          <p>隱性知識會是未來最稀缺的素材</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">洞察四</div>
+          <p>永力社正在摸一種新型社群模式——影響力可見、可調用、可累積、可 AI 導流</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">洞察五</div>
+          <p>CP 的稀缺價值，在於能把抽象理念快速推到制度設計層</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">洞察六</div>
+          <p>這場會議不是盲目擁抱 AI，而是把 AI 的永續成本也放進來一起思考</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.5 原始記錄 -->
+    <div class="footer-note">
+      <strong>原始記錄：</strong>
+      2026-04-16-2356 永力社 永續報告書 共識與工作分配會議 原始逐字稿.md ／
+      會議記錄完整版：2026-04-16-2350 合作·永力扶輪社：永續報告書共識與工作分配會議記錄
+    </div>
+  </section>
+
+</div><!-- /page-shell -->
+
+<script>
+  /* Reveal animation */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("is-visible"); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+
+  /* Filter logic */
+  const PERSONS  = new Set(["cp","vincent","rich","aibi","jiang"]);
+  const THEMES   = new Set(["report","ai"]);
+  const SECTIONS = new Set(["analysis"]);
+
+  let activePerson  = null;
+  let activeThemes  = new Set();
+  let activeSection = null;
+
+  const allFilterable = document.querySelectorAll("[data-tags]");
+  const filterBtns    = document.querySelectorAll(".filter-btn");
+  const allSections   = document.querySelectorAll(".section-card");
+
+  const groups = [
+    { container: document.getElementById("consensus-grid"),   msg: document.getElementById("nr-s1") },
+    { container: document.getElementById("task-list"),         msg: document.getElementById("nr-s2") },
+    { container: document.getElementById("participant-grid"),  msg: document.getElementById("nr-participants") },
+    { container: document.getElementById("discussion-list"),   msg: document.getElementById("nr-discussion") },
+  ];
+
+  function matches(tagsStr) {
+    const tags = tagsStr.split(" ");
+    if (activePerson && !tags.includes(activePerson)) return false;
+    for (const t of activeThemes) { if (!tags.includes(t)) return false; }
+    return true;
+  }
+
+  function applyFilter() {
+    const isAll = !activePerson && activeThemes.size === 0 && !activeSection;
+
+    /* Section-level filter：共識分析只顯示 s3 */
+    if (activeSection === "analysis") {
+      allSections.forEach(sec => {
+        sec.style.display = (sec.id === "s3") ? "" : "none";
+      });
+    } else {
+      allSections.forEach(sec => { sec.style.display = ""; });
+    }
+
+    /* Item-level filter：依人物／主題篩 */
+    allFilterable.forEach(el => {
+      el.style.display = (isAll || activeSection || matches(el.dataset.tags)) ? "" : "none";
+    });
+
+    groups.forEach(({ container, msg }) => {
+      if (!msg) return;
+      if (isAll || activeSection) { msg.style.display = "none"; return; }
+      const items = container.querySelectorAll("[data-tags]");
+      const anyVisible = Array.from(items).some(i => i.style.display !== "none");
+      msg.style.display = anyVisible ? "none" : "";
+    });
+
+    filterBtns.forEach(btn => {
+      const f = btn.dataset.filter;
+      if (f === "all")                btn.classList.toggle("active", isAll);
+      else if (PERSONS.has(f))        btn.classList.toggle("active", activePerson === f);
+      else if (THEMES.has(f))         btn.classList.toggle("active", activeThemes.has(f));
+      else if (SECTIONS.has(f))       btn.classList.toggle("active", activeSection === f);
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      if (f === "all") {
+        activePerson = null; activeThemes.clear(); activeSection = null;
+      } else if (PERSONS.has(f)) {
+        activePerson  = (activePerson === f) ? null : f;
+        activeSection = null;
+      } else if (THEMES.has(f)) {
+        activeThemes.has(f) ? activeThemes.delete(f) : activeThemes.add(f);
+        activeSection = null;
+      } else if (SECTIONS.has(f)) {
+        activeSection = (activeSection === f) ? null : f;
+        activePerson  = null;
+        activeThemes.clear();
+      }
+      applyFilter();
+    });
+  });
+
+  applyFilter();
+</script>
+</body>
+</html>
