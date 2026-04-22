@@ -46,11 +46,17 @@
     border-radius: 10px;
     padding: 24px 28px;
     margin-bottom: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   }
   .meeting-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(74,53,36,0.08);
+    border-color: #c6a16e;
+  }
+  a.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
   .meeting-date {
     display: inline-block;
@@ -136,66 +142,23 @@
   <p class="subtitle">台北永續影響力扶輪社 × 江昱德 合作專案歸檔</p>
 </header>
 
-<h2>會議記錄</h2>
-<p class="section-intro">按時間順序整理的兩次正式會議，以及跨會議分析。點開看完整記錄、會議報告網頁或分析圖表。</p>
-
-<div class="meeting-card">
+<a class="meeting-card card-link" href="meetings/2026-03-31-kickoff/report.html">
   <span class="meeting-date">2026.03.31</span>
   <div class="meeting-title">第一次會議：AI 導入與永續報告書規劃</div>
-  <p class="meeting-desc">首次正式會議，探討永力社的永續報告書規劃與 AI 導入方向。確定合作起點、願景描繪、初步分工概念。</p>
-  <div class="link-row">
-    <a class="link-btn primary" href="meetings/2026-03-31-kickoff/report.html">會議報告頁</a>
-    <a class="link-btn" href="meetings/2026-03-31-kickoff/record.md">會議記錄（主版）</a>
-    <a class="link-btn" href="meetings/2026-03-31-kickoff/record-gemini.md">會議記錄（Gemini 版）</a>
-  </div>
-</div>
+  <p class="meeting-desc">首次正式會議，探討永力社的永續報告書規劃與 AI 導入方向。</p>
+</a>
 
-<div class="meeting-card">
+<a class="meeting-card card-link" href="meetings/2026-04-16-consensus/report.html">
   <span class="meeting-date">2026.04.16</span>
   <div class="meeting-title">第二次會議：共識決策與工作分配</div>
-  <p class="meeting-desc">永續報告書 6/5 驗收版＋6 月完整版的分工定案。從「要不要做」進入「怎麼做」的階段，具體到資料存放、版本切割、儀式設計。</p>
-  <div class="link-row">
-    <a class="link-btn primary" href="meetings/2026-04-16-consensus/report.html">會議報告書網頁</a>
-    <a class="link-btn" href="meetings/2026-04-16-consensus/record.md">會議記錄（主版）</a>
-    <a class="link-btn" href="meetings/2026-04-16-consensus/summary.md">對外精簡版</a>
-    <a class="link-btn" href="meetings/2026-04-16-consensus/transcript.md">原始逐字稿</a>
-    <a class="link-btn" href="meetings/2026-04-16-consensus/structure.md">網頁內容結構表</a>
-  </div>
-</div>
+  <p class="meeting-desc">永續報告書 6/5 驗收版＋6 月完整版的分工定案。</p>
+</a>
 
-<div class="meeting-card">
+<a class="meeting-card card-link" href="meetings/2026-04-17-analysis/trajectory.html">
   <span class="meeting-date">2026.04.17</span>
-  <div class="meeting-title">兩次會議人員態度軌跡分析</div>
-  <p class="meeting-desc">跨兩次會議的人員角色與立場變化分析，輸出態度軌跡圖＋發言比例變化＋四維度角色定位對照三件套。</p>
-  <div class="link-row">
-    <a class="link-btn primary" href="meetings/2026-04-17-analysis/trajectory.html">態度軌跡圖</a>
-    <a class="link-btn" href="meetings/2026-04-17-analysis/analysis.md">分析文件</a>
-  </div>
-</div>
-
-<h2>補充資料</h2>
-<p class="section-intro">會議中提到的延伸主題與相關思考。</p>
-
-<div class="meeting-card">
-  <span class="meeting-date">2026.04.18</span>
-  <div class="meeting-title">觀點日記：AI 這麼浪費算力，到底永不永續？</div>
-  <p class="meeting-desc">回應 4/16 會議中關於「AI 耗能與永續性」的討論，延伸成完整的觀點日記。從「總體成本」與「整體永續性」的角度重新衡量 AI 的價值。</p>
-  <div class="link-row">
-    <a class="link-btn primary" href="docs/ai-sustainability-perspective.md">閱讀觀點日記</a>
-  </div>
-</div>
-
-<h2>前置邀請</h2>
-<p class="section-intro">會議開始前的相關邀請往來紀錄。</p>
-
-<div class="meeting-card">
-  <span class="meeting-date">2026.03.21</span>
-  <div class="meeting-title">艾筆回覆：永力社工作坊與共識營邀請</div>
-  <p class="meeting-desc">艾筆針對永力社工作坊與共識營邀請的正式回覆，作為後續合作脈絡的重要參考。</p>
-  <div class="link-row">
-    <a class="link-btn primary" href="invitations/aibi-response.md">閱讀回覆</a>
-  </div>
-</div>
+  <div class="meeting-title">兩次會議人員態度軌跡圖</div>
+  <p class="meeting-desc">跨兩次會議的人員角色與立場變化視覺化分析。</p>
+</a>
 
 <footer>
   <p>最後更新：2026-04-22 ｜ <a href="https://github.com/Jiang-Yude/yongli-meetings">GitHub Repo</a></p>
