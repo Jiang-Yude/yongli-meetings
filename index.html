@@ -132,6 +132,77 @@
     text-decoration: none;
   }
   footer a:hover { text-decoration: underline; }
+
+  /* 主成果卡片 — 強調本次合作的主要交付 */
+  .featured-project {
+    display: block;
+    background: linear-gradient(135deg, #c6a16e 0%, #8a6741 100%);
+    color: #fff8f0;
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(74,53,36,0.22);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-project::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -8%;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: rgba(255,248,240,0.06);
+    pointer-events: none;
+  }
+  .featured-project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(74,53,36,0.32);
+  }
+  .featured-label {
+    display: inline-block;
+    background: rgba(255,248,240,0.22);
+    color: #fff8f0;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+  .featured-project .meeting-title {
+    font-size: 1.55rem;
+    margin: 0 0 14px;
+    color: #fff8f0;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .featured-project .meeting-desc {
+    color: rgba(255,248,240,0.94);
+    font-size: 1rem;
+    margin: 0 0 16px;
+    line-height: 1.7;
+  }
+  .featured-project .visit-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: rgba(255,248,240,0.95);
+    color: #8a6741;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background .2s, transform .2s;
+  }
+  .featured-project:hover .visit-cta {
+    background: #fff8f0;
+    transform: translateX(4px);
+  }
 </style>
 </head>
 <body>
@@ -141,6 +212,15 @@
   <h1>永力扶輪社會議記錄</h1>
   <p class="subtitle">台北永續影響力扶輪社 × 江昱德 合作專案歸檔</p>
 </header>
+
+<a class="featured-project" href="https://jiang-yude.github.io/my-yongli-sustainability-2026/" target="_blank" rel="noopener">
+  <span class="featured-label">★ 本次合作主成果</span>
+  <div class="meeting-title">永力扶輪社 2026 永續影響力報告書</div>
+  <p class="meeting-desc">第一版（2026.05）：9 位社友人物誌 × 7 項服務計畫的完整入口網站，呈現「從『我』到『我們』」的職業永續影響力網絡。本系列會議的主要交付成果。</p>
+  <span class="visit-cta">前往報告書網站 →</span>
+</a>
+
+<h2>歷次會議記錄</h2>
 
 <a class="meeting-card card-link" href="meetings/2026-03-31-kickoff/report.html">
   <span class="meeting-date">2026.03.31</span>
