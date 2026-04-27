@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI × 永續報告書｜三階段講稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fs-scale: 1;
+    --bg:        #f5ede0;
+    --bg-soft:   #fdfaf5;
+    --paper:     #fdf9f2;
+    --ink:       #3d2b1f;
+    --ink-soft:  #5a4332;
+    --muted:     #7a5f4a;
+    --dim:       #a08866;
+
+    --accent:    #b87333;
+    --accent-dk: #8c5826;
+    --accent-lt: #d4a574;
+
+    --dark:      #2a1d14;
+    --line:      rgba(184,115,51,0.22);
+    --line-soft: rgba(184,115,51,0.10);
+
+    --shadow:    0 12px 40px -12px rgba(61,43,31,0.18);
+    --shadow-sm: 0 2px 8px rgba(61,43,31,0.06);
+
+    --serif: 'Noto Serif TC', 'Songti TC', serif;
+    --sans:  'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --display: 'Cormorant Garamond', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-size: calc(16px * var(--fs-scale));
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: calc(25px * var(--fs-scale));
+    line-height: 1.85;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "palt";
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 44px 100px;
+  }
+
+  /* ─── Header ─── */
+  .site-header {
+    text-align: center;
+    padding: 60px 0 64px;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .site-header::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--accent);
+    margin: 64px auto 0;
+    opacity: 0.6;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.25rem;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .kicker::before, .kicker::after {
+    content:''; width: 32px; height: 1px;
+    background: var(--accent); opacity: 0.5;
+  }
+
+  .site-header h1 {
+    font-family: var(--serif);
+    font-size: 5.4rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    line-height: 1.18;
+    margin-bottom: 24px;
+  }
+  .site-header h1 .x {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0 0.2em;
+    font-size: 0.85em;
+  }
+  .site-header h1 .em {
+    color: var(--accent-dk);
+  }
+
+  .site-header .subtitle {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    color: var(--muted);
+    margin-bottom: 40px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+
+  .meta-line {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.125rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .meta-line span { padding: 0 22px; position: relative; }
+  .meta-line span + span::before {
+    content:''; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: 0.5;
+  }
+
+  /* ─── About / 自我介紹 ─── */
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 88px;
+    padding: 48px 56px 56px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .about::before {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    border: 1px solid var(--line-soft);
+    pointer-events: none;
+  }
+  .about-portrait {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+  }
+  .about-portrait .frame {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 48px -16px rgba(61,43,31,0.35);
+    aspect-ratio: 21 / 9;
+    background: var(--dark);
+  }
+  .about-portrait img {
+    object-position: center 28%;
+  }
+  .about-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92) contrast(1.02);
+  }
+  .about-portrait .corner {
+    position: absolute;
+    width: 22px; height: 22px;
+    border: 2px solid var(--accent);
+  }
+  .about-portrait .corner.tl { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+  .about-portrait .corner.br { bottom: -10px; right: -10px; border-left: none; border-top: none; }
+
+  .about-name-card {
+    margin-top: 24px;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-name-card .role {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.34em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .about-name-card .name {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.18em;
+  }
+  .about-name-card .title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--muted);
+    letter-spacing: 0.16em;
+    margin-top: 2px;
+  }
+
+  .about-body {
+    position: relative;
+    z-index: 1;
+  }
+  .about-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .about-headline {
+    font-family: var(--serif);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .about-headline::after {
+    content:'';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 48px; height: 2px;
+    background: var(--accent);
+  }
+  .about-headline .em {
+    color: var(--accent-dk);
+    background: linear-gradient(180deg, transparent 65%, rgba(184,115,51,0.22) 65%);
+    padding: 0 4px;
+  }
+  .about-text p {
+    font-size: 1.32rem;
+    line-height: 1.95;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .about-text p strong {
+    color: var(--ink);
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 65%, rgba(184,115,51,0.18) 65%);
+    padding: 0 3px;
+  }
+  .about-points {
+    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .about-point {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+    padding: 16px 20px 16px 16px;
+    background: rgba(184,115,51,0.06);
+    border-left: 3px solid var(--accent);
+  }
+  .about-point .pt-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .about-point .pt-text {
+    font-size: 1.22rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+  .about-point .pt-text b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .about-closing {
+    font-family: var(--serif);
+    font-size: 1.32rem;
+    line-height: 1.85;
+    color: var(--ink);
+    font-weight: 500;
+    padding: 18px 0 0 24px;
+    border-left: 3px solid var(--accent);
+    margin-top: 18px;
+  }
+
+  @media (max-width: 880px) {
+    .about {
+      gap: 28px;
+      padding: 28px 22px 32px;
+    }
+    .about-portrait .frame { aspect-ratio: 16 / 9; }
+  }
+
+  /* ─── Intro / 引言 ─── */
+  .intro {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 44px 56px;
+    margin-bottom: 100px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .intro::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 36px;
+    font-family: var(--display);
+    font-size: 6rem;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.5;
+  }
+  .intro-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .intro p {
+    color: var(--ink-soft);
+    font-size: 1.4rem;
+    line-height: 1.95;
+    font-weight: 400;
+  }
+  .intro p + p { margin-top: 14px; }
+  .intro p strong {
+    color: var(--ink);
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 60%, rgba(184,115,51,0.22) 60%);
+    padding: 0 3px;
+  }
+
+  /* ─── Chapter Header ─── */
+  .chapter {
+    margin-bottom: 80px;
+  }
+
+  .chapter-head {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: end;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .chapter-head::after {
+    content:'';
+    position: absolute;
+    bottom: -8px; left: 0;
+    width: 60px; height: 2px;
+    background: var(--accent);
+  }
+
+  .chapter-numwrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .chapter-label {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.125rem;
+    letter-spacing: 0.42em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .chapter-num {
+    font-family: var(--serif);
+    font-size: 7rem;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .chapter-titlewrap {
+    padding-bottom: 8px;
+  }
+  .chapter-title {
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+  }
+  .chapter-desc {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* ─── Chapter body ─── */
+  .chapter-body {
+    padding-left: 0;
+  }
+
+  .tool-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--dark);
+    color: #ede0c8;
+    padding: 18px 28px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+  }
+  .tool-strip .tool-mark {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.06rem;
+    letter-spacing: 0.3em;
+    color: var(--accent-lt);
+    text-transform: uppercase;
+    padding-right: 16px;
+    border-right: 1px solid rgba(212,165,116,0.4);
+  }
+  .tool-strip .tool-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Section heading 段落重點 */
+  .sec-h {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 36px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sec-h:first-child { margin-top: 0; }
+  .sec-h .num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .sec-h .label {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+  }
+
+  /* lists */
+  .bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .bullets li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 6px;
+    font-size: 1.4rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    padding: 4px 0;
+  }
+  .bullets li .marker {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding-top: 2px;
+  }
+  .bullets li strong {
+    color: var(--ink);
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 65%, rgba(184,115,51,0.18) 65%);
+  }
+
+  .lead-p {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    color: var(--ink);
+    line-height: 1.85;
+    font-weight: 400;
+    padding: 8px 0 8px 24px;
+    border-left: 3px solid var(--accent);
+    margin: 24px 0;
+  }
+
+  /* ─── Case box (深色強調) ─── */
+  .case {
+    background: var(--dark);
+    color: #ede0c8;
+    padding: 32px 40px;
+    margin: 36px 0;
+    position: relative;
+    box-shadow: var(--shadow);
+  }
+  .case::before {
+    content: '';
+    position: absolute;
+    top: 18px; left: 18px;
+    width: calc(100% - 36px);
+    height: calc(100% - 36px);
+    border: 1px solid rgba(212,165,116,0.3);
+    pointer-events: none;
+  }
+  .case-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.06rem;
+    letter-spacing: 0.3em;
+    color: var(--accent-lt);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .case-text {
+    font-size: 1.3rem;
+    line-height: 1.85;
+    color: #d4c3a3;
+    font-weight: 400;
+    position: relative;
+  }
+  .case-text strong {
+    color: var(--accent-lt);
+    font-weight: 600;
+  }
+
+  /* ─── Demo callout ─── */
+  .demo {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: var(--paper);
+    border: 1.5px solid var(--accent);
+    padding: 22px 30px;
+    margin-top: 36px;
+    position: relative;
+  }
+  .demo::before {
+    content:'';
+    position: absolute;
+    left: -1.5px; top: -1.5px; bottom: -1.5px;
+    width: 6px;
+    background: var(--accent);
+  }
+  .demo-mark {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 12px rgba(184,115,51,0.35);
+  }
+  .demo-text { flex: 1; }
+  .demo-text .lbl {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.06rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .demo-text .title {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .demo-text .step {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .demo-text .step b {
+    color: var(--accent-dk);
+    font-weight: 700;
+    background: rgba(184,115,51,0.12);
+    padding: 0 4px;
+  }
+
+  /* ─── Summary ─── */
+  .summary {
+    margin-top: 100px;
+    padding-top: 64px;
+    border-top: 2px solid var(--ink);
+    position: relative;
+  }
+  .summary::before {
+    content:'';
+    position: absolute;
+    top: -2px; left: 0;
+    width: 60px; height: 2px;
+    background: var(--accent);
+  }
+
+  .summary-eyebrow {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 0.36em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .summary-title {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 48px;
+    letter-spacing: 0.04em;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .sum-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 36px 32px 32px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .sum-card::before {
+    content:'';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent);
+  }
+  .sum-card .sum-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .sum-card .sum-stage {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-dk);
+    letter-spacing: 0.32em;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .sum-card h3 {
+    font-family: var(--serif);
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+    line-height: 1.35;
+  }
+  .sum-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sum-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .sum-item:last-child { border-bottom: none; }
+  .sum-item .lbl {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sum-item .val {
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 1.2rem;
+  }
+
+  /* ─── Font Size Toggle ─── */
+  .fs-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px;
+    font-family: var(--serif);
+    box-shadow: 0 2px 8px rgba(61,43,31,0.08);
+  }
+  .fs-toggle button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-weight: 600;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+  .fs-toggle button:hover { color: var(--accent-dk); }
+  .fs-toggle button.active { background: var(--accent); color: #fff; }
+  .fs-toggle button.fs-sm  { font-size: 11px; }
+  .fs-toggle button.fs-md  { font-size: 13px; }
+  .fs-toggle button.fs-lg  { font-size: 15px; }
+  .fs-toggle button.fs-xl  { font-size: 18px; }
+
+  /* ─── Footer ─── */
+  .site-footer {
+    margin-top: 96px;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .site-footer::before {
+    content:'';
+    display: block;
+    width: 50px; height: 1px;
+    background: var(--accent);
+    margin: 0 auto 28px;
+    opacity: 0.6;
+  }
+  .site-footer .credit {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+  }
+  .site-footer .credit .glyph {
+    color: var(--accent);
+    margin: 0 14px;
+  }
+  .site-footer .date {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--dim);
+    letter-spacing: 0.32em;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 800px) {
+    body { font-size: calc(21px * var(--fs-scale)); }
+    .page { padding: 32px 20px 60px; }
+    .site-header h1 { font-size: 3.2rem; }
+    .site-header .subtitle { font-size: 1.25rem; }
+    .chapter-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .chapter-num { font-size: 5rem; }
+    .chapter-title { font-size: 2.2rem; }
+    .intro { padding: 28px 24px; }
+    .case { padding: 24px 22px; }
+    .demo { padding: 18px 20px; flex-direction: column; align-items: flex-start; }
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="kicker">A Talk in Three Chapters</div>
+    <h1>AI <span class="x">×</span> <span class="em">永續報告書</span></h1>
+    <p class="subtitle">三個階段，把報告書從煩惱變成工具</p>
+    <div class="meta-line">
+      <span>20 min</span>
+      <span>永力扶輪社</span>
+      <span>江昱德</span>
+      <span>2026.04.27</span>
+    </div>
+  </header>
+
+  <!-- ── About / 自我介紹 ── -->
+  <section class="about">
+    <div class="about-portrait">
+      <span class="corner tl"></span>
+      <span class="corner br"></span>
+      <div class="frame">
+        <img src="assets/jiang-portrait.jpg" alt="江昱德 江江教練">
+      </div>
+      <div class="about-name-card">
+        <div class="role">About the Speaker</div>
+        <div class="name">江 昱 德</div>
+        <div class="title">隱性知識提煉師 / AI 應用規劃師</div>
+      </div>
+    </div>
+
+    <div class="about-body">
+      <span class="about-eyebrow">— Self Introduction · 自我介紹</span>
+      <h2 class="about-headline">我叫江昱德，<br>是一位<span class="em">隱性知識提煉師</span>。</h2>
+      <div class="about-text">
+        <p>在接觸 AI 之前，我是一名<strong>導演兼攝影師</strong>，專門幫公益、教育、藝術相關的組織拍影片。我一直在做的，是同一件事——把那些<strong>說不清楚的東西整理出來</strong>，讓別人可以理解、可以應用。</p>
+        <p>但拍片過程中，我一直遇到兩個問題：</p>
+      </div>
+
+      <div class="about-points">
+        <div class="about-point">
+          <div class="pt-num">i.</div>
+          <div class="pt-text">很多人說自己做了很棒的事——但<b>棒到什麼程度</b>？我希望能在開始之前就有辦法客觀評估，而不是拍完才發現說不清楚。</div>
+        </div>
+        <div class="about-point">
+          <div class="pt-num">ii.</div>
+          <div class="pt-text">反過來，有些人真的很厲害，但<b>他們自己不知道</b>。做習慣了，覺得很普通。但旁觀者的我看得很清楚——他影響了多少人、改變了什麼。</div>
+        </div>
+      </div>
+
+      <p class="about-closing">這兩個問題，把我帶到了「<strong>社會影響力</strong>」，然後帶到了<strong>永續報告書</strong>。今天分享的，就是這條路上，AI 怎麼讓這件事變得可以做到。</p>
+    </div>
+  </section>
+
+  <!-- ── Intro ── -->
+  <div class="intro">
+    <span class="intro-eyebrow">— Prologue · 引言</span>
+    <p>永續報告書對很多組織來說，是一個「知道重要、但不知從哪開始」的挑戰。框架太多、資料太散、不確定自己符不符合——每一步都卡關。</p>
+    <p>今天分享三個用 AI 切入的方式：<strong>借用現有框架整理資料、沒框架就讓 AI 幫你建、資料量太大就換更強的工具</strong>。不需要先成為永續專家，AI 陪你一起摸索。</p>
+  </div>
+
+  <!-- ═════════════ Chapter 一 ═════════════ -->
+  <section class="chapter">
+    <div class="chapter-head">
+      <div class="chapter-numwrap">
+        <span class="chapter-label">Chapter · 01</span>
+        <span class="chapter-num">一</span>
+      </div>
+      <div class="chapter-titlewrap">
+        <h2 class="chapter-title">學習｜用 AI 讀懂框架</h2>
+        <p class="chapter-desc">不需要先看完整份文件，讓 AI 幫你導讀、解釋、回答問題</p>
+      </div>
+    </div>
+
+    <div class="chapter-body">
+      <div class="tool-strip">
+        <span class="tool-mark">Tool</span>
+        <span class="tool-name">ChatGPT 或 Claude（網頁版）</span>
+      </div>
+
+      <div class="sec-h">
+        <span class="num">i.</span>
+        <span class="label">可以丟進去學習的資料</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span><strong>社會影響力指南</strong>（如 SROI 方法論、IRIS+ 指標框架）</span></li>
+        <li><span class="marker">—</span><span>台灣相關單位發布的<strong>永續揭露框架文件</strong></span></li>
+        <li><span class="marker">—</span><span><strong>GRI 準則、B Corp 評估標準</strong>等國際框架</span></li>
+      </ul>
+
+      <div class="sec-h">
+        <span class="num">ii.</span>
+        <span class="label">你可以問 AI 的問題</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span>這個框架的<strong>核心要求</strong>是什麼？</span></li>
+        <li><span class="marker">—</span><span>對我們這種規模的組織，<strong>哪些章節最重要</strong>？</span></li>
+        <li><span class="marker">—</span><span>「<strong>社會影響力</strong>」和「<strong>ESG</strong>」有什麼不同？</span></li>
+        <li><span class="marker">—</span><span>幫我整理這份框架的<strong>重點，用清單呈現</strong></span></li>
+      </ul>
+
+      <p class="lead-p">把框架文件貼進對話，或直接描述你的困惑——AI 可以扮演一個有耐心的老師，不嫌你問基礎問題。</p>
+
+      <div class="demo">
+        <div class="demo-mark">▶</div>
+        <div class="demo-text">
+          <span class="lbl">Live Demo · 操作畫面</span>
+          <span class="title">ChatGPT 或 Claude 網頁版</span>
+          <span class="step"><b>上傳框架文件</b> → 問「幫我用 5 點整理這個框架的核心要求」</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ Chapter 二 ═════════════ -->
+  <section class="chapter">
+    <div class="chapter-head">
+      <div class="chapter-numwrap">
+        <span class="chapter-label">Chapter · 02</span>
+        <span class="chapter-num">二</span>
+      </div>
+      <div class="chapter-titlewrap">
+        <h2 class="chapter-title">應用｜套框架寫出報告</h2>
+        <p class="chapter-desc">把框架和資料同時丟進去，讓 AI 告訴你哪裡還沒準備好</p>
+      </div>
+    </div>
+
+    <div class="chapter-body">
+      <div class="tool-strip">
+        <span class="tool-mark">Tool</span>
+        <span class="tool-name">ChatGPT 專案（Projects）</span>
+      </div>
+
+      <div class="sec-h">
+        <span class="num">i.</span>
+        <span class="label">怎麼做</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span>在 ChatGPT 建立一個「<strong>專案</strong>」，把框架文件上傳進去</span></li>
+        <li><span class="marker">—</span><span>再上傳你的<strong>組織資料</strong>：活動紀錄、成果報告、數據</span></li>
+        <li><span class="marker">—</span><span>讓 AI <strong>對照框架</strong>，把你的資料整理成符合格式的初稿</span></li>
+      </ul>
+
+      <div class="sec-h">
+        <span class="num">ii.</span>
+        <span class="label">AI 能幫你找出</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span>哪些章節的<strong>資料還沒準備好</strong></span></li>
+        <li><span class="marker">—</span><span>哪些描述「<strong>說了但說不清楚</strong>」</span></li>
+        <li><span class="marker">—</span><span>哪些<strong>數據需要補充</strong>才能符合框架要求</span></li>
+      </ul>
+
+      <p class="lead-p">不需要先把整個框架讀完才開始。先有資料，再讓 AI 幫你找缺口，效率比自己逐頁核對快很多。</p>
+
+      <div class="demo">
+        <div class="demo-mark">▶</div>
+        <div class="demo-text">
+          <span class="lbl">Live Demo · 操作畫面</span>
+          <span class="title">ChatGPT 專案</span>
+          <span class="step"><b>新增專案</b> → 上傳框架文件 + 組織資料 → 請 AI <b>列出缺少的章節與資料</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════ Chapter 三 ═════════════ -->
+  <section class="chapter">
+    <div class="chapter-head">
+      <div class="chapter-numwrap">
+        <span class="chapter-label">Chapter · 03</span>
+        <span class="chapter-num">三</span>
+      </div>
+      <div class="chapter-titlewrap">
+        <h2 class="chapter-title">創造｜寫出自己的框架</h2>
+        <p class="chapter-desc">社會影響力是新概念，有時候最適合你的框架，是你自己建的</p>
+      </div>
+    </div>
+
+    <div class="chapter-body">
+      <div class="tool-strip">
+        <span class="tool-mark">Tool</span>
+        <span class="tool-name">Claude 桌面版（Desktop App）</span>
+      </div>
+
+      <div class="sec-h">
+        <span class="num">i.</span>
+        <span class="label">為什麼需要自建框架</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span>社會影響力是<strong>相對新的概念</strong>，現有框架不一定完全貼合</span></li>
+        <li><span class="marker">—</span><span>每個組織的服務模式都不同，套入通用框架容易<strong>削足適履</strong></span></li>
+        <li><span class="marker">—</span><span>從自己的方式出發，<strong>指標才有說服力</strong></span></li>
+      </ul>
+
+      <div class="case">
+        <span class="case-eyebrow">Case Study · 01</span>
+        <div class="case-title">待到理學堂（李宣揚）</div>
+        <p class="case-text">把<strong>服務模式、受益對象、階段性成果</strong>整理清楚，請 AI 轉成可量化的影響力指標。沒有套用任何現成框架——最後產出的，是一份真正屬於自己組織的評估方案。</p>
+      </div>
+
+      <div class="sec-h">
+        <span class="num">ii.</span>
+        <span class="label">為什麼用桌面版 Claude</span>
+      </div>
+      <ul class="bullets">
+        <li><span class="marker">—</span><span>資料量太大時，網頁版 Claude <strong>無法完整載入</strong>所有文件</span></li>
+        <li><span class="marker">—</span><span>桌面版可以<strong>直接讀取本機資料夾</strong>，不受上傳大小限制</span></li>
+        <li><span class="marker">—</span><span>可以一次處理<strong>歷年財報、年報、問卷</strong>等大量資料</span></li>
+      </ul>
+
+      <div class="case">
+        <span class="case-eyebrow">Case Study · 02</span>
+        <div class="case-title">真實場景：Vicky 的案例</div>
+        <p class="case-text">資料量太多，網頁版 Claude 跑不完。換成桌面版後，<strong>直接讀取本地資料夾</strong>，讓 AI 整合全部資料寫出報告書初稿。</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo-mark">▶</div>
+        <div class="demo-text">
+          <span class="lbl">Live Demo · 操作畫面</span>
+          <span class="title">Claude 桌面版</span>
+          <span class="step"><b>描述服務模式</b> → 請 AI 設計專屬評估架構 → <b>讀取大量本地資料</b>生成初稿</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Summary ── -->
+  <div class="summary">
+    <span class="summary-eyebrow">In Summary</span>
+    <h2 class="summary-title">三個階段一覽</h2>
+    <div class="summary-grid">
+      <div class="sum-card">
+        <div class="sum-num">i.</div>
+        <span class="sum-stage">學習</span>
+        <h3>讀懂框架</h3>
+        <div class="sum-row">
+          <div class="sum-item">
+            <span class="lbl">Tool · 工具</span>
+            <span class="val">ChatGPT / Claude 網頁版</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Action · 動作</span>
+            <span class="val">丟入框架文件，問 AI 導讀</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Outcome · 產出</span>
+            <span class="val">理解框架核心要求與重點章節</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-num">ii.</div>
+        <span class="sum-stage">應用</span>
+        <h3>套框架寫報告</h3>
+        <div class="sum-row">
+          <div class="sum-item">
+            <span class="lbl">Tool · 工具</span>
+            <span class="val">ChatGPT 專案</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Action · 動作</span>
+            <span class="val">框架 + 組織資料一起丟進去</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Outcome · 產出</span>
+            <span class="val">符合框架的初稿 + 缺口清單</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sum-card">
+        <div class="sum-num">iii.</div>
+        <span class="sum-stage">創造</span>
+        <h3>建自己的框架</h3>
+        <div class="sum-row">
+          <div class="sum-item">
+            <span class="lbl">Tool · 工具</span>
+            <span class="val">Claude 桌面版</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Action · 動作</span>
+            <span class="val">描述你的模式，讓 AI 設計指標</span>
+          </div>
+          <div class="sum-item">
+            <span class="lbl">Outcome · 產出</span>
+            <span class="val">屬於自己組織的影響力評估方案</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="credit">
+      永力扶輪社
+      <span class="glyph">✦</span>
+      江昱德
+    </div>
+    <div class="date">2026 · 04 · 27</div>
+  </footer>
+
+</div>
+
+<!-- ── 字體大小調整器 ── -->
+<div class="fs-toggle" role="group" aria-label="字體大小">
+  <button class="fs-sm" data-scale="0.85" title="小">A</button>
+  <button class="fs-md active" data-scale="1" title="中">A</button>
+  <button class="fs-lg" data-scale="1.2" title="大">A</button>
+  <button class="fs-xl" data-scale="1.4" title="特大">A</button>
+</div>
+
+<script>
+  (function() {
+    const KEY = 'fsScale';
+    const buttons = document.querySelectorAll('.fs-toggle button');
+    const root = document.documentElement;
+
+    function apply(scale) {
+      root.style.setProperty('--fs-scale', scale);
+      buttons.forEach(b => {
+        b.classList.toggle('active', parseFloat(b.dataset.scale) === parseFloat(scale));
+      });
+      try { localStorage.setItem(KEY, scale); } catch(e) {}
+    }
+
+    let saved = 1;
+    try {
+      const v = localStorage.getItem(KEY);
+      if (v) saved = parseFloat(v);
+    } catch(e) {}
+    apply(saved);
+
+    buttons.forEach(b => {
+      b.addEventListener('click', () => apply(b.dataset.scale));
+    });
+  })();
+</script>
+
+</body>
+</html>
