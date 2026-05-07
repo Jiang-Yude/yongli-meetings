@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>永力扶輪社｜2026-05-03 報告書架構＋AI 工作坊規劃</title>
+  <style>
+    :root {
+      --bg: #f4ede6;
+      --bg-soft: #fbf7f2;
+      --ink: #4a3524;
+      --muted: #7a5a47;
+      --gold: #c6a16e;
+      --gold-active: #b8916a;
+      --gold-soft: rgba(198,161,110,0.18);
+      --line: rgba(198,161,110,0.25);
+      --shadow: 0 12px 36px rgba(74,53,36,0.09);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1080px;
+      --panel: rgba(255,250,245,0.94);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(198,161,110,0.14), transparent 30%),
+        radial-gradient(circle at top right, rgba(122,90,71,0.11), transparent 25%),
+        linear-gradient(180deg, #f8f2eb 0%, var(--bg) 50%, #ede3da 100%);
+      font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+    body::before {
+      content:"";
+      position:fixed; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(87,62,48,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(87,62,48,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.3), transparent 65%);
+    }
+    h1,h2,h3 { margin:0; font-family:"Noto Serif TC","PMingLiU",serif; line-height:1.25; }
+    a { color:inherit; text-decoration:none; }
+
+    .page-shell {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 0 auto;
+      padding: 24px 0 72px;
+      position: relative; z-index:1;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      position: sticky; top: 14px; z-index: 40;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.38);
+      border-radius: 999px;
+      background: rgba(43,29,22,0.84);
+      backdrop-filter: blur(16px);
+      color: #fff9f2;
+    }
+    .topbar .brand { font-size: 0.93rem; font-weight: 700; letter-spacing: 0.06em; }
+    .topbar nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .topbar nav a {
+      padding: 7px 13px; border-radius: 999px;
+      color: rgba(255,249,242,0.82); font-size: 0.86rem;
+      transition: background 0.2s;
+    }
+    .topbar nav a:hover { background: rgba(255,255,255,0.11); }
+
+    /* HERO */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 48px 44px 40px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, rgba(43,28,22,0.97), rgba(78,53,40,0.96));
+      color: #fff8f1;
+      margin-bottom: 16px;
+    }
+    .hero::after {
+      content:""; position:absolute; inset: auto -4% -18% auto;
+      width:260px; height:260px; border-radius:50%;
+      background: radial-gradient(circle, rgba(198,161,110,0.2), transparent 68%);
+      filter: blur(14px);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap:8px;
+      padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: #f6ddbe; font-size: 0.82rem; letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      margin-bottom: 12px; max-width: 18ch;
+    }
+    .hero .tagline {
+      font-size: 1.06rem;
+      color: rgba(255,246,238,0.8);
+      margin-bottom: 18px; max-width: 620px;
+    }
+    .meta-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+    .meta-chip {
+      padding: 7px 13px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,249,242,0.84); font-size: 0.86rem;
+    }
+    .hero-roadmap { display:flex; flex-wrap:wrap; gap:0; }
+    .roadmap-pill {
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,246,238,0.82); font-size: 0.88rem;
+      display:flex; align-items:center; gap:7px;
+    }
+    .roadmap-pill:first-child { border-radius: 14px 0 0 14px; }
+    .roadmap-pill:last-child { border-radius: 0 14px 14px 0; }
+    .roadmap-pill strong { color: #f8d9a6; }
+    .roadmap-pill .arr { opacity:0.45; }
+
+    /* FILTER BAR */
+    .filter-bar { padding: 8px 0; margin-bottom: 16px; }
+    .filter-inner {
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 14px 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #c6a16e, #b8916a);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 6px 24px rgba(122,90,71,0.28);
+    }
+    .filter-header { display: flex; flex-direction: column; gap: 3px; }
+    .filter-label {
+      font-size: 1.12rem; font-weight: 700; color: #fff8f0;
+      font-family: "Noto Serif TC","PMingLiU",serif; line-height: 1.3;
+    }
+    .filter-hint { font-size: 0.95rem; color: rgba(255,248,240,0.82); line-height: 1.5; }
+    .filter-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .filter-divider { width:1px; height:20px; background:rgba(255,255,255,0.3); margin:0 3px; flex-shrink:0; }
+    .filter-btn {
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent; color: rgba(255,248,240,0.9);
+      font-size: 0.9rem; font-family: inherit;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-btn:hover { background: rgba(255,255,255,0.18); color: #fff8f0; border-color: rgba(255,255,255,0.6); }
+    .filter-btn.active {
+      background: #fff8f0; color: #b8916a;
+      border-color: #fff8f0; font-weight: 700;
+    }
+
+    /* SECTION CARD */
+    .section-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      padding: 34px; border-radius: var(--radius-xl);
+      margin-top: 18px;
+    }
+    .section-tag {
+      display: inline-block; margin-bottom: 10px;
+      padding: 6px 12px; border-radius: 999px;
+      background: var(--gold-soft); color: #594136;
+      font-size: 0.79rem; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .section-head { margin-bottom: 22px; }
+    .section-head h2 { font-size: clamp(1.7rem,3vw,2.4rem); color: var(--ink); margin-bottom: 5px; }
+    .section-head p { margin:0; color:var(--muted); font-size:0.97rem; }
+
+    /* CONSENSUS GROUPS */
+    .consensus-stack { display:grid; gap:14px; }
+    .consensus-group {
+      padding: 22px; border-radius: var(--radius-lg);
+      background: var(--bg-soft); border: 1px solid var(--line);
+      box-shadow: 0 8px 22px rgba(74,53,36,0.06);
+    }
+    .cg-head {
+      display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+      margin-bottom: 12px; flex-wrap:wrap;
+    }
+    .cg-kicker {
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 5px 10px; border-radius:999px;
+      background: var(--gold-soft); color:#594136;
+      font-size:0.74rem; font-weight:700; letter-spacing:0.05em;
+      margin-bottom: 8px;
+    }
+    .cg-title { font-size: 1.12rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .cg-summary { margin:0; color:var(--muted); font-size:0.9rem; line-height:1.65; }
+    .cg-list { margin: 0; padding-left: 1.15rem; display:grid; gap:8px; }
+    .cg-list li { color: var(--ink); font-size:0.93rem; line-height:1.7; }
+    .cg-note {
+      margin-top: 12px; padding: 12px 14px;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      background: rgba(198,161,110,0.08);
+      color: var(--muted); font-size:0.88rem; line-height:1.65;
+    }
+    .c-persons { display:flex; flex-wrap:wrap; gap:4px; }
+    .person-chip {
+      padding: 3px 8px; border-radius:999px;
+      font-size: 0.73rem; background:rgba(74,53,36,0.08); color:var(--muted);
+    }
+
+    /* TASK LIST */
+    .task-list { display:grid; gap:9px; margin-top:4px; }
+    .task-item {
+      display: grid; grid-template-columns: 34px 1fr;
+      gap: 12px; align-items: start;
+      padding: 13px 15px; border-radius: var(--radius-md);
+      background: var(--bg-soft); border: 1px solid var(--line);
+    }
+    .task-num {
+      width:27px; height:27px; border-radius:8px;
+      background:var(--gold-soft);
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.78rem; font-weight:700; color:#594136; flex-shrink:0; margin-top:2px;
+    }
+    .task-content strong { color:var(--ink); display:block; margin-bottom:4px; font-size:0.94rem; }
+    .task-meta { display:flex; flex-wrap:wrap; gap:5px; }
+    .task-who {
+      padding:3px 9px; border-radius:999px;
+      background:rgba(198,161,110,0.16); color:#594136;
+      font-size:0.77rem; font-weight:600;
+    }
+    .task-when {
+      padding:3px 9px; border-radius:999px;
+      background:rgba(74,53,36,0.07); color:var(--muted); font-size:0.77rem;
+    }
+    .task-t-report { padding:3px 9px; border-radius:999px; background:rgba(198,161,110,0.13); color:#594136; font-size:0.75rem; }
+    .task-t-ai { padding:3px 9px; border-radius:999px; background:rgba(80,110,80,0.1); color:#3a5a3a; font-size:0.75rem; }
+    .task-t-biz { padding:3px 9px; border-radius:999px; background:rgba(150,100,80,0.13); color:#7a3a25; font-size:0.75rem; }
+
+    /* WORKSHOP TIER */
+    .tier-grid {
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px;
+    }
+    .tier-card {
+      padding: 22px; border-radius: var(--radius-lg);
+      background: var(--bg-soft); border: 1px solid var(--line);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .tier-level {
+      display:inline-block; padding:4px 10px; border-radius:999px;
+      background:var(--gold-soft); color:#594136;
+      font-size:0.78rem; font-weight:700; letter-spacing:0.06em;
+      width:fit-content;
+    }
+    .tier-name { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+    .tier-meta { display:flex; flex-wrap:wrap; gap:5px; font-size:0.82rem; color:var(--muted); }
+    .tier-meta span { padding:3px 8px; border-radius:999px; background:rgba(74,53,36,0.07); }
+    .tier-desc { font-size:0.9rem; color:var(--muted); line-height:1.65; margin:0; }
+    .tier-logic {
+      margin-top:auto; padding-top:10px; border-top:1px dashed var(--line);
+      font-size:0.85rem; color:var(--ink); font-weight:500;
+    }
+
+    /* PARTICIPANT BLOCKS */
+    .participant-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .participant-block {
+      padding:18px; border-radius:var(--radius-lg);
+      background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .participant-block.full-width { grid-column:1/-1; }
+    .p-name { font-size:1.03rem; font-weight:700; color:var(--ink); margin-bottom:2px; }
+    .p-role { font-size:0.8rem; color:var(--gold-active); font-weight:600; margin-bottom:10px; }
+    .p-points { margin:0; padding-left:1.2rem; }
+    .p-points li { font-size:0.91rem; color:var(--muted); margin-bottom:4px; line-height:1.65; }
+    .p-quote {
+      margin-top:10px; padding:10px 12px;
+      border-left:3px solid var(--gold);
+      background:rgba(198,161,110,0.08);
+      font-size:0.86rem; color:var(--ink); font-style:italic; line-height:1.6;
+    }
+
+    /* INSIGHT BLOCKS */
+    .insight-list { display:grid; gap:10px; }
+    .insight-block {
+      padding:18px 20px; border-radius:var(--radius-md);
+      background:linear-gradient(135deg,rgba(198,161,110,0.11),rgba(122,90,71,0.07));
+      border:1px solid var(--line);
+    }
+    .insight-label {
+      font-size:0.78rem; font-weight:700; color:var(--gold-active);
+      letter-spacing:0.06em; margin-bottom:7px;
+      display:inline-block; padding:3px 10px; border-radius:999px;
+      background:rgba(255,255,255,0.6);
+    }
+    .insight-title { font-size:1rem; font-weight:700; color:var(--ink); margin:6px 0 8px; }
+    .insight-block p { margin:0 0 6px; font-size:0.92rem; color:var(--ink); line-height:1.7; }
+    .insight-tag {
+      display:inline-block; padding:2px 8px; border-radius:999px;
+      background:rgba(74,53,36,0.07); color:var(--muted);
+      font-size:0.72rem; margin-right:4px;
+    }
+    .insight-action {
+      margin-top:10px; padding:10px 12px; border-radius:10px;
+      background:rgba(255,255,255,0.7);
+      font-size:0.88rem; color:var(--ink); line-height:1.65;
+    }
+    .insight-action strong { color:var(--gold-active); }
+
+    /* NEXT STEPS */
+    .next-grid { display:grid; gap:10px; }
+    .next-block {
+      padding:16px 18px; border-radius:var(--radius-md);
+      background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .next-block h4 {
+      margin:0 0 8px; font-size:1rem; color:var(--ink);
+      display:flex; align-items:center; gap:8px;
+    }
+    .next-block h4::before {
+      content:""; display:inline-block;
+      width:4px; height:16px; border-radius:2px; background:var(--gold);
+    }
+    .next-block ul { margin:0; padding-left:1.15rem; display:grid; gap:5px; }
+    .next-block li { font-size:0.9rem; color:var(--ink); line-height:1.65; }
+
+    /* NO-RESULT */
+    .no-result-msg {
+      padding:22px; text-align:center; color:var(--muted);
+      border:1px dashed var(--line); border-radius:var(--radius-md);
+      margin-top:10px; font-size:0.93rem;
+    }
+
+    /* SUBSECTION */
+    .subsection { margin-top:26px; padding-top:22px; border-top:1px solid var(--line); }
+    .sub-title {
+      font-size:1.15rem; color:var(--ink); margin-bottom:14px;
+      display:flex; align-items:center; gap:9px;
+    }
+    .sub-title::before {
+      content:""; display:inline-block;
+      width:4px; height:18px; border-radius:2px; background:var(--gold);
+    }
+
+    .footer-note {
+      margin-top:18px; padding:16px 20px; border-radius:16px;
+      background:rgba(74,53,36,0.07); border:1px solid var(--line);
+      font-size:0.88rem; color:var(--muted);
+    }
+    .footer-note strong { color:var(--ink); }
+
+    /* DOC LINKS */
+    .doc-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .doc-link {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:8px 14px; border-radius:8px;
+      background:rgba(255,248,240,0.85); color:var(--gold-active);
+      border:1px solid var(--line);
+      font-size:0.86rem; font-weight:600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .doc-link:hover {
+      background: linear-gradient(135deg, #c6a16e, #b8916a);
+      color: #fff8f0;
+    }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width:960px) {
+      .tier-grid { grid-template-columns:1fr; }
+      .participant-grid { grid-template-columns:1fr; }
+      .participant-block.full-width { grid-column:1; }
+    }
+    @media (max-width:660px) {
+      .page-shell { width:min(calc(100% - 20px),var(--max-width)); padding-top:14px; }
+      .topbar { border-radius:22px; flex-direction:column; align-items:flex-start; }
+      .hero { padding:26px 20px; border-radius:24px; }
+      .hero h1 { font-size:1.85rem; }
+      .filter-inner { border-radius:20px; }
+      .section-card { padding:20px 16px; }
+      .hero-roadmap { gap:0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">永力扶輪社 • 2026-05-03 會議</div>
+    <nav>
+      <a href="#s1">1 共識決策</a>
+      <a href="#s2">2 待辦清單</a>
+      <a href="#s3">3 工作坊定調</a>
+      <a href="#s4">4 角色定位</a>
+      <a href="#s5">5 隱性訊息</a>
+      <a href="#s6">6 後續建議</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">永力扶輪社 × 永續報告書 × AI 工作坊 · 2026-05-03</div>
+    <h1>報告書架構定稿＋AI 工作坊三階段定調</h1>
+    <p class="tagline">這場會議真正談的不是一份報告，是把永力社升級為「以報告書為入口的永續影響力數位平台」的第一個 milestone。</p>
+    <div class="meta-list">
+      <div class="meta-chip">日期｜2026 年 5 月 3 日</div>
+      <div class="meta-chip">時長｜約 2 小時 19 分</div>
+      <div class="meta-chip">與會｜CP / Vincent / Rich / Vicky / James / 江昱德</div>
+      <div class="meta-chip">共識｜5 大主軸</div>
+      <div class="meta-chip">待辦｜9 項</div>
+    </div>
+    <div class="hero-roadmap">
+      <div class="roadmap-pill"><strong>5/10</strong> 資料收齊</div>
+      <div class="roadmap-pill"><span class="arr">→</span> <strong>5/16</strong> 第一版上線</div>
+      <div class="roadmap-pill"><span class="arr">→</span> <strong>6 月</strong> 對外揭露</div>
+      <div class="roadmap-pill"><span class="arr">→</span> <strong>下半年</strong> AI 工作坊／生態圈</div>
+    </div>
+    <div class="doc-links">
+      <a class="doc-link" href="record.md">📄 完整三層次會議記錄</a>
+      <a class="doc-link" href="transcript.md">📝 原始逐字稿</a>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <div class="filter-header">
+        <span class="filter-label">選擇想看的視角</span>
+        <span class="filter-hint">點人物只看相關段落・點主題追加篩選・「全部」還原</span>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <span class="filter-divider"></span>
+        <button class="filter-btn" data-filter="cp">CP林學賢</button>
+        <button class="filter-btn" data-filter="vincent">Vincent陳明勇</button>
+        <button class="filter-btn" data-filter="rich">Rich黃丞隆</button>
+        <button class="filter-btn" data-filter="vicky">Vicky</button>
+        <button class="filter-btn" data-filter="james">James</button>
+        <button class="filter-btn" data-filter="aibi">艾筆</button>
+        <button class="filter-btn" data-filter="jiang">江昱德</button>
+        <span class="filter-divider"></span>
+        <button class="filter-btn" data-filter="report">永續報告書</button>
+        <button class="filter-btn" data-filter="ai">AI工作坊</button>
+        <button class="filter-btn" data-filter="twin">數位分身</button>
+        <button class="filter-btn" data-filter="biz">商業模式</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- §1 共識決策 -->
+  <section id="s1" class="section-card reveal">
+    <span class="section-tag">1 共識決策</span>
+    <div class="section-head">
+      <h2>5 大共識主軸</h2>
+      <p>會議不是只談 5/16 一版報告書，而是定調「短期版面 → 中期 AI 工作坊 → 長期數位分身平台」的三階梯。</p>
+    </div>
+    <div class="consensus-stack">
+
+      <article class="consensus-group" data-tags="cp vincent jiang aibi report">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊一｜短期交付</div>
+            <div class="cg-title">5/16 第一版報告書如期上線</div>
+            <p class="cg-summary">採網站化、卡片化、動態呈現，不再是傳統紙本一頁一頁。9 位有資料的社友先放，其他社友先補基本欄位。第一版以「示範版」對內發布，6 月才正式對外揭露，中間 1 個月用來補資料、調版面。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">Vincent</span><span class="person-chip">江昱德</span><span class="person-chip">艾筆</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>5/16 第一版以「示範版」對內公布（永利社年會＋論壇場合）</li>
+          <li>6 月才正式對外揭露</li>
+          <li>沒受訪的社員：用一句話／一張照片帶過，不卡進度</li>
+          <li>照片統一由艾筆提供，社友不用自己交</li>
+          <li>QR Code 連同一個網址（一個 QR 就好），多點部署：主視覺、會議廳、演講台</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="cp vincent jiang report">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊二｜架構</div>
+            <div class="cg-title">報告書架構走 ESG 框架 + 永力社特色</div>
+            <p class="cg-summary">基本層：環境／社會／治理三大區塊。特色層：人物誌、服務計畫、影響力評估、培力系統等永利社獨有的差異化內容。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">Vincent</span><span class="person-chip">江昱德</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>E（環境）／S（社會）／G（治理）三大區塊</li>
+          <li>「人物誌」統合社友＋衛星社（未來可放榮譽社員、利害關係人）</li>
+          <li>影響力分析：用 Vicky 培力系統 × CP 職業即服務框架做交叉評估</li>
+          <li>未來可加：SRI 利害關係人地圖、夥伴關係矩陣、誰跟誰 1+1&gt;3</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="vincent jiang aibi report">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊三｜資料收集</div>
+            <div class="cg-title">資料收集規格表 5/10 前回填</div>
+            <p class="cg-summary">江江 5/4 晚上提供規格表單，5/10 之前社友自行填寫。極簡 4 題：中文姓名／英文 Nickname／頭銜／個人簡介。照片不收（艾筆統一給）。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">江昱德</span><span class="person-chip">Vincent</span><span class="person-chip">艾筆</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>4 題必填：中文姓名、英文名／Nickname、頭銜、個人簡介</li>
+          <li>英文名用於個人頁網址（如 /people/cp-impact、/people/vicky）</li>
+          <li>頭銜要寫完整公司全名（CP 強調）</li>
+          <li>扶輪資歷由 CP 統一彙整給江江，不發表單給社友</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="cp vincent jiang rich vicky james ai biz">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊四｜中期</div>
+            <div class="cg-title">AI 工作坊三階段規劃</div>
+            <p class="cg-summary">L1 零基礎裝機（3hr / 1,000 元）／L2 AI 工作流（5hr / 3,980 元）／L3 開創型一對一。對應的不是技術深度，是商業模式的三層金字塔——L1 走量篩選、L2 規模化主獲利、L3 孵化案例。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">江昱德</span><span class="person-chip">CP</span><span class="person-chip">Vincent</span><span class="person-chip">Rich</span><span class="person-chip">Vicky</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>對象優先順序：核心社友 → 衛星社 → 社友的核心夥伴／團隊 → 利害關係人</li>
+          <li>Vicky 的關鍵需求：團隊培力（她有團隊但都零基礎，自己很辛苦）</li>
+          <li>Rich 的「課前問卷分析法」入課：用 AI 分析學員真實痛點，72hr 內 close</li>
+          <li>Rich 提供光華助教資源（裝機合作）</li>
+          <li>江江會議原話：「我真正賣的不是教 AI 工具，是設計工作流＋累積知識庫的能力」</li>
+        </ul>
+      </article>
+
+      <article class="consensus-group" data-tags="cp vincent jiang james twin biz">
+        <div class="cg-head">
+          <div>
+            <div class="cg-kicker">區塊五｜長期願景</div>
+            <div class="cg-title">虛擬商務大樓 / 數位分身平台</div>
+            <p class="cg-summary">永利社定位「商務中心」，社友是進駐企業。階段性：先讓社友習慣整理資料 → 建 AI 辦公室 → 數位分身 → 數位商會。江江反覆強調「資料不要綁平台」。</p>
+          </div>
+          <div class="c-persons">
+            <span class="person-chip">CP</span><span class="person-chip">江昱德</span><span class="person-chip">Vincent</span><span class="person-chip">James</span>
+          </div>
+        </div>
+        <ul class="cg-list">
+          <li>江江核心定錨：「資料不要綁定任何一個平台，而是讓所有平台對接」</li>
+          <li>短期用 Google Drive，半年內評估 GitHub</li>
+          <li>James 已用豆包養 3 個數字人，提案「資料規格直接設計成數字人餵養格式」</li>
+          <li>Vincent 自承「我已經踏入這條路了」（前一晚跟江江私下對接過）</li>
+          <li>CP 拋出「永利幣／影響力排行」概念，待後續具體化</li>
+        </ul>
+        <div class="cg-note">這一區塊先保留為方向性共識，不代表這些制度已成熟，而是大家已開始朝這個方向共同理解與試作。</div>
+      </article>
+
+    </div>
+    <div class="no-result-msg" id="nr-s1" style="display:none">此視角沒有相關共識決策內容</div>
+  </section>
+
+  <!-- §2 重點待辦 -->
+  <section id="s2" class="section-card reveal">
+    <span class="section-tag">2 重點待辦</span>
+    <div class="section-head">
+      <h2>9 項待辦清單</h2>
+      <p>點人物標籤可快速聚焦自己的行動項目。</p>
+    </div>
+    <div class="task-list">
+
+      <div class="task-item" data-tags="jiang report">
+        <div class="task-num">01</div>
+        <div class="task-content">
+          <strong>提供報告書資料收集規格表單（4 題版）</strong>
+          <div class="task-meta">
+            <span class="task-who">江江</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/4 晚上</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="vincent report">
+        <div class="task-num">02</div>
+        <div class="task-content">
+          <strong>收集 9 位社友的中文姓名／英文名／頭銜／簡介</strong>
+          <div class="task-meta">
+            <span class="task-who">Vincent + 各社友</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/10 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp aibi report">
+        <div class="task-num">03</div>
+        <div class="task-content">
+          <strong>補齊衛星社員資料（CP 給職業簡介、艾筆給照片）</strong>
+          <div class="task-meta">
+            <span class="task-who">CP + 艾筆</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/10 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="vincent report">
+        <div class="task-num">04</div>
+        <div class="task-content">
+          <strong>報告書 Domain 與 QR Code 處理（暫用免費網域，QR 由 Nick 製作）</strong>
+          <div class="task-meta">
+            <span class="task-who">Vincent + Nick</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="jiang report">
+        <div class="task-num">05</div>
+        <div class="task-content">
+          <strong>報告書版面細節調整（左上 LOGO、報告書名稱、簡介區塊、ESG 架構）</strong>
+          <div class="task-meta">
+            <span class="task-who">江江</span><span class="task-t-report">報告書</span>
+            <span class="task-when">5/16 前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="vincent report">
+        <div class="task-num">06</div>
+        <div class="task-content">
+          <strong>評估報告書專屬 Line@ 是否要做</strong>
+          <div class="task-meta">
+            <span class="task-who">Vincent</span><span class="task-t-report">報告書</span>
+            <span class="task-when">待議</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="rich vicky jiang ai">
+        <div class="task-num">07</div>
+        <div class="task-content">
+          <strong>設計課前／課後／立會問卷模板（Rich + Vicky 提案，江江設計）</strong>
+          <div class="task-meta">
+            <span class="task-who">Rich + Vicky + 江江</span><span class="task-t-ai">AI</span>
+            <span class="task-when">後續</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="cp vincent jiang ai biz">
+        <div class="task-num">08</div>
+        <div class="task-content">
+          <strong>AI 工作坊內容定位／盤點報名者 AI 程度（Rich 問卷模型）</strong>
+          <div class="task-meta">
+            <span class="task-who">CP + Vincent + 江江</span><span class="task-t-ai">AI</span><span class="task-t-biz">商業</span>
+            <span class="task-when">工作坊前</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-item" data-tags="jiang report">
+        <div class="task-num">09</div>
+        <div class="task-content">
+          <strong>江江回去整理會議紀錄＋規格（即本份檔案）</strong>
+          <div class="task-meta">
+            <span class="task-who">江江</span><span class="task-t-report">報告書</span>
+            <span class="task-when">隔天晚上</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-result-msg" id="nr-s2" style="display:none">此視角沒有相關待辦項目</div>
+  </section>
+
+  <!-- §3 工作坊三階段 -->
+  <section id="s3" class="section-card reveal">
+    <span class="section-tag">3 工作坊定調</span>
+    <div class="section-head">
+      <h2>AI 工作坊三階段</h2>
+      <p>這場會議的核心交付物之一。表面看是技術深度分級，實際上是商業模式的三層金字塔。</p>
+    </div>
+    <div class="tier-grid">
+
+      <article class="tier-card" data-tags="jiang ai biz">
+        <span class="tier-level">L1 入門</span>
+        <h3 class="tier-name">完全零基礎裝機工作坊</h3>
+        <div class="tier-meta"><span>3 小時</span><span>1,000 元 / 人</span><span>限線上實體</span></div>
+        <p class="tier-desc">教安裝、下載、最基礎環境設定，跑 1~2 個基本範例熟悉操作。對象：完全沒用過 AI 的人。可處理基本辦公（轉 PDF、做海報、做設計）。</p>
+        <div class="tier-logic">商業邏輯：大量、低單價、走量，篩出潛在 L2 客戶。江江「真正賺錢」不靠這層。</div>
+      </article>
+
+      <article class="tier-card" data-tags="jiang ai biz">
+        <span class="tier-level">L2 進階</span>
+        <h3 class="tier-name">AI 工作流工作坊</h3>
+        <div class="tier-meta"><span>5 小時</span><span>3,980 元 / 人</span><span>規模化</span></div>
+        <p class="tier-desc">學用 AI 優化現有工作流，包括寫 App、做技能包等更新鮮的應用。對象：已有 AI 基礎、想升級的中小企業老闆／一人公司。</p>
+        <div class="tier-logic">商業邏輯：規模化的主獲利點，5 小時 3,980 元對中小企業老闆是合理價位。</div>
+      </article>
+
+      <article class="tier-card" data-tags="jiang vicky vincent ai biz twin">
+        <span class="tier-level">L3 開創型</span>
+        <h3 class="tier-name">客製 AI 系統一對一</h3>
+        <div class="tier-meta"><span>一對一</span><span>建議 30,000 元起</span><span>孵化案例</span></div>
+        <p class="tier-desc">不是學 AI，是讓 AI 來學「我」。直接把使用者的獨特系統（如 Vicky 的旅學堂培力系統、Vincent 的工作架構）導入 AI。目前只能一對一，未來累積案例後可小班。</p>
+        <div class="tier-logic">商業邏輯：少量、高價、孵化案例。每個 L3 案例都能變成 L2 教材。</div>
+      </article>
+
+    </div>
+
+    <div class="footer-note" style="margin-top:18px;">
+      <strong>江江原話：</strong>「我真正賣的不是教你學 AI 工具，我真正賣的是設計工作流跟累積知識庫的能力。」<br>
+      <strong>規模化路徑：</strong>L1 → L2 → L3 → 數位分身培育 → 數位商會（江江「真正規模化賺錢」的終點）。
+    </div>
+  </section>
+
+  <!-- §4 角色定位 -->
+  <section id="s4" class="section-card reveal">
+    <span class="section-tag">4 角色定位</span>
+    <div class="section-head">
+      <h2>6 位與會者的發言模式</h2>
+      <p>本段只描述「會議裡觀察到的發言行為與互動模式」，不評價角色性格。</p>
+    </div>
+
+    <div class="participant-grid">
+
+      <article class="participant-block" data-tags="cp">
+        <div class="p-name">CP 林學賢</div>
+        <div class="p-role">定錨者／拍板者／教育者</div>
+        <ul class="p-points">
+          <li>發言佔比最高，主導大局與商業判斷</li>
+          <li>反覆強調「不要免費」「成本要講」（至少 3 次）</li>
+          <li>用「報告書是大蝦頭」「商務中心」「永利幣」等比喻把抽象概念落地</li>
+          <li>花 7 分鐘教扶輪「五大服務、七大交流領域、四大挑戰、四大優先」結構</li>
+          <li>關鍵時間點：13:13（大局展望）、37:36（扶輪結構）、52:42（工作坊深度判斷）</li>
+        </ul>
+        <div class="p-quote">「這一屆是影響力元年。⋯⋯ 我們不希望開局去做這件事，那你會發現說，其實現在感覺像 BGM，好像也一直在 follow 我們在做這個事。」</div>
+      </article>
+
+      <article class="participant-block" data-tags="vincent">
+        <div class="p-name">Vincent 陳明勇</div>
+        <div class="p-role">統籌者／協調者／執行者</div>
+        <ul class="p-points">
+          <li>發言佔比第二高，把 CP 的願景翻譯成 milestone</li>
+          <li>用 Mac vs Windows 比喻把江江的「關聯性資料庫」抬到「穩定基礎」位置</li>
+          <li>會議裡第一次承認「我已經踏入這條路了」（指數位分身）</li>
+          <li>反覆把跑遠的話題拉回 5/16 報告書執行細節</li>
+          <li>關鍵時間點：26:45（milestone 收斂）、51:51（工作坊催促）、1:30:04（拉回主題）</li>
+        </ul>
+        <div class="p-quote">「就像 Mac 系統跟 Windows 系統。Windows 一代就不（穩），那蘋果系統就是一直可以持續性地去運作。」</div>
+      </article>
+
+      <article class="participant-block" data-tags="jiang">
+        <div class="p-name">江昱德 江江</div>
+        <div class="p-role">外部專業顧問／系統設計者</div>
+        <ul class="p-points">
+          <li>發言密度低於 CP、Vincent，等被點名才推進</li>
+          <li>用「兩段式分離」（資料／平台）一句話定錨技術核心</li>
+          <li>給出三階段工作坊架構，這是會議的關鍵交付物</li>
+          <li>收尾用「明天晚上給規格」明確交付</li>
+          <li>關鍵時間點：04:09（架構提案）、49:17（資料平台分離）、1:01:12（工作坊架構）</li>
+        </ul>
+        <div class="p-quote">「我真正賣的不是教你學 AI 工具，我真正賣的是設計工作流跟累積知識庫的能力。」</div>
+      </article>
+
+      <article class="participant-block" data-tags="rich">
+        <div class="p-name">Rich 黃丞隆</div>
+        <div class="p-role">加碼者／放大者／不同視角輸入</div>
+        <ul class="p-points">
+          <li>不主導議題，但每次發言都把當下話題推到下一層</li>
+          <li>用棒球進階報告 vs 一般打擊率比喻定位「永利社報告書的差異化」</li>
+          <li>分享「課前問卷分析法」（20 個篩 3 個成交）</li>
+          <li>提出「永續影響力生態圈」概念</li>
+          <li>1:27:11 點出「沒講話的人也帶有能量，可以分析」</li>
+          <li>關鍵時間點：29:28（棒球比喻）、54:08（問卷實戰）、1:18:33（生態圈）</li>
+        </ul>
+        <div class="p-quote">「市面上大部分的（ESG 報告）叫做一般的報告，打擊率大家都看得到，但我們現在做的是進階報告——這個人他可能沒有什麼頭銜，可是當我們把他放在位置的時候，他可以發揮出無比巨大的影響力。」</div>
+      </article>
+
+      <article class="participant-block" data-tags="vicky">
+        <div class="p-name">Vicky</div>
+        <div class="p-role">提問者／需求代言／核心觀點輸入</div>
+        <ul class="p-points">
+          <li>線上參與，當天為女兒生日要趕場，發言短、集中、命中要害</li>
+          <li>第一次發言：紀錄＋協作＋角色定位</li>
+          <li>第二次發言：明確提出「團隊培力需求」（自己有團隊但都零基礎）</li>
+          <li>提案：每次例會／立會發課前後問卷</li>
+          <li>反對表面化：「大家時間有限，放大影響力的最大關鍵在於協作」</li>
+          <li>關鍵時間點：34:12（反對表面化）、1:11:15（團隊培力需求）</li>
+        </ul>
+        <div class="p-quote">「永利社這邊的培力會有一個好處是看到不同產業，大家一起在這件事情上的努力跟就有一點點競爭，這個部分會激勵他們。不然其實我們常常都是同溫層。」</div>
+      </article>
+
+      <article class="participant-block" data-tags="james">
+        <div class="p-name">James</div>
+        <div class="p-role">先行者／實驗者</div>
+        <ul class="p-points">
+          <li>全會議只發言一次（46:24），但這次發言把會議推進一大步</li>
+          <li>已用豆包養 3 個數字人</li>
+          <li>關鍵提案：「把這次資料規格直接設計成數字人餵養格式」</li>
+          <li>自承「成果無法量化」（這是個訊號）</li>
+          <li>會議裡的「未來代言人」</li>
+        </ul>
+        <div class="p-quote">「不如我們藉這次把這個變成是未來我們要餵養數字人的那個格式，也把它弄出來。」</div>
+      </article>
+
+      <article class="participant-block full-width" data-tags="aibi">
+        <div class="p-name">艾筆（不在現場）</div>
+        <div class="p-role">資料樞紐／訪問框架持有者</div>
+        <ul class="p-points">
+          <li>沒在會議發言，但事先交了 2 個書面問題（江江幫忙念）</li>
+          <li>負責社員拍照與訪談</li>
+          <li>會議中被 Rich／CP 提到的關鍵框架持有者：「受益者改變故事」訪問框架</li>
+          <li>5/16 第一版的核心資源提供者（照片＋衛星社員清單）</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- §5 隱性訊息 -->
+  <section id="s5" class="section-card reveal">
+    <span class="section-tag">5 隱性訊息</span>
+    <div class="section-head">
+      <h2>7 條值得追蹤的潛台詞</h2>
+      <p>本段為 AI 推測。建議江江補充非語言觀察會更精準（眼神、語氣、迴避話題等）。</p>
+    </div>
+    <div class="insight-list">
+
+      <article class="insight-block" data-tags="cp biz">
+        <span class="insight-label">D1</span>
+        <div class="insight-title">CP 反覆強調「不要免費」的潛台詞</div>
+        <p>整場至少 3 次明確說「不要免費」「成本要講」「老闆你一定要跟我講」。</p>
+        <p><span class="insight-tag">推測 1</span>過去吃過「義務付出沒人珍惜」的虧</p>
+        <p><span class="insight-tag">推測 2</span>向其他社員（特別是 Vicky、Rich、艾筆）暗示「未來有商業模式時，要付給做事的人」</p>
+        <p><span class="insight-tag">推測 3</span>把自己定位為「老闆／創辦人」，不希望被當「拗免費」的客戶</p>
+        <div class="insight-action"><strong>建議行動：</strong>後續設計工作坊報價時，給 CP 一份透明明細（成本、毛利、規模化路徑），他會非常買單這個透明度。</div>
+      </article>
+
+      <article class="insight-block" data-tags="vincent twin jiang">
+        <span class="insight-label">D2</span>
+        <div class="insight-title">Vincent「自己也在做數位分身」的關鍵承認</div>
+        <p>48:55 Vincent 說「我已經踏入這條路了」——這之前他都是「主辦／統籌」位置，不是「學員」位置。</p>
+        <p><span class="insight-tag">推測</span>Vincent 比 CP 更早意識到「光做報告書不夠，要做數位分身」</p>
+        <p><span class="insight-tag">推測</span>Vincent 跟江江前一晚的對話可能比這場會議還深</p>
+        <div class="insight-action"><strong>建議行動：</strong>下次跟 Vincent 對接，直接從「上次跟你聊到 X，繼續推進到 Y」開始，不用從零講。</div>
+      </article>
+
+      <article class="insight-block" data-tags="rich">
+        <span class="insight-label">D3</span>
+        <div class="insight-title">Rich「沒講話的人也帶有能量」這句話的位置</div>
+        <p>1:27:11 Rich 在會議快結束時提出，CP 接話「他講話都可以分析」。Rich 接著舉「檯面上很熱血、回去沒動作」「來蹭的可能不是來蹭的」。</p>
+        <p><span class="insight-tag">推測</span>可能在影射他自己組織裡遇過的成員（不一定是永利社的）</p>
+        <p><span class="insight-tag">推測</span>含蓄提醒：5/16 後對外揭露時會吸引一批「來蹭的」「來看看的」「來找機會的」</p>
+        <div class="insight-action"><strong>建議行動：</strong>下次會議可以正面討論——「來蹭的人怎麼識別、怎麼互換、怎麼篩」可變成接下來半年的潛規則討論。</div>
+      </article>
+
+      <article class="insight-block" data-tags="vicky">
+        <span class="insight-label">D4</span>
+        <div class="insight-title">Vicky「組織倫理」這個詞的弦外之音</div>
+        <p>Rich 描述 Vicky「她基於組織倫理的情況，希望得到某些授權她才開始做」。Vicky 自己說「希望社長帶我們飛」。</p>
+        <p><span class="insight-tag">推測</span>Vicky 過去在永利社可能遇過「想做但沒授權／越線」的尷尬</p>
+        <p><span class="insight-tag">推測</span>Rich 這次特別在線上正式說「歡迎 Vicky 直接提出，我們都會盡力 support」是給她的明確授權訊號</p>
+        <div class="insight-action"><strong>建議行動：</strong>下次跟 Vicky 私下對接時，直接問「現在最想做但卡住的是什麼？哪些是授權問題、哪些是技術問題？」</div>
+      </article>
+
+      <article class="insight-block" data-tags="james twin">
+        <span class="insight-label">D5</span>
+        <div class="insight-title">James「自己玩豆包但無法量化」的訊號</div>
+        <p>「我自己做的事，反正到後來我其實自己還沒辦法量化」——這個「無法量化」是關鍵訊號。</p>
+        <p><span class="insight-tag">推測</span>James 在數位分身這條路上走得比 Vincent 還前面，但遇到「成果無法被外部辨識」的困境</p>
+        <p><span class="insight-tag">推測</span>他提的「資料規格＝數字人餵養格式」其實是想讓自己的實驗有正式入口</p>
+        <div class="insight-action"><strong>建議行動：</strong>單獨找 James 聊 3 個豆包數字人的具體場景，把它整理成案例，James 也會獲得正式被看見的價值。</div>
+      </article>
+
+      <article class="insight-block">
+        <span class="insight-label">D6</span>
+        <div class="insight-title">線上人員與現場人員的微差距</div>
+        <p>線上：Vicky、James；現場：CP、Vincent、江江、Rich（後半）。</p>
+        <p>1:30 之後的版面攻防式討論基本只發生在現場人員之間。線上人員在前半發言密集，後半幾乎只剩 Rich 在加碼。</p>
+        <p><span class="insight-tag">推測</span>報告書版面這種需要「指畫面」的討論，線上參與者很難加入</p>
+        <div class="insight-action"><strong>建議行動：</strong>下次涉及視覺／介面的會議要先準備可同步看的線上連結，避免現場優先。</div>
+      </article>
+
+      <article class="insight-block">
+        <span class="insight-label">D7</span>
+        <div class="insight-title">沒被討論到但很重要的議題（5 點）</div>
+        <p>這場會議沒花時間談的事：</p>
+        <p><span class="insight-tag">1</span>5/16 當天現場演講／導覽腳本（誰講、講什麼）</p>
+        <p><span class="insight-tag">2</span>報告書的隱私／公開政策（什麼資料公開）</p>
+        <p><span class="insight-tag">3</span>資料更新的責任歸屬（社友自 maintain 的 SOP）</p>
+        <p><span class="insight-tag">4</span>AI 工具預算與社團採購政策（個人付費 vs 集中採購）</p>
+        <p><span class="insight-tag">5</span>失敗回退機制（5/16 demo 出包的備案）</p>
+        <div class="insight-action"><strong>建議行動：</strong>以上 5 點寫入下次會議議程。</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- §6 後續建議 -->
+  <section id="s6" class="section-card reveal">
+    <span class="section-tag">6 後續建議</span>
+    <div class="section-head">
+      <h2>後續行動與下次議程</h2>
+      <p>給江江本人的後續清單，以及下次會議建議談什麼。</p>
+    </div>
+
+    <div class="next-grid">
+
+      <div class="next-block" data-tags="jiang report ai biz">
+        <h4>給江江本人的 7 個後續行動</h4>
+        <ul>
+          <li>5/4 晚上：發出規格表單（4 題版）</li>
+          <li>5/10 前：確認所有社友資料回填，特別追蹤衛星社員</li>
+          <li>5/16 前：準備 3 分鐘現場 demo 講稿，建議 Vincent 主講＋CP 30 秒開場</li>
+          <li>單獨對接 James：把豆包數字人經驗整理成案例</li>
+          <li>單獨對接 Vicky：問「最想做但卡住的是什麼」，分授權問題 vs 技術問題</li>
+          <li>單獨對接 Rich：把問卷分析方法做成永利社共用模板</li>
+          <li>給 CP 一份工作坊報價透明明細（成本／毛利／規模化路徑試算）</li>
+        </ul>
+      </div>
+
+      <div class="next-block" data-tags="cp vincent jiang report">
+        <h4>下次會議建議議程（7 點）</h4>
+        <ul>
+          <li>5/16 現場演示腳本敲定（誰講、講什麼、3-5 分鐘版本）</li>
+          <li>5/10 資料回填狀況確認</li>
+          <li>報告書 Domain 與 Line@ 決策</li>
+          <li>資料公開／隱私邊界政策</li>
+          <li>資料更新責任與頻率（社友自 maintain 的 SOP）</li>
+          <li>AI 工作坊報名機制與付費流程（用 Rich 的問卷模型）</li>
+          <li>5/16 失敗回退機制（QR 連不上、網站掛掉時的備案）</li>
+        </ul>
+      </div>
+
+      <div class="next-block" data-tags="report ai biz">
+        <h4>5 大潛在風險與應對</h4>
+        <ul>
+          <li><strong>5/10 資料回填不齊</strong>：5/8 提早催件，沒回填的用 placeholder 補位</li>
+          <li><strong>QR Code 當天打不開</strong>：準備 PDF 備援版＋截圖版，貼紙準備兩套</li>
+          <li><strong>數位分身願景被誤解為「現在就要」</strong>：5/16 demo 時明確切「現階段 / 中期 / 長期」</li>
+          <li><strong>CP 跟 Vincent 對「免費 vs 付費」尺度不一致</strong>：5/16 前定一份明確價目表，CP 拍板</li>
+          <li><strong>沒到場的 5 位社員在 6 月對成果有意見</strong>：5/16 後立刻發內部版徵求意見</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      <strong>分析口徑：</strong>本份記錄為「品質等級 B」分析（有講者區分＋時間碼，缺非語言觀察）。建議江江後續補充：CP 哪些段落情緒上揚？Vicky 兩次發言之間是否在線？Rich 提「沒講話的人」時眼神是否影射特定人？這些補上後，第三層分析可以更深一層。
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  // Reveal on scroll
+  const ro = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  // Filter logic
+  const buttons = document.querySelectorAll('.filter-btn');
+  // every element with data-tags is filterable
+  const filterables = document.querySelectorAll('[data-tags]');
+
+  // sections that should hide when nothing matches
+  const sectionMap = [
+    { id:'s1', sel:'#s1 [data-tags]', noResult:'nr-s1' },
+    { id:'s2', sel:'#s2 [data-tags]', noResult:'nr-s2' },
+  ];
+
+  // people filters are mutually exclusive among themselves
+  const peopleFilters = ['cp','vincent','rich','vicky','james','aibi','jiang'];
+  // topic filters can stack
+  const topicFilters = ['report','ai','twin','biz'];
+
+  let activePerson = null;
+  let activeTopics = new Set();
+
+  function applyFilter(){
+    filterables.forEach(el=>{
+      const tags = (el.dataset.tags||'').split(/\s+/).filter(Boolean);
+      let show = true;
+
+      if(activePerson){
+        if(!tags.includes(activePerson)) show = false;
+      }
+      if(show && activeTopics.size){
+        // require at least one matching topic
+        let hit = false;
+        activeTopics.forEach(t=>{ if(tags.includes(t)) hit = true; });
+        if(!hit) show = false;
+      }
+      el.style.display = show ? '' : 'none';
+    });
+
+    // toggle no-result message in §1, §2
+    sectionMap.forEach(s=>{
+      const items = document.querySelectorAll(s.sel);
+      const visible = Array.from(items).filter(i=>i.style.display!=='none').length;
+      const msg = document.getElementById(s.noResult);
+      if(msg) msg.style.display = visible===0 ? '' : 'none';
+    });
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const f = btn.dataset.filter;
+
+      if(f === 'all'){
+        activePerson = null;
+        activeTopics.clear();
+        buttons.forEach(b=>b.classList.toggle('active', b.dataset.filter==='all'));
+        applyFilter();
+        return;
+      }
+
+      if(peopleFilters.includes(f)){
+        if(activePerson === f){
+          activePerson = null;
+          btn.classList.remove('active');
+        } else {
+          // unset previous person
+          buttons.forEach(b=>{
+            if(peopleFilters.includes(b.dataset.filter)) b.classList.remove('active');
+          });
+          activePerson = f;
+          btn.classList.add('active');
+        }
+      } else if(topicFilters.includes(f)){
+        if(activeTopics.has(f)){
+          activeTopics.delete(f);
+          btn.classList.remove('active');
+        } else {
+          activeTopics.add(f);
+          btn.classList.add('active');
+        }
+      }
+
+      // update "all" button state
+      const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+      const anyActive = activePerson || activeTopics.size>0;
+      if(allBtn) allBtn.classList.toggle('active', !anyActive);
+
+      applyFilter();
+    });
+  });
+})();
+</script>
+</body>
+</html>
