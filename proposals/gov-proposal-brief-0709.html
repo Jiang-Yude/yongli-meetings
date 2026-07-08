@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>政府提案大統整：提什麼、為什麼、怎麼跑（7/9 會議用）</title>
+<style>
+  :root{
+    --base-font:19px;
+    --bg:#FAF7F2; --card:#fff; --border:#ece5d8; --divider:#e5dfd5;
+    --text:#1f1c17; --muted:#5c554b; --accent:#C9924A; --accent-deep:#8b6f3f;
+    --soft:#fdf3dc; --soft-border:#ead8a8; --ok:#3f7d55; --ok-bg:#e3f0e8;
+    --no:#9a6b6b; --no-bg:#f0e5e5;
+    --g1:#C9924A; --g2:#8FAE8B; --g3:#7E9BB8; --g4:#B08BA8; --g5:#C4A24D; --g6:#8a8175;
+  }
+  html{font-size:var(--base-font);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang TC","Noto Sans TC",sans-serif;line-height:1.7;}
+  .container{max-width:960px;margin:0 auto;padding:3.5rem 1.8rem 6rem;}
+  .hero .label{font-size:.7rem;letter-spacing:.15em;color:var(--accent-deep);text-transform:uppercase;margin-bottom:.8rem;}
+  .hero h1{font-size:2rem;line-height:1.35;margin:0 0 .8rem;}
+  .hero .subtitle{font-size:1rem;color:var(--muted);margin:0 0 1rem;}
+  .hero .meta{font-size:.8rem;color:#8a8175;}
+  .section{margin-top:3.6rem;}
+  .section h2{font-size:1.4rem;margin:0 0 1rem;}
+  .section h2 .num{display:block;font-size:.7rem;color:var(--accent);letter-spacing:.14em;font-weight:600;margin-bottom:.4rem;}
+  .sub{color:var(--muted);font-size:.92rem;margin:0 0 1rem;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+  .card + .card{margin-top:.9rem;}
+  .table-wrap{overflow-x:auto;margin-top:.8rem;}
+  table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px;background:var(--card);}
+  th{background:var(--accent);color:#fff;padding:.6rem .8rem;text-align:left;font-weight:700;}
+  td{border:1px solid var(--divider);padding:.6rem .8rem;vertical-align:top;}
+  .note{font-size:.8rem;color:#8a8175;margin-top:.8rem;}
+  /* GO / NO-GO */
+  .gonogo{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+  .go-card,.nogo-card{border-radius:14px;padding:1.3rem 1.5rem;}
+  .go-card{background:var(--ok-bg);border:1px solid #bcd6c5;}
+  .nogo-card{background:var(--no-bg);border:1px solid #ddc4c4;}
+  .go-card .t{color:var(--ok);font-weight:800;font-size:1.05rem;margin-bottom:.5rem;}
+  .nogo-card .t{color:var(--no);font-weight:800;font-size:1.05rem;margin-bottom:.5rem;}
+  .go-card p,.nogo-card p{margin:.3rem 0;font-size:.9rem;color:#3c3a35;}
+  /* 總覽時間軸 */
+  .phases{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap;}
+  .phase{flex:1;min-width:150px;border-radius:12px;padding:.9rem 1rem;background:var(--card);border:1px solid var(--border);border-top:5px solid var(--accent);}
+  .phase .p-t{font-weight:800;font-size:.92rem;}
+  .phase .p-d{font-size:.78rem;color:var(--accent-deep);font-weight:700;margin:.15rem 0 .35rem;}
+  .phase .p-b{font-size:.82rem;color:var(--muted);}
+  /* 甘特 */
+  .gantt{margin-top:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;overflow-x:auto;}
+  .g-head,.g-row{display:grid;grid-template-columns:11rem repeat(var(--cols),1fr);gap:2px;align-items:center;min-width:640px;}
+  .g-head div{font-size:.72rem;color:var(--accent-deep);font-weight:700;text-align:center;padding:.2rem 0;}
+  .g-head div:first-child{text-align:left;}
+  .g-row{margin-top:6px;}
+  .g-label{font-size:.82rem;font-weight:600;padding-right:.6rem;line-height:1.35;}
+  .g-cell{height:1.35rem;border-radius:6px;background:#f4efe6;position:relative;}
+  .g-bar{position:absolute;inset:0;border-radius:6px;opacity:.9;}
+  .g-bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.66rem;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;}
+  .ms{font-size:.78rem;margin-top:.8rem;color:var(--muted);}
+  .ms b{color:var(--accent-deep);}
+  /* 人卡 */
+  .people{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+  .person{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;border-top:5px solid var(--accent);}
+  .person h3{margin:0 0 .2rem;font-size:1.05rem;}
+  .person .role{font-size:.8rem;color:var(--accent-deep);font-weight:700;margin-bottom:.7rem;}
+  .chk{list-style:none;margin:0;padding:0;}
+  .chk li{display:flex;gap:.55rem;align-items:flex-start;padding:.35rem 0;font-size:.88rem;border-bottom:1px dashed var(--divider);}
+  .chk li:last-child{border-bottom:none;}
+  .chk input{margin-top:.3rem;transform:scale(1.15);accent-color:var(--accent);flex-shrink:0;}
+  .chk label{cursor:pointer;}
+  .chk .done{color:#9a9285;text-decoration:line-through;}
+  /* 摺疊 */
+  details.fold{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-top:.8rem;overflow:hidden;}
+  details.fold[open]{border-color:#E5C28A;}
+  details.fold summary{padding:.9rem 1.2rem;font-weight:700;cursor:pointer;list-style:none;position:relative;font-size:.95rem;}
+  details.fold summary::-webkit-details-marker{display:none;}
+  details.fold summary::after{content:"＋";position:absolute;right:1.2rem;top:.9rem;color:var(--accent);font-weight:700;}
+  details.fold[open] summary::after{content:"－";}
+  details.fold .fb{padding:0 1.2rem 1.2rem;font-size:.88rem;color:#453f37;}
+  details.fold .fb ul{margin:.3rem 0 .6rem;padding-left:1.2rem;}
+  details.fold .fb li{margin-bottom:.35rem;}
+  .callout{background:var(--soft);border:1px solid var(--soft-border);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1rem;font-size:.92rem;}
+  .callout .lead{font-weight:700;color:var(--accent-deep);margin:0 0 .5rem;}
+  footer{margin-top:4rem;padding-top:1.2rem;border-top:2px solid var(--divider);font-size:.78rem;color:#8a8175;line-height:1.8;text-align:center;}
+  .link-btn{display:inline-block;margin-top:.5rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;text-decoration:none;color:var(--text);font-size:.85rem;font-weight:700;}
+  @media(max-width:720px){
+    .gonogo,.people{grid-template-columns:1fr;}
+    .hero h1{font-size:1.6rem;}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <div class="label">內部工作文件・7/9 會議用・請勿外流</div>
+    <h1>政府提案大統整：<br>我們提什麼、為什麼提、怎麼跑</h1>
+    <p class="subtitle">這一頁講清楚四件事：我們到底創新什麼、為什麼值得提政府案、三個補助的先後路線、以及 7/24 這一梯今天要做的 GO／NO-GO 決定。由上往下走完就是今天的會議流程。</p>
+    <div class="meta">最近一梯：數發部案截止 2026-07-24 17:00（剩約 15 天）・完整計畫書草案 v1.6.1 已備妥</div>
+  </div>
+
+  <!-- 00A 提什麼 -->
+  <div class="section">
+    <h2><span class="num">01 / 我們到底要提什麼</span>一頁看懂提案本體</h2>
+    <div class="card">
+      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;">
+        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">主題</div>
+        <div>AI 報告治理服務：核心是一套「文件驅動的 Agent 框架」。會寫文件、會分資料夾的人，就能駕馭 AI 員工。</div>
+      </div>
+      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
+        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">解決什麼問題</div>
+        <div>組織的會議、文件、成果數據散落各處，每年寫報告從零開始；直接丟給 AI 又會編造來源，對外不敢用。</div>
+      </div>
+      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
+        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">做成什麼</div>
+        <div>把散落資料整理成組織自己的 AI 可調用知識資產，自動產出「每段都能回溯來源」的報告初稿與公益透明頁，人只做審核放行。</div>
+      </div>
+      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
+        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">受眾是誰</div>
+        <div>中小企業、公益組織、扶輪社、地方創生團隊、企業 ESG 團隊。共通點：有揭露與報告壓力，卻沒有人力和方法。</div>
+      </div>
+      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
+        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">首發場域</div>
+        <div>永力社永續報告書（原型已上線可展示），第二場域接洽中，房屋設計陪跑案同步收成效數據。</div>
+      </div>
+    </div>
+
+    <details class="fold"><summary>我們到底「創新」什麼（三個創新點＋一句技術主張）</summary>
+      <div class="fb">
+        <p><strong>技術主張：LLM 是大語言模型，不是大程式模型。</strong>市面 Agent 工具都用工程思維包裝 AI（節點、API、程式流程），我們反過來：用「文件＋資料夾」本身當系統。這是文書工作者導得進去的關鍵。</p>
+        <ul>
+          <li><strong>① 文件即系統：</strong>寫文件、分資料夾就是在設定 AI 的行為。不用工程師，改文件就是改系統。</li>
+          <li><strong>② 組織判準內建：</strong>資料庫（存）→ 知識庫（連）→ 規則庫（組織自己的判斷標準）三層架構。AI 帶著組織的判準出手，而且每段輸出可回溯來源，跟通用 ChatGPT 最大的差別在這。</li>
+          <li><strong>③ 自己會更新：</strong>導入後組織人員自己維運，不被廠商綁死。AI 模型再怎麼改版，沉澱下來的知識資產不會過時。</li>
+        </ul>
+        <p><strong>為什麼是我們：</strong>這套方法論（標籤連結法、技能包、文件即系統）已在江江的知識庫實際運轉多年、GitHub 公開可查證，永力智庫會議治理系統就是上線中的實例。我們不是從零開始研發，是把運轉中的東西產品化。</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- 00B 為什麼提 -->
+  <div class="section">
+    <h2><span class="num">02 / 為什麼值得提政府案</span>三個好處＋一個現在就開始的習慣</h2>
+    <div class="phases">
+      <div class="phase"><div class="p-t">① 補助金額</div><div class="p-b">研發成本政府出一半，讓我們敢投入把方法論做成正式產品。</div></div>
+      <div class="phase"><div class="p-t">② 公信力加倍</div><div class="p-b">政府核定案是對外的信任背書：對企業客戶、公部門、銀行都好講話，等於刷業界與政府的存在感。</div></div>
+      <div class="phase"><div class="p-t">③ 破關與累積</div><div class="p-b">補助有階梯（小案結案 → 大案資格）。每結一案，就多一張下一關的門票，長期累積。</div></div>
+    </div>
+    <div class="callout">
+      <p class="lead">配套習慣：從今天開始留痕跡</p>
+      <p>提案要證據。我們已建立「證據收集」工具（課前問卷、工作坊前後測、陪跑開案前測、證據登記表），以後每場講座、工作坊、陪跑、訪談都順手收數據。<strong>這次用不上的，下次提案都用得上。</strong>不管今天 GO 或 NO-GO，這件事都照跑。</p>
+    </div>
+  </div>
+
+  <!-- 00C 三案路線圖 -->
+  <div class="section">
+    <h2><span class="num">03 / 三案路線圖</span>近的先打，長的養著</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>順位</th><th>案子</th><th>特性</th><th>狀態與策略</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>現在</strong></td>
+            <td>數發部 AI 創新服務（7/24 截止）</td>
+            <td>主題最貼 AI 應用創新、金額大（建議求穩申請 250 到 300 萬）、文件相對不繁瑣、我們的計畫書已備妥八成</td>
+            <td>今天決定 GO／NO-GO（見下一節）。GO 就衝這 15 天。</td>
+          </tr>
+          <tr>
+            <td><strong>隨時</strong></td>
+            <td>SBIR 小型企業創新研發</td>
+            <td>Phase 1 用簡報格式、150 萬、期程六個月、門檻最低；結案後可接 Phase 2（金額更大），是長期階梯</td>
+            <td>常備退路與長期主軸：7/24 不投或沒過，內容整份轉過來。受理時程以官網公告為準。</td>
+          </tr>
+          <tr>
+            <td><strong>明年</strong></td>
+            <td>SIIR 服務業創新研發</td>
+            <td>定位契合度最高（服務模式創新正是我們主場），每年開放</td>
+            <td>今年經費已用罄，等明年。用今年收的證據與結案成果去投，勝率最高。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">重點：三案用的是同一套內容與同一批證據，只是換語言（AI 應用／研發驗證／服務模式）。所以不管投哪個，現在準備的東西都不會白做。</p>
+  </div>
+
+  <!-- 01 決策 -->
+  <div class="section">
+    <h2><span class="num">04 / 今天唯一要決定的事</span>7/24 這一梯：GO 還是 NO-GO</h2>
+    <div class="gonogo">
+      <div class="go-card">
+        <div class="t">GO 的三個條件（缺一不可）</div>
+        <p>① 申請主體確定：哪間公司、行業別屬資訊服務類（J582／J62／J63）</p>
+        <p>② 自籌款明確：補助最高只給一半，總經費 250 到 300 萬 → 自籌約 125 到 150 萬，錢從哪來要講得出</p>
+        <p>③ 核銷行政有人扛：政府案最重的是核銷文書，要有明確的人</p>
+      </div>
+      <div class="nogo-card">
+        <div class="t">NO-GO 不是輸</div>
+        <p>三個條件任一個今天給不出來，就不投這一梯。</p>
+        <p>內容整份轉投 SBIR Phase 1（150 萬、簡報格式、期程六個月、規模自己控），一個字都不浪費。</p>
+        <p>SIIR（服務業創新）今年經費已用罄，列為明年主場。</p>
+      </div>
+    </div>
+    <p class="note">判斷原則：內容已經準備到八成熟，能不能投卡在公司資格與現金，這兩件只有今天在場的人能確認。</p>
+  </div>
+
+  <!-- 02 全局 -->
+  <div class="section">
+    <h2><span class="num">05 / 全局一張圖</span>7/24 案的生命週期</h2>
+    <div class="phases">
+      <div class="phase"><div class="p-t">送件衝刺</div><div class="p-d">7/9 → 7/24</div><div class="p-b">資料到位、計畫書定稿、線上送件。江江近全職，其他人各交自己的料。</div></div>
+      <div class="phase"><div class="p-t">審查等待</div><div class="p-d">7/24 → 核定</div><div class="p-b">出席審查簡報一次。同步照常收證據（陪跑前測、場域同意），不空等。</div></div>
+      <div class="phase"><div class="p-t">執行期 M1–M4</div><div class="p-d">核定 → 11/16</div><div class="p-b">約 3.5 到 4 個月做完研發、場域導入、資安檢測。詳見第 04 節甘特。</div></div>
+      <div class="phase"><div class="p-t">結案收割</div><div class="p-d">11/16 前後</div><div class="p-b">結案報告、會計報告、資安驗證報告。拿到的是補助款＋可商轉系統＋政府背書案例。</div></div>
+    </div>
+  </div>
+
+  <!-- 03 送件衝刺甘特 -->
+  <div class="section">
+    <h2><span class="num">06 / 送件衝刺</span>7/9 到 7/24 誰在跑什麼</h2>
+    <div class="gantt" style="--cols:5;">
+      <div class="g-head">
+        <div>工作線（負責人）</div><div>7/9–11</div><div>7/12–15</div><div>7/16–19</div><div>7/20–22</div><div>7/23–24</div>
+      </div>
+      <div class="g-row"><div class="g-label">公司資格與行政資料（學賢）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);"><span>登記/行業別/自籌</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);"><span>憑證/欠稅/勞保</span></div></div>
+        <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">計畫書主筆（江江＋AI）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g2);"><span>資料丟包→72h 初稿</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g2);"><span>經費表/人力/甘特</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g2);"><span>內文定稿</span></div></div>
+        <div class="g-cell"></div><div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">佐證文件（Vincent＋江江）</div>
+        <div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g3);"><span>場域同意/驗證範例</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g3);"><span>補齊附件</span></div></div>
+        <div class="g-cell"></div><div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">資安檢測報價（江江發包）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g4);"><span>詢價</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g4);"><span>報價入經費表</span></div></div>
+        <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">審查簡報（江江）</div>
+        <div class="g-cell"></div><div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g5);"><span>製作</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g5);"><span>交叉審查修訂</span></div></div>
+        <div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">複核與送件（全員）</div>
+        <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g6);"><span>逐條對賬</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g6);"><span>線上送出 ≤7/24 17:00</span></div></div>
+      </div>
+    </div>
+    <p class="ms"><b>兩個里程碑：</b>7/11 前公司資料全到（到不了就升級討論是否放手）；7/22 完成交叉審查，留兩天緩衝送件。</p>
+  </div>
+
+  <!-- 04 執行期甘特 -->
+  <div class="section">
+    <h2><span class="num">07 / 拿到之後要跑什麼</span>執行期 M1 到 M4（核定日起，至 11/16）</h2>
+    <p class="sub">這就是「時間代價」的主體：四個月要交出下面這些東西，每月有可驗收的查核點。內容取自計畫書 v1.6.1 已定稿的分項計畫。</p>
+    <div class="gantt" style="--cols:4;">
+      <div class="g-head">
+        <div>分項工作</div><div>M1</div><div>M2</div><div>M3</div><div>M4</div>
+      </div>
+      <div class="g-row"><div class="g-label">框架核心（規則表示法／解析）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);"><span>規格書+規則20條</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);"><span>解析原型</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g1);"><span>自更新測試</span></div></div>
+      </div>
+      <div class="g-row"><div class="g-label">知識庫模組（資料匯入清理）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g2);"><span>永力社資料匯入</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g2);opacity:.55;"></div></div>
+        <div class="g-cell"></div><div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">規則庫模組（版本控管）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g5);opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g5);"><span>衝突測試集30條</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g5);opacity:.55;"></div></div>
+        <div class="g-cell"></div>
+      </div>
+      <div class="g-row"><div class="g-label">可追溯生成引擎</div>
+        <div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g3);opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g3);"><span>段級溯源 抽驗50段</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g3);opacity:.55;"></div></div>
+      </div>
+      <div class="g-row"><div class="g-label">場域導入（永力社＋第二場域）</div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g4);opacity:.55;"></div></div>
+        <div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g4);"><span>第二場域書面同意</span></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g4);"><span>報告實測 工時降幅</span></div></div>
+      </div>
+      <div class="g-row"><div class="g-label">資安檢測（外包）</div>
+        <div class="g-cell"></div><div class="g-cell"></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g6);opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:var(--g6);"><span>檢測報告交付</span></div></div>
+      </div>
+      <div class="g-row"><div class="g-label">商業化驗證＋核銷行政</div>
+        <div class="g-cell"><div class="g-bar" style="background:#c9b79a;opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:#c9b79a;opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:#c9b79a;opacity:.55;"></div></div>
+        <div class="g-cell"><div class="g-bar" style="background:#c9b79a;"><span>付費承諾+結案文書</span></div></div>
+      </div>
+    </div>
+    <p class="ms"><b>每月查核點（可驗收才算數）：</b>M1 規格書＋示範規則＋資料匯入｜M2 解析原型通過率＋衝突偵測率｜M3 段級溯源命中率＋第二場域同意｜M4 場域工時降幅＋自更新測試＋資安報告＋至少 1 家付費承諾。門檻數字以開案前測校準。</p>
+    <details class="fold"><summary>最後結案要交出什麼（成果清單）</summary>
+      <div class="fb">
+        <ul>
+          <li>一套可運轉的「文件驅動 Agent 框架」＋報告治理規則庫＋可追溯生成引擎（可商轉版）。</li>
+          <li>兩個真實場域的導入成果與前後對比數據（永力社＋第二場域）。</li>
+          <li>資安檢測驗證報告（結案硬要件）。</li>
+          <li>結案工作報告＋會計報告（政府文書）。</li>
+          <li>至少 1 家付費導入合約或訂單。</li>
+          <li>換到的無形資產：政府核定案的信用紀錄、可對外引用的成效數字、明年投 SIIR／SBIR Phase 2 的門票。</li>
+        </ul>
+      </div>
+    </details>
+    <details class="fold"><summary>時間代價誠實版（決定前先看這個）</summary>
+      <div class="fb">
+        <ul>
+          <li><strong>江江：</strong>衝刺期 15 天近全職；執行期四個月是研發主力，估每週投入過半工時；期末月（結案＋檢測＋後測）最重。</li>
+          <li><strong>學賢：</strong>衝刺期約 2 到 3 個半天（公司文件＋自籌拍板）；執行期主要是場域協調與商業化驗證，加核銷監督。</li>
+          <li><strong>Vincent：</strong>衝刺期半天（提供驗證範例素材＋簽同意）；執行期配合場域導入訪談數次。</li>
+          <li><strong>行政核銷：</strong>每月固定工時（工作記錄簿、憑證整理），期中期末各一波高峰。這個人今天要指定。</li>
+          <li><strong>風險提醒：</strong>政府案做不完或結案難看會留違約紀錄，影響未來五年所有政府補助資格。所以規模建議 250 到 300 萬求穩，不衝 500 萬滿額。</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- 05 分工與散會前答案 -->
+  <div class="section">
+    <h2><span class="num">08 / 分工與今天要給的答案</span>散會前逐項打勾</h2>
+    <p class="sub">勾選會自動存在這台裝置上，明天開會直接投影操作。</p>
+    <div class="people">
+      <div class="person">
+        <h3>江昱德</h3><div class="role">內容主筆・AI 應用創新設計・研發主力</div>
+        <ul class="chk">
+          <li><input type="checkbox" id="c-j1"><label for="c-j1">拍板總經費規模（建議 250 到 300 萬求穩版）</label></li>
+          <li><input type="checkbox" id="c-j2"><label for="c-j2">提出第二研發人員人選（知識治理導入研發員）</label></li>
+          <li><input type="checkbox" id="c-j3"><label for="c-j3">本週完成：房屋設計案前測＋永力社報告工時自量</label></li>
+          <li><input type="checkbox" id="c-j4"><label for="c-j4">資安檢測廠商詢價發出</label></li>
+        </ul>
+      </div>
+      <div class="person">
+        <h3>林學賢</h3><div class="role">申請主體・公司行政・場域合作</div>
+        <ul class="chk">
+          <li><input type="checkbox" id="c-l1"><label for="c-l1">確認用哪間公司申請＋行業別是否屬 J582／J62／J63（稅籍與所營事業兩邊都查）</label></li>
+          <li><input type="checkbox" id="c-l2"><label for="c-l2">自籌款額度與來源（存款證明或增資承諾，額度 125 到 150 萬）</label></li>
+          <li><input type="checkbox" id="c-l3"><label for="c-l3">指定核銷行政人力（誰做工作記錄簿與會計文書）</label></li>
+          <li><input type="checkbox" id="c-l4"><label for="c-l4">工商憑證在哪、誰保管、能否線上申請</label></li>
+          <li><input type="checkbox" id="c-l5"><label for="c-l5">主要股東與增資規劃資料（計畫書公司概況用）</label></li>
+        </ul>
+      </div>
+      <div class="person">
+        <h3>陳明勇 Vincent</h3><div class="role">驗證範例素材・永力社場域窗口</div>
+        <ul class="chk">
+          <li><input type="checkbox" id="c-v1"><label for="c-v1">願不願意提供十多年累積的人脈與關係經營紀錄，作為「隱性知識資產化」的驗證範例</label></li>
+          <li><input type="checkbox" id="c-v2"><label for="c-v2">確認資料範圍與形式（名冊？往來紀錄？案例故事？）＋書面同意（涉及第三人資料，只用去識別化摘要，原始資料不進計畫書）</label></li>
+          <li><input type="checkbox" id="c-v3"><label for="c-v3">永力社場域使用同意書：由誰簽、多快能簽</label></li>
+        </ul>
+      </div>
+      <div class="person">
+        <h3>待定人選</h3><div class="role">今天要補上名字的兩個位子</div>
+        <ul class="chk">
+          <li><input type="checkbox" id="c-t1"><label for="c-t1">第二研發人員（知識治理導入研發員）：＿＿＿＿</label></li>
+          <li><input type="checkbox" id="c-t2"><label for="c-t2">市場推廣人員（商業化驗證與轉付費）：＿＿＿＿</label></li>
+          <li><input type="checkbox" id="c-t3"><label for="c-t3">行政核銷：＿＿＿＿（可與學賢那格同一人）</label></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 GO 之後的資料丟包 -->
+  <div class="section">
+    <h2><span class="num">09 / GO 之後 48 小時</span>把這些丟進來，72 小時出計畫書送審版</h2>
+    <div class="callout">
+      <p class="lead">運作方式：大家把下面的原始資料丟給江江（照片、掃描、文字都行，不用整理），由江江與 AI 協作直接組裝進計畫書 v1.6.1，72 小時內出送審版初稿。</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>誰</th><th>丟什麼（原始的就好）</th><th>期限</th></tr></thead>
+        <tbody>
+          <tr><td>學賢</td><td>公司登記謄本或設立資料、行業別證明、最近一年損益或營業稅申報、勞保投保單位名冊、股東與增資規劃、無欠稅查復表（或申請中的收據）</td><td>7/11</td></tr>
+          <tr><td>Vincent</td><td>關係紀錄素材樣本（先給一小份看形式即可）＋簽好的提供同意、永力社同意書簽署進度</td><td>7/12</td></tr>
+          <tr><td>江江</td><td>第二研發人員與推廣人員的姓名學經歷、房設案與永力社的前測數字、資安報價單、GitHub 與官網連結清單</td><td>7/12</td></tr>
+          <tr><td>全員</td><td>回覆計畫書送審版的修改意見（一輪即可，改動集中交給江江）</td><td>7/17</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">資料在手上但不確定要不要給？先丟，用不用由計畫書需要決定。缺的就標待補，不硬湊。</p>
+  </div>
+
+  <!-- 07 查證 -->
+  <div class="section">
+    <h2><span class="num">10 / 官方出處</span>三案連結，一切以官方公告為準</h2>
+    <a class="link-btn" href="https://digiplus.adi.gov.tw/news_listinner.html?id=2D1C44E4-1710-4DA2-9034-9FD705007D10" target="_blank" rel="noopener">🔗 數發部 AI 創新服務研發補助（DIGI⁺ 公告頁）</a><br>
+    <a class="link-btn" href="https://sbir.org.tw/sbir/info" target="_blank" rel="noopener">🔗 SBIR 小型企業創新研發計畫（官網）</a><br>
+    <a class="link-btn" href="https://gcis.nat.gov.tw/neo-s/Web/Default.aspx" target="_blank" rel="noopener">🔗 SIIR 服務業創新研發計畫（官網）</a>
+    <p class="note">補助上限、資格、經費科目、審查項目與附件範本以各官方申請須知為準。本頁時程為工作規劃，非官方文件。SIIR 今年度是否受理請以官網最新公告確認。</p>
+  </div>
+
+  <footer>
+    7/24 提案 GO／NO-GO 工作頁・2026-07-08 製・7/9 會議用<br>
+    內部文件請勿外流。對應完整計畫書：AI 報告治理知識庫與可追溯生成系統研發計畫 v1.6.1<br>
+    NO-GO 時內容整份轉投 SBIR Phase 1，不浪費。
+  </footer>
+
+</div>
+<script>
+(function(){
+  var boxes=document.querySelectorAll('.chk input[type=checkbox]');
+  boxes.forEach(function(b){
+    var k='go724-'+b.id;
+    if(localStorage.getItem(k)==='1'){b.checked=true;b.nextElementSibling.classList.add('done');}
+    b.addEventListener('change',function(){
+      localStorage.setItem(k,b.checked?'1':'0');
+      b.nextElementSibling.classList.toggle('done',b.checked);
+    });
+  });
+})();
+</script>
+</body>
+</html>
