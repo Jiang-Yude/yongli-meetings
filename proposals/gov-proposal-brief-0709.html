@@ -12,6 +12,7 @@
     --text:#1f1c17; --muted:#5c554b; --accent:#C9924A; --accent-deep:#8b6f3f;
     --soft:#fdf3dc; --soft-border:#ead8a8; --ok:#3f7d55; --ok-bg:#e3f0e8;
     --no:#9a6b6b; --no-bg:#f0e5e5;
+    --dark:#2a2620; --dark-text:#FAF7F2; --dark-muted:#d8d2c5; --gold-light:#E5C28A;
     --g1:#C9924A; --g2:#8FAE8B; --g3:#7E9BB8; --g4:#B08BA8; --g5:#C4A24D; --g6:#8a8175;
   }
   html{font-size:var(--base-font);}
@@ -99,6 +100,9 @@
   .cb-main{background:var(--accent);color:#fff;}
   .cb-demo{background:#fdecd8;color:var(--accent-deep);}
   .cb-later{background:#eee9df;color:#7a7264;}
+  .font-widget{position:fixed;top:16px;right:18px;z-index:1000;display:flex;gap:.3rem;background:rgba(255,251,235,.95);border:1px solid #e8d5b7;border-radius:999px;padding:.35rem .5rem;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  .font-widget button{border:none;background:transparent;color:var(--accent-deep);font-size:.8rem;font-weight:600;padding:.3rem .55rem;border-radius:999px;cursor:pointer;font-family:inherit;}
+  .font-widget button:hover{background:rgba(201,146,74,.15);}
   footer{margin-top:4rem;padding-top:1.2rem;border-top:2px solid var(--divider);font-size:.78rem;color:#8a8175;line-height:1.8;text-align:center;}
   .link-btn{display:inline-block;margin-top:.5rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;text-decoration:none;color:var(--text);font-size:.85rem;font-weight:700;}
   @media(max-width:720px){
@@ -109,12 +113,17 @@
 </style>
 </head>
 <body>
+<div class="font-widget" role="group" aria-label="字級調整">
+  <button type="button" data-action="dec" aria-label="縮小字級">A-</button>
+  <button type="button" data-action="reset" aria-label="預設字級">A</button>
+  <button type="button" data-action="inc" aria-label="放大字級">A+</button>
+</div>
 <div class="container">
 
   <div class="hero">
     <div class="label">內部工作文件・7/9 會議用・請勿外流</div>
     <h1>政府提案大統整：<br>我們提什麼、為什麼提、怎麼跑</h1>
-    <p class="subtitle">這一頁講清楚四件事：我們到底創新什麼、為什麼值得提政府案、三個補助的先後路線、以及 7/24 這一梯今天要做的 GO／NO-GO 決定。由上往下走完就是今天的會議流程。</p>
+    <p class="subtitle">這一頁講清楚四件事：我們到底創新什麼、為什麼值得提政府案、三個補助的先後路線、以及 7/24 這一梯今天要做的 GO／NO-GO 決定。由上往下走完就是今天的會議流程；技術細節、對照表、原型 Demo、風險對策都摺疊在各節的「＋」裡，要深挖再點開。</p>
     <div class="meta">最近一梯：數發部案截止 2026-07-24 17:00（剩約 15 天）・完整計畫書草案 v1.6.1 已備妥</div>
   </div>
 
@@ -175,6 +184,29 @@
         <p>完整提案：<a href="https://jiang-yude.github.io/digital-chamber-pitch/v3/" target="_blank" rel="noopener" style="color:var(--accent-deep);font-weight:700;">數位商會 V3 完整提案（含架構、信任機制、NETS 評估法）</a></p>
       </div>
     </details>
+
+    <details class="fold"><summary>細節補充：跟現有工具差在哪（對照表）</summary>
+      <div class="fb">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>對照</th><th>通用 AI（ChatGPT／NotebookLM）</th><th>工程師導向 Agent 平台（LangChain／Dify／n8n）</th><th>本系統</th></tr></thead>
+            <tbody>
+              <tr><td>使用門檻</td><td>低，但每次重下 prompt</td><td>需工程師建置與維護</td><td>會寫文件、會分資料夾即可</td></tr>
+              <tr><td>組織判準</td><td>可放自訂指示，但難以受控與版本控管</td><td>寫在程式與節點裡，改動要工程師</td><td>沉澱為受控規則文件，可版本控管、可複用</td></tr>
+              <tr><td>來源可追溯</td><td>常編造、無法佐證</td><td>需另行開發</td><td>每段可回溯來源＋規則版本</td></tr>
+              <tr><td>自行更新</td><td>綁個人操作</td><td>綁廠商與工程人力</td><td>組織自己改文件即更新</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold"><summary>細節補充：技術定位與邊界（審查會問的）</summary>
+      <div class="fb">
+        <p>本案屬駕馭層研發，不重造大模型與 Agent 執行環境；底層使用商用模型（依補助規定不得使用中國或中資來源模型）。可追溯設計借用政府核銷「來源留痕、憑據可查」的精神：每段生成內容可回溯來源資料、規則版本與人工放行紀錄，降低 AI 編造風險、讓每段輸出具備可查核的來源依據。</p>
+        <p>抗變動設計：AI 引擎會持續改版，本框架只沉澱不會過時的東西（領域知識、隱性知識、經驗與判準），模型越強、同一份資產發揮越大。框架也不綁單一 AI 平台，哪家模型適合就接哪家的 Agent 運作；文件即系統，導入組織誰都能自己改，不被本團隊綁死。</p>
+      </div>
+    </details>
   </div>
 
   <!-- 00B 為什麼提 -->
@@ -189,6 +221,37 @@
       <p class="lead">配套習慣：從今天開始留痕跡</p>
       <p>提案要證據。我們已建立「證據收集」工具（課前問卷、工作坊前後測、陪跑開案前測、證據登記表），以後每場講座、工作坊、陪跑、訪談都順手收數據。<strong>這次用不上的，下次提案都用得上。</strong>不管今天 GO 或 NO-GO，這件事都照跑。</p>
     </div>
+
+    <details class="fold"><summary>細節補充：為什麼是現在（時機判斷）</summary>
+      <div class="fb">
+        <ul>
+          <li><strong>沉睡的資料醒了：</strong>會議錄音、隨手筆記、群組對話這類非結構化資料，過去軟體處理不了，只能沉睡在硬碟；現在 AI 讀得懂，前提是有人把它治理成可調用的知識。</li>
+          <li><strong>整理知識的 CP 值翻轉：</strong>隱性知識提煉與知識架構本來是高單價專業服務，只有大企業負擔得起；AI 把邊際成本壓下來，同一套方法得以用中小企業與公益組織付得起的價格複製出去。</li>
+        </ul>
+        <p><strong>先講一件很痛的事：導入的技術會過時，沉澱的知識不會。</strong>過去兩年不少企業花半年、砸大錢導入一套技術架構，團隊好不容易上手，模型一次大改版，整套流程瞬間過時。錢賠掉是一層；更傷的是士氣，大家陪你辛苦半年，回頭發現學的是被淘汰的技術，下一次導入只會更抗拒。所以本計畫反向操作：不綁定會過時的技術架構，只沉澱不會過時的資產（組織的領域知識、隱性知識、經驗與判準）。模型每次變強，這些資產只會更好用；團隊學的是整理自己的知識，永遠不白學。</p>
+        <p><strong>目標市場與四大痛點</strong>（中小企業、公益組織、扶輪社、地方創生與 ESG 團隊）：</p>
+        <ul>
+          <li>報告與提案重複製作，每年從零開始</li>
+          <li>成果數據與回饋散落，不易追蹤佐證</li>
+          <li>資料丟通用 AI 會編造來源，對外不敢用</li>
+          <li>公益組織沒人力沒能力寫永續報告，卻有揭露壓力</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="fold"><summary>細節補充：已經做出來的東西（可運轉原型＋Demo）</summary>
+      <div class="fb">
+        <p>這不是紙上概念。以下是本框架鏈路的縮小可運轉原型，用永力智庫真實會議資料建成。</p>
+        <p><strong>永力智庫會議治理系統（2026-07-05 上線）</strong></p>
+        <ul>
+          <li>可追溯資料鏈：每場會議保留完整鏈路（原始錄音 → 逐字稿 → 清稿 → 分析），任何一句分析都能回溯到逐字稿時間點。</li>
+          <li>載體治理規則：內容按生命週期分流（活文件走共編、定案成品走網頁、歷史封存不回改），規則已沉澱為可複用文件。</li>
+          <li>登記表驅動：檢索頁資料源是一張會議登記表，成員填一列、畫布自動長出新卡，不需工程師改程式。</li>
+          <li>檢索介面：人員×主題交集篩選與關鍵字搜尋，中軸為正式會議時間線。</li>
+        </ul>
+        <a class="link-btn" href="https://yongli-canvas-q7k3m9.vercel.app" target="_blank" rel="noopener">🔗 開啟 Demo（半私密、noindex）</a>
+      </div>
+    </details>
   </div>
 
   <!-- 00C 三案路線圖 -->
@@ -370,6 +433,34 @@
         </ul>
       </div>
     </details>
+    <details class="fold"><summary>細節補充：場域導入三階段（有結束點，不無限陪跑）＋KPI 草案</summary>
+      <div class="fb">
+        <p><strong>建置期</strong>（本團隊主導建置）→ <strong>內化期</strong>（移交規則庫與操作手冊，組織人員接手）→ <strong>自運轉期</strong>（組織自行營運，按季回訪）。每階段有驗收條件與結束日；交付的終點是留在組織手上、自己會用的知識資產與能力。</p>
+        <p><strong>KPI 草案</strong>（所有數字送件前以場域實測校準，不空喊）：</p>
+        <ul>
+          <li>示範導入：第一期先 1 至 2 家做深（首案永力社已近上線、場域同意書待補；第二場域書面意向待補；企業端延伸驗證尚在前置，未談成不列承諾）</li>
+          <li>每家交付：1 份 AI 可讀知識入口＋1 份可追溯報告初稿</li>
+          <li>報告初稿產出時間降幅：以永力社實測校準</li>
+          <li>轉換：至少 1 家轉付費</li>
+        </ul>
+      </div>
+    </details>
+    <details class="fold"><summary>細節補充：風險與對策表（審查委員視角）</summary>
+      <div class="fb">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>風險</th><th>對策</th></tr></thead>
+            <tbody>
+              <tr><td>被判顧問代工而非研發</td><td>研發標的鎖定框架可驗證技術（文件解析機制、規則表示法、可追溯引擎、版本控管），並附 before/after 對照</td></tr>
+              <tr><td>一人團隊人力不足</td><td>明列外包項目、AI 分工、關鍵人力工時，補可掛名研發夥伴</td></tr>
+              <tr><td>導入意向含金量低</td><td>首案做深拿書面同意；企業場域先備 NDA 再談</td></tr>
+              <tr><td>資安要件</td><td>資安經費佔總經費 7% 以上、外包檢測、結案交驗證報告</td></tr>
+              <tr><td>主體與現金（生死線）</td><td>開會先鎖死，見第 04 節 GO 條件</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
   </div>
 
   <!-- 05 分工與散會前答案 -->
@@ -447,7 +538,8 @@
   <footer>
     7/24 提案 GO／NO-GO 工作頁・2026-07-08 製・7/9 會議用<br>
     內部文件請勿外流。對應完整計畫書：AI 報告治理知識庫與可追溯生成系統研發計畫 v1.6.1<br>
-    NO-GO 時內容整份轉投 SBIR Phase 1，不浪費。
+    NO-GO 時內容整份轉投 SBIR Phase 1，不浪費。<br>
+    概念說明頁（草稿 v1.2・2026-07-05）已於 2026-07-08 整併入本頁各節「細節補充」摺疊。
   </footer>
 
 </div>
@@ -461,6 +553,26 @@
       localStorage.setItem(k,b.checked?'1':'0');
       b.nextElementSibling.classList.toggle('done',b.checked);
     });
+  });
+})();
+(function(){
+  var sizes=[17,19,21,23,25,27];
+  var idx=1;
+  var stored=parseInt(localStorage.getItem('go724-fontSizeIdx'),10);
+  if(!isNaN(stored)&&stored>=0&&stored<sizes.length){idx=stored;}
+  function applySize(){
+    document.documentElement.style.setProperty('--base-font',sizes[idx]+'px');
+    localStorage.setItem('go724-fontSizeIdx',String(idx));
+  }
+  applySize();
+  document.querySelector('.font-widget').addEventListener('click',function(e){
+    var btn=e.target.closest('button');
+    if(!btn)return;
+    var action=btn.getAttribute('data-action');
+    if(action==='dec'){idx=Math.max(0,idx-1);}
+    else if(action==='inc'){idx=Math.min(sizes.length-1,idx+1);}
+    else{idx=1;}
+    applySize();
   });
 })();
 </script>
