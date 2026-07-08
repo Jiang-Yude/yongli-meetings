@@ -82,11 +82,29 @@
   details.fold .fb li{margin-bottom:.35rem;}
   .callout{background:var(--soft);border:1px solid var(--soft-border);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1rem;font-size:.92rem;}
   .callout .lead{font-weight:700;color:var(--accent-deep);margin:0 0 .5rem;}
+  /* 架構圖：底座→切口→終局 */
+  .arch{display:flex;flex-direction:column;gap:.55rem;margin-top:1.2rem;}
+  .arch-apex{background:var(--dark);color:var(--dark-text);border-radius:12px;padding:1rem 1.3rem;font-size:.92rem;line-height:1.6;}
+  .arch-apex .a-sub{color:var(--dark-muted);font-size:.82rem;}
+  .arch-base{background:var(--soft);border:1px solid var(--soft-border);border-radius:12px;padding:1rem 1.3rem;font-size:.92rem;line-height:1.6;}
+  .a-label{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.12em;color:var(--accent);margin-right:.5rem;}
+  .arch-apex .a-label{color:var(--gold-light);}
+  .arch-arrow{text-align:center;color:var(--accent-deep);font-size:.8rem;font-weight:700;padding:.1rem 0;}
+  .arch-cuts{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:.7rem;}
+  .cut{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem;font-size:.85rem;line-height:1.55;}
+  .cut-main{border:2px solid var(--accent);box-shadow:0 3px 10px rgba(201,146,74,.18);}
+  .cut strong{font-size:.95rem;}
+  .cut .c-ev{font-size:.76rem;color:var(--muted);display:block;margin-top:.45rem;border-top:1px dashed var(--divider);padding-top:.4rem;}
+  .cut-badge{display:inline-block;font-size:.7rem;font-weight:800;padding:.12rem .55rem;border-radius:999px;margin-bottom:.4rem;}
+  .cb-main{background:var(--accent);color:#fff;}
+  .cb-demo{background:#fdecd8;color:var(--accent-deep);}
+  .cb-later{background:#eee9df;color:#7a7264;}
   footer{margin-top:4rem;padding-top:1.2rem;border-top:2px solid var(--divider);font-size:.78rem;color:#8a8175;line-height:1.8;text-align:center;}
   .link-btn{display:inline-block;margin-top:.5rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;text-decoration:none;color:var(--text);font-size:.85rem;font-weight:700;}
   @media(max-width:720px){
     .gonogo,.people{grid-template-columns:1fr;}
     .hero h1{font-size:1.6rem;}
+    .arch-cuts{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -108,28 +126,35 @@
       <p>這就是我們的創新：<strong>文件即系統</strong>。寫文件、分資料夾，就是在搭系統；改文件，就是改系統。不用寫程式、不用工程師，會用文字的人就能打造自己組織的 AI。市面所有 Agent 工具都要工程思維（節點、API、程式流程），我們是反過來的那一個。</p>
     </div>
 
-    <div class="card">
-      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;">
-        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">一個底座</div>
-        <div>用文字搭建的組織知識庫（資料 → 知識 → 規則三層）＋文件驅動 Agent 框架。組織的經驗與判準沉澱成 AI 可調用的資產，AI 帶著組織自己的標準做事，每段產出可回溯來源。</div>
+    <div class="arch">
+      <div class="arch-apex">
+        <span class="a-label">終局</span><strong>數位商會：Agent to Agent</strong><br>
+        <span class="a-sub">每個人帶著自己的 AI 商務代理進場：真人管信任與承諾、Agent 管資料與探索、平台管規則與秩序。它太大，所以先從一個領域、一個場景、一種受眾開始。<strong style="color:var(--gold-light);">不是今年計畫的目標</strong>，但所有動作都指向這裡。</span>
       </div>
-      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
-        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">一圈應用</div>
-        <div>同一個底座長出多種場景：①永續／影響力報告治理（首發示範）②小微企業 AI 員工與 Agent 工作流 ③組織內部教育培訓與新人交接 ④AI 可讀商務入口與公益透明頁。</div>
+      <div class="arch-arrow">↑ 第二步（一到兩年）：客戶都有了知識庫與 AI 代理人，案例成堆，SBIR Phase 2 與 SIIR 的彈藥就緒</div>
+      <div class="arch-cuts">
+        <div class="cut">
+          <span class="cut-badge cb-demo">示範場域</span><br>
+          <strong>公益組織</strong><br>永續報告書治理：報告過程直接建成知識庫
+          <span class="c-ev">證據：永力社原型已上線可展示。推廣：與 Vincent 合開公益組織工作坊（收費）。</span>
+        </div>
+        <div class="cut cut-main">
+          <span class="cut-badge cb-main">7/24 建議主軸</span><br>
+          <strong>小微企業・一人公司</strong><br>AI 員工與 Agent 工作流
+          <span class="c-ev">證據：房屋設計陪跑案進行中＋課程已有付費學員。缺口：大企業請得起工程師寫系統，小微請不起，需求真實存在。</span>
+        </div>
+        <div class="cut">
+          <span class="cut-badge cb-later">SBIR／SIIR 候補</span><br>
+          <strong>講師・顧問</strong><br>Agent 教學平台：教材即技能包，老師有 AI 助教、學員有 AI 學伴
+          <span class="c-ev">證據：咪卡課程助教雛形。先養著，不塞進 7/24 稀釋焦點。</span>
+        </div>
       </div>
-      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
-        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">受眾是誰</div>
-        <div>小微企業、中小企業、公益組織、扶輪社、地方創生團隊、ESG 團隊。共通點：知識都在人腦和散落文件裡，沒有工程師，卻需要 AI 幫忙做事。</div>
-      </div>
-      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
-        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">7/24 怎麼提</div>
-        <div>提案聚焦首發場景「報告治理」切入（審查委員要看具體場景與可驗證成果），但研發標的是通用底座。結案後同一套直接複製到 AI 員工、培訓等場景，這正是「標準化、可複製」的加分點。</div>
-      </div>
-      <div class="tldr-row" style="display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.3rem;padding:.85rem 0;border-top:1px solid var(--divider);">
-        <div style="color:var(--accent-deep);font-weight:700;white-space:nowrap;">首發場域</div>
-        <div>永力社永續報告書（原型已上線可展示），第二場域接洽中，房屋設計陪跑案（AI 員工場景）同步收成效數據。</div>
+      <div class="arch-arrow">↑ 第一步（今年）：解決客戶眼前的問題，客戶在過程中自然學會知識庫、Agent、AI 員工</div>
+      <div class="arch-base">
+        <span class="a-label">底座</span><strong>文件即系統</strong>：用文字搭建的組織知識庫（資料 → 知識 → 規則）＋文件驅動 Agent 框架。組織的經驗與判準沉澱成 AI 可調用的資產，每段產出可回溯來源，改文件就是改系統。
       </div>
     </div>
+    <p class="note">提案紀律：每次只亮一個切口（審查要聚焦），但底座通用，結案後同一套複製到其他切口。三個切口養出來的每一個客戶，都是數位商會的會員預備隊。這套架構日後對外也這樣講：「我可以幫你建知識庫、做你的 AI 員工，給你的同行或客戶用，甚至一起寫 SBIR。」</p>
 
     <details class="fold"><summary>展開看：三個創新點＋一句技術主張</summary>
       <div class="fb">
@@ -143,12 +168,6 @@
       </div>
     </details>
 
-    <h2 style="font-size:1.15rem;margin:2.2rem 0 .8rem;">三步走：從解決眼前問題，走到數位商會</h2>
-    <div class="phases">
-      <div class="phase"><div class="p-t">第一步・今年</div><div class="p-d">解決眼前問題，順便學會 AI</div><div class="p-b">幫組織建知識庫：公益組織從永續報告切入，小微企業與一人公司從 AI 員工、Agent 工作流切入（大企業請得起工程師寫系統，小微請不起，這正是我們的市場）。客戶在解決自己問題的過程中，自然學會什麼是知識庫、什麼是 Agent、什麼是 AI 員工。<strong>7/24 與 SBIR 寫的就是這一步。</strong></div></div>
-      <div class="phase"><div class="p-t">第二步・一到兩年</div><div class="p-d">累積代理人與案例</div><div class="p-b">多家組織有了自己的知識庫、AI 助理、AI 分身，我們手上累積出成效數據與真實案例。這些案例就是下一輪 SBIR Phase 2、SIIR 的彈藥，也是會員進入第三步的入場練習。</div></div>
-      <div class="phase"><div class="p-t">終局・數位商會</div><div class="p-d">Agent to Agent</div><div class="p-b">每個人帶著自己的 AI 商務代理進場：真人負責信任與承諾，Agent 負責資料與探索，平台負責規則與秩序。人＋Agent 互相交流媒合。<strong>不是今年計畫的目標</strong>，計畫書裡只當願景一句帶過，但它是所有動作共同指向的方向。</div></div>
-    </div>
     <details class="fold"><summary>數位商會是什麼（點開看終局藍圖）</summary>
       <div class="fb">
         <p>一句話：<strong>每個人帶著自己的 AI 商務代理進場的商會。</strong>解決傳統商會三個老問題：名片換了沒累積、自己爬資料太累、憑感覺配對靠運氣。做法是「整理好的會員資料 × 會算的組合算法 × 越用越準的回饋迴圈」，Agent 和 Agent 先互相理解、先跑過媒合，高契合才讓真人見面。</p>
@@ -182,19 +201,19 @@
           <tr>
             <td><strong>現在</strong></td>
             <td>數發部 AI 創新服務（7/24 截止）</td>
-            <td>主題最貼 AI 應用創新、金額大（建議求穩申請 250 到 300 萬）、文件相對不繁瑣、我們的計畫書已備妥八成</td>
+            <td><strong>打切口②小微企業 AI 員工</strong>。主題最貼 AI 應用創新、金額大（建議求穩申請 250 到 300 萬）、我們的計畫書已備妥八成</td>
             <td>今天決定 GO／NO-GO（見下一節）。GO 就衝這 15 天。</td>
           </tr>
           <tr>
             <td><strong>隨時</strong></td>
             <td>SBIR 小型企業創新研發</td>
-            <td>Phase 1 用簡報格式、150 萬、期程六個月、門檻最低；結案後可接 Phase 2（金額更大），是長期階梯</td>
+            <td>Phase 1 用簡報格式、150 萬、期程六個月、門檻最低；結案後可接 Phase 2（金額更大），是長期階梯。<strong>候補切口：③Agent 教學平台構想驗證，或延續②</strong></td>
             <td>常備退路與長期主軸：7/24 不投或沒過，內容整份轉過來。受理時程以官網公告為準。</td>
           </tr>
           <tr>
             <td><strong>明年</strong></td>
             <td>SIIR 服務業創新研發</td>
-            <td>定位契合度最高（服務模式創新正是我們主場），每年開放</td>
+            <td>定位契合度最高（服務模式創新正是我們主場），每年開放。<strong>候補切口：③教學平台或①公益服務，用服務業語言寫</strong></td>
             <td>今年經費已用罄，等明年。用今年收的證據與結案成果去投，勝率最高。</td>
           </tr>
         </tbody>
@@ -210,7 +229,7 @@
       <div class="go-card">
         <div class="t">GO 的三個條件（缺一不可）</div>
         <p>① 申請主體確定：哪間公司、行業別屬資訊服務類（J582／J62／J63）</p>
-        <p>② 自籌款明確：補助最高只給一半，總經費 250 到 300 萬 → 自籌約 125 到 150 萬，錢從哪來要講得出</p>
+        <p>② 自籌款明確：補助最高只給一半，總經費 250 到 300 萬 → 自籌約 125 到 150 萬，錢從哪來要講得出。注意：自籌款要的是帳上現金證明；工作坊學費與課程收入是「推廣通路＋商業驗證證據」，不能直接充當自籌款（細節問會計）</p>
         <p>③ 核銷行政有人扛：政府案最重的是核銷文書，要有明確的人</p>
       </div>
       <div class="nogo-card">
