@@ -1,0 +1,37 @@
+{
+  "title": "永力扶輪社會議記錄",
+  "type": "internal-collaboration-hub",
+  "audience": "internal",
+  "public": false,
+  "url": "https://yongli-meetings.vercel.app/",
+  "updated": "2026-05-04",
+  "purpose": "台北永續影響力扶輪社 × 江昱德 合作專案歸檔：歷次會議記錄、講座講稿、補充資料。本次合作主成果是永力扶輪社 2026 永續影響力報告書。",
+  "main_outcome": {
+    "name": "永力扶輪社 2026 永續影響力報告書",
+    "url": "https://jiang-yude.github.io/my-yongli-sustainability-2026/",
+    "note": "第一版 2026.05：9 位社友人物誌 × 7 項服務計畫的完整入口網站"
+  },
+  "lines": [
+    { "id": "m1", "date": "2026-03-31", "name": "第一次會議：AI 導入與永續報告書規劃", "url": "https://yongli-meetings.vercel.app/meetings/2026-03-31-kickoff/report.html" },
+    { "id": "m2", "date": "2026-04-16", "name": "第二次會議：共識決策與工作分配", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-16-consensus/report.html" },
+    { "id": "m2b", "date": "2026-04-16", "name": "兩次會議人員態度軌跡圖", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-17-analysis/trajectory.html" },
+    { "id": "m3", "date": "2026-05-03", "name": "第三次會議：報告書架構定稿＋AI 工作坊三階段定調", "url": "https://yongli-meetings.vercel.app/meetings/2026-05-03-report-and-workshop/report.html" }
+  ],
+  "pages": [
+    { "name": "會議記錄總覽", "url": "https://yongli-meetings.vercel.app/" },
+    { "name": "講座講稿：AI × 永續報告書 三階段（2026-04-27）", "url": "https://yongli-meetings.vercel.app/talks/2026-04-27-sustainability-talk/" },
+    { "name": "第一次會議記錄（2026-03-31）", "url": "https://yongli-meetings.vercel.app/meetings/2026-03-31-kickoff/report.html" },
+    { "name": "第二次會議記錄（2026-04-16）", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-16-consensus/report.html" },
+    { "name": "兩次會議人員態度軌跡圖", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-17-analysis/trajectory.html" },
+    { "name": "第三次會議記錄（2026-05-03）", "url": "https://yongli-meetings.vercel.app/meetings/2026-05-03-report-and-workshop/report.html" },
+    { "name": "政府提案 brief（2026-07-09）", "url": "https://yongli-meetings.vercel.app/proposals/gov-proposal-brief-0709.html" },
+    { "name": "永續影響力報告書網站（主成果）", "url": "https://jiang-yude.github.io/my-yongli-sustainability-2026/" }
+  ],
+  "agent_notes": [
+    "本站設為 noindex，可把網址貼給自己使用的 AI 解說。",
+    "要查某場會議談了什麼、講稿在哪、報告書在哪，讀本檔即可。",
+    "會議記錄本身含逐字層與人員態度分析，摘要不入本檔，需要細節請直接開對應頁面。",
+    "永力團隊的即時資料（LINE 群、提案、代辦）在另一個站：yongli-canvas-q7k3m9.vercel.app，AI 入口是它的 /llms.txt。"
+  ],
+  "content_boundary": "本檔內容不得超出站上頁面本身已呈現的資訊。內部評估、行情數字、分潤與談判紀錄、合約與財務、會議逐字與態度判讀、個人聯絡方式、含 token 的私密網址一律不入本檔。"
+}
