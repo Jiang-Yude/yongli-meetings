@@ -14,7 +14,6 @@
   "lines": [
     { "id": "m1", "date": "2026-03-31", "name": "第一次會議：AI 導入與永續報告書規劃", "url": "https://yongli-meetings.vercel.app/meetings/2026-03-31-kickoff/report.html" },
     { "id": "m2", "date": "2026-04-16", "name": "第二次會議：共識決策與工作分配", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-16-consensus/report.html" },
-    { "id": "m2b", "date": "2026-04-16", "name": "兩次會議人員態度軌跡圖", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-17-analysis/trajectory.html" },
     { "id": "m3", "date": "2026-05-03", "name": "第三次會議：報告書架構定稿＋AI 工作坊三階段定調", "url": "https://yongli-meetings.vercel.app/meetings/2026-05-03-report-and-workshop/report.html" }
   ],
   "pages": [
@@ -22,7 +21,6 @@
     { "name": "講座講稿：AI × 永續報告書 三階段（2026-04-27）", "url": "https://yongli-meetings.vercel.app/talks/2026-04-27-sustainability-talk/" },
     { "name": "第一次會議記錄（2026-03-31）", "url": "https://yongli-meetings.vercel.app/meetings/2026-03-31-kickoff/report.html" },
     { "name": "第二次會議記錄（2026-04-16）", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-16-consensus/report.html" },
-    { "name": "兩次會議人員態度軌跡圖", "url": "https://yongli-meetings.vercel.app/meetings/2026-04-17-analysis/trajectory.html" },
     { "name": "第三次會議記錄（2026-05-03）", "url": "https://yongli-meetings.vercel.app/meetings/2026-05-03-report-and-workshop/report.html" },
     { "name": "永續影響力報告書網站（主成果）", "url": "https://jiang-yude.github.io/my-yongli-sustainability-2026/" }
   ],
